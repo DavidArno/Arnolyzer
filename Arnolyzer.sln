@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arnolyzer", "Arnolyzer\Arnolyzer.csproj", "{0EAB24DA-09A0-4340-8DA4-540D3DDEBBF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arnolyzer.Test", "Arnolyzer.Test\Arnolyzer.Test.csproj", "{2EE79969-B041-47B1-81CF-1BA096902B49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arnolyzer.Vsix", "Arnolyzer.Vsix\Arnolyzer.Vsix.csproj", "{835B7000-CF32-45A2-80AB-B7E4ACE43160}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0EAB24DA-09A0-4340-8DA4-540D3DDEBBF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EAB24DA-09A0-4340-8DA4-540D3DDEBBF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EAB24DA-09A0-4340-8DA4-540D3DDEBBF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EAB24DA-09A0-4340-8DA4-540D3DDEBBF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EE79969-B041-47B1-81CF-1BA096902B49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EE79969-B041-47B1-81CF-1BA096902B49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EE79969-B041-47B1-81CF-1BA096902B49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EE79969-B041-47B1-81CF-1BA096902B49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{835B7000-CF32-45A2-80AB-B7E4ACE43160}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{835B7000-CF32-45A2-80AB-B7E4ACE43160}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{835B7000-CF32-45A2-80AB-B7E4ACE43160}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{835B7000-CF32-45A2-80AB-B7E4ACE43160}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
