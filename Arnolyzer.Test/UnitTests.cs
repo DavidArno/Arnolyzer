@@ -1,10 +1,10 @@
 ﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CodeFixes;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+using System.IO;
+using Arnolyzer.SHOFAnalyzers;
 using Arnolyzer.Test.Helpers;
-using CodeFixVerifier = Arnolyzer.Test.Verifiers.CodeFixVerifier;
+using Arnolyzer.Test.Verifiers;
 
 namespace Arnolyzer.Test
 {
@@ -25,52 +25,24 @@ namespace Arnolyzer.Test
         [TestMethod]
         public void TestMethod2()
         {
-            var test = @"
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using System.Diagnostics;
-
-    namespace ConsoleApplication1
-    {
-        class TypeName
-        {   
-        }
-    }";
-            var expected = new DiagnosticResult
+            var test = File.ReadAllText(@"..\..\CodeUnderTest\CodeToTestStaticVoidAnalyzer.cs");
+            var expected1 = new DiagnosticResult
             {
-                Id = "Arnolyzer",
-                Message = String.Format("Type name '{0}' contains lowercase letters", "TypeName"),
-                Severity = DiagnosticSeverity.Warning,
-                Locations =
-                    new[] {
-                            new DiagnosticResultLocation("Test0.cs", 11, 15)
-                        }
+                Id = "StaticMethodMustNotBeVoid",
+                Severity = DiagnosticSeverity.Error,
+                Locations = new[] { new DiagnosticResultLocation("Test0.cs", 5, 28) }
             };
 
-            VerifyCSharpDiagnostic(test, expected);
+            var expected2 = new DiagnosticResult
+            {
+                Id = "StaticMethodMustNotBeVoid",
+                Severity = DiagnosticSeverity.Error,
+                Locations = new[] { new DiagnosticResultLocation("Test0.cs", 8, 28) }
+            };
 
-            var fixtest = @"
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using System.Diagnostics;
-
-    namespace ConsoleApplication1
-    {
-        class TYPENAME
-        {   
-        }
-    }";
-            VerifyCSharpFix(test, fixtest);
+            VerifyCSharpDiagnostic(test, expected1, expected2);
         }
 
-        protected override CodeFixProvider GetCSharpCodeFixProvider() => new ArnolyzerCodeFixProvider();
-
-        protected override DiagnosticAnalyzer GetCSharpDiagnosticAnalyzer() => new ArnolyzerAnalyzer();
+        protected override DiagnosticAnalyzer GetCSharpDiagnosticAnalyzer() => new StaticMethodMustNotBeVoidAnalyzer();
     }
 }

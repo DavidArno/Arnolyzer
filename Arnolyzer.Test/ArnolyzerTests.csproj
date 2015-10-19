@@ -102,9 +102,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeUnderTest\CodeToTestStaticVoidAnalyzer.cs" />
     <Compile Include="Verifiers\CodeFixVerifier.cs" />
-    <Compile Include="Verifiers\DiagnosticVerifier.cs" />
     <Compile Include="Verifiers\CodeFixVerifier.Helper.cs" />
+    <Compile Include="Verifiers\DiagnosticVerifier.cs" />
     <Compile Include="Helpers\DiagnosticResult.cs" />
     <Compile Include="Verifiers\DiagnosticVerifier.Helper.cs" />
     <Compile Include="UnitTests.cs" />

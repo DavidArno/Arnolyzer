@@ -58,8 +58,6 @@ namespace Arnolyzer.Test.Helpers
 
         public string Id { get; set; }
 
-        public string Message { get; set; }
-
         public string Path
         {
             get
