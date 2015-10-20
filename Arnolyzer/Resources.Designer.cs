@@ -62,6 +62,33 @@ namespace Arnolyzer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Static methods should have at least one parameter.
+        /// </summary>
+        internal static string StaticMethodMustHaveAtLeastOneParameterDescription {
+            get {
+                return ResourceManager.GetString("StaticMethodMustHaveAtLeastOneParameterDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Static method &apos;{0}&apos; doesn&apos;t have any parameters. It should have at least one.
+        /// </summary>
+        internal static string StaticMethodMustHaveAtLeastOneParameterMessageFormat {
+            get {
+                return ResourceManager.GetString("StaticMethodMustHaveAtLeastOneParameterMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Static methods must have at least one parameter.
+        /// </summary>
+        internal static string StaticMethodMustHaveAtLeastOneParameterTitle {
+            get {
+                return ResourceManager.GetString("StaticMethodMustHaveAtLeastOneParameterTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Static methods should return a value (must not be null).
         /// </summary>
         internal static string StaticMethodMustNotBeVoidDescription {

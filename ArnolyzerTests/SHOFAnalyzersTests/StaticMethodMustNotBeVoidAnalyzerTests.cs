@@ -1,29 +1,27 @@
-﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
+﻿using System.IO;
 using Arnolyzer.SHOFAnalyzers;
 using Arnolyzer.Test.Helpers;
-using Arnolyzer.Test.Verifiers;
+using Microsoft.CodeAnalysis;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using static Arnolyzer.Test.DiagnosticVerification.DiagnosticVerifier;
 
-namespace Arnolyzer.Test
+namespace Arnolyzer.Test.SHOFAnalyzersTests
 {
     [TestClass]
-    public class UnitTest : CodeFixVerifier
+    public class StaticMethodMustNotBeVoidAnalyzerTests
     {
 
         //No diagnostics expected to show up
         [TestMethod]
-        public void TestMethod1()
+        public void NoCode_ShouldYieldNoDiagnostics()
         {
-            var test = @"";
-
-            VerifyCSharpDiagnostic(test);
+            const string test = @"";
+            VerifyDiagnostics< StaticMethodMustNotBeVoidAnalyzer>(test);
         }
 
         //Diagnostic and CodeFix both triggered and checked for
         [TestMethod]
-        public void TestMethod2()
+        public void CodeWithTwoVoidMethods_YieldsTwoDiagnostics()
         {
             var test = File.ReadAllText(@"..\..\CodeUnderTest\CodeToTestStaticVoidAnalyzer.cs");
             var expected1 = new DiagnosticResult
@@ -40,9 +38,7 @@ namespace Arnolyzer.Test
                 Locations = new[] { new DiagnosticResultLocation("Test0.cs", 8, 28) }
             };
 
-            VerifyCSharpDiagnostic(test, expected1, expected2);
+            VerifyDiagnostics<StaticMethodMustNotBeVoidAnalyzer>(test, expected1, expected2);
         }
-
-        protected override DiagnosticAnalyzer GetCSharpDiagnosticAnalyzer() => new StaticMethodMustNotBeVoidAnalyzer();
     }
 }

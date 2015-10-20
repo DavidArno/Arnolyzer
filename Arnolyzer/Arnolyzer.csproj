@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Factories\LocalizableStringFactory.cs" />
+    <Compile Include="SHOFAnalyzers\StaticMethodMustHaveAtLeastOneParameterAnalyzer.cs" />
     <Compile Include="SHOFAnalyzers\StaticMethodMustNotBeVoidAnalyzer.cs" />
     <Compile Include="Factories\DiagnosticDescriptorFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

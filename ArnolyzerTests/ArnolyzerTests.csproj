@@ -102,13 +102,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeUnderTest\CodeToTestAtLeastOneParameterAnalyzer.cs" />
     <Compile Include="CodeUnderTest\CodeToTestStaticVoidAnalyzer.cs" />
-    <Compile Include="Verifiers\CodeFixVerifier.cs" />
-    <Compile Include="Verifiers\CodeFixVerifier.Helper.cs" />
-    <Compile Include="Verifiers\DiagnosticVerifier.cs" />
+    <Compile Include="DiagnosticVerification\DiagnosticsGenerator.cs" />
+    <Compile Include="DiagnosticVerification\DiagnosticVerifier.cs" />
+    <Compile Include="DiagnosticVerification\DocumentSetCreator.cs" />
+    <Compile Include="SHOFAnalyzersTests\StaticMethodMustHaveAtLeastOneParameterTests.cs" />
+    <Compile Include="SHOFAnalyzersTests\StaticMethodMustNotBeVoidAnalyzerTests.cs" />
     <Compile Include="Helpers\DiagnosticResult.cs" />
-    <Compile Include="Verifiers\DiagnosticVerifier.Helper.cs" />
-    <Compile Include="UnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

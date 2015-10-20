@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arnolyzer", "Arnolyzer\Arnolyzer.csproj", "{0EAB24DA-09A0-4340-8DA4-540D3DDEBBF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArnolyzerTests", "Arnolyzer.Test\ArnolyzerTests.csproj", "{2EE79969-B041-47B1-81CF-1BA096902B49}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArnolyzerTests", "ArnolyzerTests\ArnolyzerTests.csproj", "{2EE79969-B041-47B1-81CF-1BA096902B49}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arnolyzer.Vsix", "Arnolyzer.Vsix\Arnolyzer.Vsix.csproj", "{835B7000-CF32-45A2-80AB-B7E4ACE43160}"
 EndProject
