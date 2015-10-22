@@ -1,11 +1,11 @@
 ﻿using System.IO;
 using Arnolyzer.SHOFAnalyzers;
 using Arnolyzer.Test.DiagnosticVerification;
-using Arnolyzer.Test.Helpers;
 using Microsoft.CodeAnalysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SuccincT.Options;
 
-namespace Arnolyzer.Test.SHOFAnalyzersTests
+namespace Arnolyzer.Test.SyntacticAnalyzers.SHOFAnalyzersTests
 {
     [TestClass]
     public class StaticMethodMustHaveAtLeastOneParameterTests
@@ -25,12 +25,10 @@ namespace Arnolyzer.Test.SHOFAnalyzersTests
         public void StaticMethodWithNoParams_YieldsADiagnostic()
         {
             var test = File.ReadAllText(@"..\..\CodeUnderTest\CodeToTestAtLeastOneParameterAnalyzer.cs");
-            var expected = new DiagnosticResult
-            {
-                Id = "StaticMethodMustHaveAtLeastOneParameter",
-                Severity = DiagnosticSeverity.Error,
-                Locations = new[] { new DiagnosticResultLocation("Test0.cs", 5, 28) }
-            };
+            var expected = new DiagnosticResult(
+                Option<DiagnosticResultLocation>.Some(new DiagnosticResultLocation("Test0.cs", 5, 28, 28)),
+                DiagnosticSeverity.Error,
+                "StaticMethodMustHaveAtLeastOneParameter");
 
             DiagnosticVerifier.VerifyDiagnostics<StaticMethodMustHaveAtLeastOneParameterAnalyzer>(test, expected);
         }

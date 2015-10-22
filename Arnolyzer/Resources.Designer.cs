@@ -62,6 +62,33 @@ namespace Arnolyzer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Method parameters must not use REF or OUT parameters; all results should be via a return.
+        /// </summary>
+        internal static string MethodParameterMustNotBeRefOrOutDescription {
+            get {
+                return ResourceManager.GetString("MethodParameterMustNotBeRefOrOutDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parameter `{0}` of method `{1}` must not use {2}.
+        /// </summary>
+        internal static string MethodParameterMustNotBeRefOrOutMessageFormat {
+            get {
+                return ResourceManager.GetString("MethodParameterMustNotBeRefOrOutMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method parameters must not  use REF or OUT.
+        /// </summary>
+        internal static string MethodParameterMustNotBeRefOrOutTitle {
+            get {
+                return ResourceManager.GetString("MethodParameterMustNotBeRefOrOutTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Static methods should have at least one parameter.
         /// </summary>
         internal static string StaticMethodMustHaveAtLeastOneParameterDescription {

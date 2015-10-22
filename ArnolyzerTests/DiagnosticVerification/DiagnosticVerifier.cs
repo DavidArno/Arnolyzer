@@ -1,6 +1,5 @@
-﻿using System.Linq;
-using System.Text;
-using Arnolyzer.Test.Helpers;
+﻿using System;
+using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -17,145 +16,130 @@ namespace Arnolyzer.Test.DiagnosticVerification
             VerifyDiagnosticResults(diagnostics, analyzer, expected);
         }
 
-        private static void VerifyDiagnosticResults(Diagnostic[] actualResults, DiagnosticAnalyzer analyzer, params DiagnosticResult[] expectedResults)
+        private static void VerifyDiagnosticResults(Diagnostic[] actualResults, 
+                                                    DiagnosticAnalyzer analyzer, 
+                                                    params DiagnosticResult[] expectedResults)
         {
-            int expectedCount = expectedResults.Count();
-            int actualCount = actualResults.Count();
+            VerifyCorrectNumberOfDiagnostics(actualResults, expectedResults);
 
-            if (expectedCount != actualCount)
+            for (int i = 0; i < expectedResults.Count(); i++)
             {
-                string diagnosticsOutput = actualResults.Any() ? FormatDiagnostics(analyzer, actualResults.ToArray()) : "    NONE.";
-
-                Assert.IsTrue(false,
-                    $"Mismatch between number of diagnostics returned, expected \"{expectedCount}\" actual \"{actualCount}\"\r\n\r\nDiagnostics:\r\n{diagnosticsOutput}\r\n");
-            }
-
-            for (int i = 0; i < expectedResults.Length; i++)
-            {
-                var actual = actualResults.ElementAt(i);
+                var actual = actualResults[i];
                 var expected = expectedResults[i];
 
-                if (expected.Line == -1 && expected.Column == -1)
-                {
-                    if (actual.Location != Location.None)
-                    {
-                        Assert.IsTrue(false,
-                            $"Expected:\nA project diagnostic with No location\nActual:\n{FormatDiagnostics(analyzer, actual)}");
-                    }
-                }
-                else
-                {
-                    VerifyDiagnosticLocation(analyzer, actual, actual.Location, expected.Locations.First());
-                    var additionalLocations = actual.AdditionalLocations.ToArray();
-
-                    if (additionalLocations.Length != expected.Locations.Length - 1)
-                    {
-                        Assert.IsTrue(false,
-                            string.Format("Expected {0} additional locations but got {1} for Diagnostic:\r\n    {2}\r\n",
-                                expected.Locations.Length - 1, additionalLocations.Length,
-                                FormatDiagnostics(analyzer, actual)));
-                    }
-
-                    for (int j = 0; j < additionalLocations.Length; ++j)
-                    {
-                        VerifyDiagnosticLocation(analyzer, actual, additionalLocations[j], expected.Locations[j + 1]);
-                    }
-                }
-
-                if (actual.Id != expected.Id)
-                {
-                    Assert.IsTrue(false,
-                        string.Format("Expected diagnostic id to be \"{0}\" was \"{1}\"\r\n\r\nDiagnostic:\r\n    {2}\r\n",
-                            expected.Id, actual.Id, FormatDiagnostics(analyzer, actual)));
-                }
-
-                if (actual.Severity != expected.Severity)
-                {
-                    Assert.Fail($"Expected diagnostic severity to be \"{expected.Severity}\" was \"{actual.Severity}\"" +
-                                $"\r\n\r\nDiagnostic:\r\n    {FormatDiagnostics(analyzer, actual)}\r\n");
-                }
+                VerifyLocationOfDiagnostic(analyzer, expected, actual);
+                VerifyIdOfDiagnostic(analyzer, expected, actual);
+                VerifySeverityOfDiagnostic(analyzer, expected, actual);
             }
         }
 
-        private static void VerifyDiagnosticLocation(DiagnosticAnalyzer analyzer, Diagnostic diagnostic, Location actual, DiagnosticResultLocation expected)
+        private static void VerifyCorrectNumberOfDiagnostics(Diagnostic[] actualResults, DiagnosticResult[] expectedResults)
         {
-            var actualSpan = actual.GetLineSpan();
+            var expectedCount = expectedResults.Count();
+            var actualCount = actualResults.Count();
 
-            Assert.IsTrue(actualSpan.Path == expected.Path || (actualSpan.Path != null && actualSpan.Path.Contains("Test0.") && expected.Path.Contains("Test.")),
-                string.Format("Expected diagnostic to be in file \"{0}\" was actually in file \"{1}\"\r\n\r\nDiagnostic:\r\n    {2}\r\n",
-                    expected.Path, actualSpan.Path, FormatDiagnostics(analyzer, diagnostic)));
+            Assert.AreEqual(expectedCount,
+                actualCount,
+                $"Mismatch between number of diagnostics returned, expected {expectedCount}; actual {actualCount}");
+        }
 
-            var actualLinePosition = actualSpan.StartLinePosition;
-
-            // Only check line position if there is an actual line in the real diagnostic
-            if (actualLinePosition.Line > 0)
+        private static void VerifyLocationOfDiagnostic(DiagnosticAnalyzer analyzer,
+                                                       DiagnosticResult expected, 
+                                                       Diagnostic actual)
+        {
+            if (!expected.Location.HasValue && actual.Location != Location.None)
             {
-                if (actualLinePosition.Line + 1 != expected.Line)
-                {
-                    Assert.IsTrue(false,
-                        string.Format("Expected diagnostic to be on line \"{0}\" was actually on line \"{1}\"\r\n\r\nDiagnostic:\r\n    {2}\r\n",
-                            expected.Line, actualLinePosition.Line + 1, FormatDiagnostics(analyzer, diagnostic)));
-                }
+                Assert.Fail(GenerateAssertMessage(analyzer,
+                                                  expected,
+                                                  "Expected a diagnostic with no location",
+                                                  () => "No location",
+                                                  () => FormatLocation(CreateCoordsFromLocation(actual.Location))));
             }
 
-            // Only check column position if there is an actual column position in the real diagnostic
-            if (actualLinePosition.Character > 0)
+            var expectedCoords = CreateCoordsFromExpectedLocation(expected.Location.Value);
+            var actualCoords = CreateCoordsFromLocation(actual.Location);
+            Assert.AreEqual(expectedCoords, 
+                            actualCoords,
+                            GenerateAssertMessage(analyzer,
+                                                  expected,
+                                                  "Expected and actual diagnostic locations differ",
+                                                  () => FormatLocation(CreateCoordsFromExpectedLocation(expected.Location.Value)),
+                                                  () => FormatLocation(CreateCoordsFromLocation(actual.Location))));
+
+        }
+
+        private static void VerifyIdOfDiagnostic(DiagnosticAnalyzer analyzer, DiagnosticResult expected, Diagnostic actual)
+        {
+            if (actual.Id != expected.Id)
             {
-                if (actualLinePosition.Character + 1 != expected.Column)
-                {
-                    Assert.IsTrue(false,
-                        string.Format("Expected diagnostic to start at column \"{0}\" was actually at column \"{1}\"\r\n\r\nDiagnostic:\r\n    {2}\r\n",
-                            expected.Column, actualLinePosition.Character + 1, FormatDiagnostics(analyzer, diagnostic)));
-                }
+                Assert.AreEqual(expected.Id,
+                                actual.Id,
+                                GenerateAssertMessage(analyzer,
+                                                      expected,
+                                                      "The diagnostic is different to that expected",
+                                                      () => expected.Id,
+                                                      () => actual.Id));
             }
         }
 
-        private static string FormatDiagnostics(DiagnosticAnalyzer analyzer, params Diagnostic[] diagnostics)
+        private static void VerifySeverityOfDiagnostic(DiagnosticAnalyzer analyzer, DiagnosticResult expected, Diagnostic actual)
         {
-            var builder = new StringBuilder();
-            for (int i = 0; i < diagnostics.Length; ++i)
+            if (actual.Severity != expected.Severity)
             {
-                builder.AppendLine("// " + diagnostics[i]);
-
-                var analyzerType = analyzer.GetType();
-                var rules = analyzer.SupportedDiagnostics;
-
-                foreach (var rule in rules)
-                {
-                    if (rule != null && rule.Id == diagnostics[i].Id)
-                    {
-                        var location = diagnostics[i].Location;
-                        if (location == Location.None)
-                        {
-                            builder.AppendFormat("GetGlobalResult({0}.{1})", analyzerType.Name, rule.Id);
-                        }
-                        else
-                        {
-                            Assert.IsTrue(location.IsInSource,
-                                $"Test base does not currently handle diagnostics in metadata locations. Diagnostic in metadata: {diagnostics[i]}\r\n");
-
-                            string resultMethodName = diagnostics[i].Location.SourceTree.FilePath.EndsWith(".cs") ? "GetCSharpResultAt" : "GetBasicResultAt";
-                            var linePosition = diagnostics[i].Location.GetLineSpan().StartLinePosition;
-
-                            builder.AppendFormat("{0}({1}, {2}, {3}.{4})",
-                                resultMethodName,
-                                linePosition.Line + 1,
-                                linePosition.Character + 1,
-                                analyzerType.Name,
-                                rule.Id);
-                        }
-
-                        if (i != diagnostics.Length - 1)
-                        {
-                            builder.Append(',');
-                        }
-
-                        builder.AppendLine();
-                        break;
-                    }
-                }
+                Assert.AreEqual(expected.Id,
+                                actual.Id,
+                                GenerateAssertMessage(analyzer,
+                                                      expected,
+                                                      "The severity of the diagnostic is different to that expected",
+                                                      () => expected.Severity.ToString(),
+                                                      () => actual.Severity.ToString()));
             }
-            return builder.ToString();
+        }
+
+        private static string GenerateAssertMessage(DiagnosticAnalyzer analyzer,
+                                                    DiagnosticResult diagnosticResult,
+                                                    string message,
+                                                    Func<string> expectedResult,
+                                                    Func<string> actualResult) =>
+                $"{FormatDiagnosticDetails(analyzer, diagnosticResult)} - {message}\r\n" +
+                $"Expected: {expectedResult()}\r\n" +
+                $"Actual: {actualResult()}";
+
+        private static string FormatDiagnosticDetails(DiagnosticAnalyzer analyzer, DiagnosticResult diagnosticResult) => 
+            $"{analyzer.GetType().Name}/{diagnosticResult.Id}";
+
+        private static string FormatLocation(Coords location) => 
+            $"from line {location.StartLine}, col {location.StartColumn} " +
+            $"to line {location.EndLine}, col {location.EndColumn}";
+
+        private static Coords CreateCoordsFromExpectedLocation(DiagnosticResultLocation location) => 
+            new Coords
+            {
+                StartLine = location.Line,
+                StartColumn = location.StartColumn,
+                EndLine = location.Line,
+                EndColumn = location.EndColumn
+            };
+
+        private static Coords CreateCoordsFromLocation(Location location)
+        {
+            var startPosition = location.GetLineSpan().StartLinePosition;
+            var endPosition = location.GetLineSpan().EndLinePosition;
+            return new Coords
+            {
+                StartLine = startPosition.Line,
+                StartColumn = startPosition.Character,
+                EndLine = endPosition.Line,
+                EndColumn = endPosition.Character
+            };
+        }
+
+        private class Coords
+        {
+            public int StartLine;
+            public int StartColumn;
+            public int EndLine;
+            public int EndColumn;
         }
     }
 }
