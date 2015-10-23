@@ -127,14 +127,14 @@ namespace Arnolyzer.Test.DiagnosticVerification
             var endPosition = location.GetLineSpan().EndLinePosition;
             return new Coords
             {
-                StartLine = startPosition.Line,
-                StartColumn = startPosition.Character,
-                EndLine = endPosition.Line,
-                EndColumn = endPosition.Character
+                StartLine = startPosition.Line + 1,
+                StartColumn = startPosition.Character + 1,
+                EndLine = endPosition.Line + 1,
+                EndColumn = endPosition.Character + 1
             };
         }
 
-        private class Coords
+        private struct Coords
         {
             public int StartLine;
             public int StartColumn;

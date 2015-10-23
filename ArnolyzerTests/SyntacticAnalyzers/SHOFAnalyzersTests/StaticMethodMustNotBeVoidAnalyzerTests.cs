@@ -25,12 +25,12 @@ namespace Arnolyzer.Test.SyntacticAnalyzers.SHOFAnalyzersTests
         {
             var test = File.ReadAllText(@"..\..\CodeUnderTest\CodeToTestStaticVoidAnalyzer.cs");
             var expected1 = new DiagnosticResult(
-                Option<DiagnosticResultLocation>.Some(new DiagnosticResultLocation("Test0.cs", 5, 28, 28)),
+                Option<DiagnosticResultLocation>.Some(new DiagnosticResultLocation("Test0.cs", 5, 28, 37)),
                 DiagnosticSeverity.Error,
                 "StaticMethodMustNotBeVoid");
 
             var expected2 = new DiagnosticResult(
-                Option<DiagnosticResultLocation>.Some(new DiagnosticResultLocation("Test0.cs", 8, 28, 28)),
+                Option<DiagnosticResultLocation>.Some(new DiagnosticResultLocation("Test0.cs", 8, 28, 42)),
                 DiagnosticSeverity.Error,
                 "StaticMethodMustNotBeVoid");
 

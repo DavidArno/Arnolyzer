@@ -2,6 +2,7 @@ using System.Collections.Immutable;
 using System.Linq;
 using Arnolyzer.Factories;
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 
 namespace Arnolyzer.SyntacticAnalyzers.SingleResponsibilityAnalyzers
@@ -32,7 +33,9 @@ namespace Arnolyzer.SyntacticAnalyzers.SingleResponsibilityAnalyzers
 
             foreach (var parameter in methodSymbol.Parameters.Where(parameter => parameter.RefKind != RefKind.None))
             {
-                context.ReportDiagnostic(Diagnostic.Create(Rule, parameter.Locations[0], parameter.Name, methodSymbol.Name, RefOrOut(parameter.RefKind)));
+                var syntax = parameter.DeclaringSyntaxReferences[0].GetSyntax() as ParameterSyntax;
+                
+                context.ReportDiagnostic(Diagnostic.Create(Rule, syntax.GetLocation(), parameter.Name, methodSymbol.Name, RefOrOut(parameter.RefKind)));
             }
         }
 

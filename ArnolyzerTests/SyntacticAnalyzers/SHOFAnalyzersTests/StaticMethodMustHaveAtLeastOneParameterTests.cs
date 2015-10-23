@@ -26,7 +26,7 @@ namespace Arnolyzer.Test.SyntacticAnalyzers.SHOFAnalyzersTests
         {
             var test = File.ReadAllText(@"..\..\CodeUnderTest\CodeToTestAtLeastOneParameterAnalyzer.cs");
             var expected = new DiagnosticResult(
-                Option<DiagnosticResultLocation>.Some(new DiagnosticResultLocation("Test0.cs", 5, 28, 28)),
+                Option<DiagnosticResultLocation>.Some(new DiagnosticResultLocation("Test0.cs", 5, 28, 38)),
                 DiagnosticSeverity.Error,
                 "StaticMethodMustHaveAtLeastOneParameter");
 
