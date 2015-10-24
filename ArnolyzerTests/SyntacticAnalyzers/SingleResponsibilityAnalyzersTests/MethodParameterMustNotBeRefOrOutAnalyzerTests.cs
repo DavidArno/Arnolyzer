@@ -20,16 +20,16 @@ namespace Arnolyzer.Test.SyntacticAnalyzers.SingleResponsibilityAnalyzersTests
         }
 
         [TestMethod]
-        public void StaticMethodWithNoParams_YieldsADiagnostic()
+        public void MethodsWithRefOrOutParams_YieldsDiagnostics()
         {
             var test = File.ReadAllText(@"..\..\CodeUnderTest\CodeToTestDetectingOutAndRefParameters.cs");
             var expected1 = new DiagnosticResult(
-                Option<DiagnosticResultLocation>.Some(new DiagnosticResultLocation("Test0.cs", 5, 28, 28)),
+                Option<DiagnosticResultLocation>.Some(new DiagnosticResultLocation("Test0.cs", 11, 45, 54)),
                 DiagnosticSeverity.Error,
-                "MethodParameterMustNotBeRefOrOrOut");
+                "MethodParameterMustNotBeRefOrOut");
 
             var expected2 = new DiagnosticResult(
-                Option<DiagnosticResultLocation>.Some(new DiagnosticResultLocation("Test0.cs", 5, 28, 28)),
+                Option<DiagnosticResultLocation>.Some(new DiagnosticResultLocation("Test0.cs", 17, 45, 54)),
                 DiagnosticSeverity.Error,
                 "MethodParameterMustNotBeRefOrOut");
 

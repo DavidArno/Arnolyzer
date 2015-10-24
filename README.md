@@ -1,8 +1,10 @@
 # Arnolyzer
 A clean-code, Roslyn-based, analyzer for C# 6.
 
+Readme last updated: 24th Oct 2015.
+
 ## Why does this project exist?
-Let's roll back the clock a bit to life before C# 6 and the Roslyn compiler. There existed a tool called StyleCop. It's idea was a good one: automate the checking of coding standards. It's execution though was poor: it focused on the mundane (eg checking correct spacing around keywords and symbols) and the downright bad, such as insisting one clutter a source file was distracting noise. Noise like mandating the superfluous use of `this.` and the requirement to create long-winded XML-based comments for properties, resulting in nonsense like:
+Let's roll back the clock a bit to life before C# 6 and the Roslyn compiler. There existed a tool called StyleCop. Its idea was a good one: automate the checking of coding standards. Its execution though was poor: it focused on the mundane (eg checking correct spacing around keywords and symbols) and the downright bad, such as insisting one clutter a source file was distracting noise. Noise like mandating the superfluous use of `this.` and the requirement to create long-winded XML-based comments for properties, resulting in nonsense like:
 
     /// <summary>
     /// Gets/sets the customer ID.
@@ -15,10 +17,20 @@ What saved StyleCop from itself was an excellent extension called StyleCop+. Thi
 
 Fast forward to the summer of 2015 and Roslyn has effectively killed off StyleCop. It's introduced a new way of writing analyzers using the compiler. A number of analyzer projects exist, but the best known one sadly just replicates the rules of StyleCop. Yet Roslyn offers the opportunity to support such so much more, and thus this project was created.
 
-It's aims are simple: provide a set of rules that encourage modern, functional-orientated, coding standards in C#. Pure functions, no inheritance, no global state, immutable variables and short, concise sections of code.
+Its aims are simple: provide a set of rules that encourage modern, functional-orientated, coding standards in C#. Pure functions, no inheritance, no global state, immutable variables and short, concise sections of code.
    
 ## What's implemented
-Nothing yet. At the moment this document is merely a record of what I plan to create over time.
+This project is as much about me exploring and learning about Roslyn as creating a set of analyzers that encourage clean code practices. One of the things I've learned so far is that Roslyn analyzers fall into two categories: syntax analyzers and semantic ones. The first set, as the name implies, simply check syntax with no semantic context. These are fast, as no compilation of the code is required. Semantic analyzers either are triggered by, or trigger themselves, a compilation of the code in order to obtain semantic information about the tokens in the code.
+
+So far, I've concentrated solely on syntactic analyzers as they are simpler to get my head around! Ones implemented thus far are:
+
+**StaticMethodMustNotBeVoid**
+
+**StaticMethodMustHaveAtLeastOneParameter**
+
+**MethodParameterMustNotBeRefOrOut**
+
+For details of each of these, please see the descriptions below.
 
 ## What's planned
 ### Static higher order functions (SHOFs)
@@ -84,6 +96,9 @@ The [single responsibility principle](https://en.wikipedia.org/wiki/Single_respo
 > the single responsibility principle states that every class should have responsibility over a single part of the functionality provided by the software, and that responsibility should be entirely encapsulated by the class. All its services should be narrowly aligned with that responsibility
 
 The following rules extend this principle to methods and files and seek to identify sections of code that may break that principle:
+
+####MethodParameterMustNotBeRefOrOut
+Reports when either `ref` or `out` are used for any parameter of any method. Both of these keywords lead to a method that returns two results via two different routes, breaking the single responsibility principle.
 
 ####MethodTooLong
 A long method is likely to break the principle by carrying out too many functions. What is too long is highly subjective, so the rule would need to be configurable to allow the maximum lines to be specified.
