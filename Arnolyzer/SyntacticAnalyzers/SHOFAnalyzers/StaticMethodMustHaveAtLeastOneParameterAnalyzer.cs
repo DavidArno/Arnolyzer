@@ -2,24 +2,29 @@ using System.Collections.Immutable;
 using Arnolyzer.Factories;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
+using static Arnolyzer.Factories.LocalizableStringFactory;
+using static Arnolyzer.SyntacticAnalyzers.AnalyzerCategories;
 
 namespace Arnolyzer.SHOFAnalyzers
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class StaticMethodMustHaveAtLeastOneParameterAnalyzer : DiagnosticAnalyzer
     {
-        private const string DiagnosticId = "StaticMethodMustHaveAtLeastOneParameter";
+        public const string DiagnosticId = "StaticMethodMustHaveAtLeastOneParameter";
 
         private static readonly LocalizableString Title = 
-            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.StaticMethodMustHaveAtLeastOneParameterTitle));
+            LocalizableResourceString(nameof(Resources.StaticMethodMustHaveAtLeastOneParameterTitle));
         private static readonly LocalizableString MessageFormat = 
-            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.StaticMethodMustHaveAtLeastOneParameterMessageFormat));
+            LocalizableResourceString(nameof(Resources.StaticMethodMustHaveAtLeastOneParameterMessageFormat));
         private static readonly LocalizableString Description = 
-            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.StaticMethodMustHaveAtLeastOneParameterDescription));
-        private const string Category = "SHOF Analyzers";
+            LocalizableResourceString(nameof(Resources.StaticMethodMustHaveAtLeastOneParameterDescription));
 
-        private static readonly DiagnosticDescriptor Rule = 
-            DiagnosticDescriptorFactory.EnabledByDefaultErrorDescriptor(Category, DiagnosticId, Title, MessageFormat, Description);
+        private static readonly DiagnosticDescriptor Rule =
+            DiagnosticDescriptorFactory.EnabledByDefaultErrorDescriptor(ShofAnalyzers,
+                                                                        DiagnosticId,
+                                                                        Title,
+                                                                        MessageFormat,
+                                                                        Description);
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
 

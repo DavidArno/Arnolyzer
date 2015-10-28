@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using Arnolyzer.SHOFAnalyzers;
+using Arnolyzer.SyntacticAnalyzers;
 using Arnolyzer.Test.DiagnosticVerification;
 using Microsoft.CodeAnalysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -28,6 +29,7 @@ namespace Arnolyzer.Test.SyntacticAnalyzers.SHOFAnalyzersTests
             var expected = new DiagnosticResult(
                 Option<DiagnosticResultLocation>.Some(new DiagnosticResultLocation("Test0.cs", 5, 28, 38)),
                 DiagnosticSeverity.Error,
+                AnalyzerCategories.ShofAnalyzers,
                 "StaticMethodMustHaveAtLeastOneParameter");
 
             DiagnosticVerifier.VerifyDiagnostics<StaticMethodMustHaveAtLeastOneParameterAnalyzer>(test, expected);

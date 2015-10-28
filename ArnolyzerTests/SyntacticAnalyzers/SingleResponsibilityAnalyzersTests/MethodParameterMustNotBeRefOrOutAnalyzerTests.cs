@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Arnolyzer.SyntacticAnalyzers;
 using Arnolyzer.SyntacticAnalyzers.SingleResponsibilityAnalyzers;
 using Arnolyzer.Test.DiagnosticVerification;
 using Microsoft.CodeAnalysis;
@@ -26,12 +27,14 @@ namespace Arnolyzer.Test.SyntacticAnalyzers.SingleResponsibilityAnalyzersTests
             var expected1 = new DiagnosticResult(
                 Option<DiagnosticResultLocation>.Some(new DiagnosticResultLocation("Test0.cs", 11, 45, 54)),
                 DiagnosticSeverity.Error,
-                "MethodParameterMustNotBeRefOrOut");
+                AnalyzerCategories.SingleResponsibiltyAnalyzers,
+                MethodParameterMustNotBeRefOrOutAnalyzer.DiagnosticId);
 
             var expected2 = new DiagnosticResult(
                 Option<DiagnosticResultLocation>.Some(new DiagnosticResultLocation("Test0.cs", 17, 45, 54)),
                 DiagnosticSeverity.Error,
-                "MethodParameterMustNotBeRefOrOut");
+                AnalyzerCategories.SingleResponsibiltyAnalyzers,
+                MethodParameterMustNotBeRefOrOutAnalyzer.DiagnosticId);
 
             DiagnosticVerifier.VerifyDiagnostics<MethodParameterMustNotBeRefOrOutAnalyzer>(test, expected1, expected2);
         }

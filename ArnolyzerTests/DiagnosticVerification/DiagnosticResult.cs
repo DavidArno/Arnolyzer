@@ -7,15 +7,18 @@ namespace Arnolyzer.Test.DiagnosticVerification
     {
         public DiagnosticResult(Option<DiagnosticResultLocation> location, 
                                 DiagnosticSeverity severity, 
+                                string category,
                                 string id)
         {
-
-            Severity = severity;
-            Id = id;
             Location = location;
+            Severity = severity;
+            Category = category;
+            Id = id;
         }
 
         public DiagnosticSeverity Severity { get; }
+
+        public string Category { get; }
 
         public string Id { get; }
 

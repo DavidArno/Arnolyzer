@@ -10,7 +10,7 @@ namespace Arnolyzer.SyntacticAnalyzers.SingleResponsibilityAnalyzers
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class MethodParameterMustNotBeRefOrOutAnalyzer : DiagnosticAnalyzer
     {
-        private const string DiagnosticId = "MethodParameterMustNotBeRefOrOut";
+        public const string DiagnosticId = "MethodParameterMustNotBeRefOrOut";
 
         private static readonly LocalizableString Title = 
             LocalizableStringFactory.LocalizableResourceString(nameof(Resources.MethodParameterMustNotBeRefOrOutTitle));
@@ -18,10 +18,13 @@ namespace Arnolyzer.SyntacticAnalyzers.SingleResponsibilityAnalyzers
             LocalizableStringFactory.LocalizableResourceString(nameof(Resources.MethodParameterMustNotBeRefOrOutMessageFormat));
         private static readonly LocalizableString Description = 
             LocalizableStringFactory.LocalizableResourceString(nameof(Resources.MethodParameterMustNotBeRefOrOutDescription));
-        private const string Category = "Single Responsibilty Analyzers";
 
         private static readonly DiagnosticDescriptor Rule = 
-            DiagnosticDescriptorFactory.EnabledByDefaultErrorDescriptor(Category, DiagnosticId, Title, MessageFormat, Description);
+            DiagnosticDescriptorFactory.EnabledByDefaultErrorDescriptor(AnalyzerCategories.SingleResponsibiltyAnalyzers, 
+                                                                        DiagnosticId, 
+                                                                        Title, 
+                                                                        MessageFormat, 
+                                                                        Description);
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
 

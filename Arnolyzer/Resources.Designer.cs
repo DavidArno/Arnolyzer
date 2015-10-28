@@ -23,7 +23,7 @@ namespace Arnolyzer {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -37,7 +37,7 @@ namespace Arnolyzer {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Arnolyzer.Resources", typeof(Resources).GetTypeInfo().Assembly);
@@ -52,7 +52,7 @@ namespace Arnolyzer {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -64,7 +64,7 @@ namespace Arnolyzer {
         /// <summary>
         ///   Looks up a localized string similar to Method parameters must not use REF or OUT parameters; all results should be via a return.
         /// </summary>
-        internal static string MethodParameterMustNotBeRefOrOutDescription {
+        public static string MethodParameterMustNotBeRefOrOutDescription {
             get {
                 return ResourceManager.GetString("MethodParameterMustNotBeRefOrOutDescription", resourceCulture);
             }
@@ -73,7 +73,7 @@ namespace Arnolyzer {
         /// <summary>
         ///   Looks up a localized string similar to Parameter `{0}` of method `{1}` must not use {2}.
         /// </summary>
-        internal static string MethodParameterMustNotBeRefOrOutMessageFormat {
+        public static string MethodParameterMustNotBeRefOrOutMessageFormat {
             get {
                 return ResourceManager.GetString("MethodParameterMustNotBeRefOrOutMessageFormat", resourceCulture);
             }
@@ -82,7 +82,7 @@ namespace Arnolyzer {
         /// <summary>
         ///   Looks up a localized string similar to Method parameters must not  use REF or OUT.
         /// </summary>
-        internal static string MethodParameterMustNotBeRefOrOutTitle {
+        public static string MethodParameterMustNotBeRefOrOutTitle {
             get {
                 return ResourceManager.GetString("MethodParameterMustNotBeRefOrOutTitle", resourceCulture);
             }
@@ -91,7 +91,7 @@ namespace Arnolyzer {
         /// <summary>
         ///   Looks up a localized string similar to Static methods should have at least one parameter.
         /// </summary>
-        internal static string StaticMethodMustHaveAtLeastOneParameterDescription {
+        public static string StaticMethodMustHaveAtLeastOneParameterDescription {
             get {
                 return ResourceManager.GetString("StaticMethodMustHaveAtLeastOneParameterDescription", resourceCulture);
             }
@@ -100,7 +100,7 @@ namespace Arnolyzer {
         /// <summary>
         ///   Looks up a localized string similar to Static method &apos;{0}&apos; doesn&apos;t have any parameters. It should have at least one.
         /// </summary>
-        internal static string StaticMethodMustHaveAtLeastOneParameterMessageFormat {
+        public static string StaticMethodMustHaveAtLeastOneParameterMessageFormat {
             get {
                 return ResourceManager.GetString("StaticMethodMustHaveAtLeastOneParameterMessageFormat", resourceCulture);
             }
@@ -109,7 +109,7 @@ namespace Arnolyzer {
         /// <summary>
         ///   Looks up a localized string similar to Static methods must have at least one parameter.
         /// </summary>
-        internal static string StaticMethodMustHaveAtLeastOneParameterTitle {
+        public static string StaticMethodMustHaveAtLeastOneParameterTitle {
             get {
                 return ResourceManager.GetString("StaticMethodMustHaveAtLeastOneParameterTitle", resourceCulture);
             }
@@ -118,7 +118,7 @@ namespace Arnolyzer {
         /// <summary>
         ///   Looks up a localized string similar to Static methods should return a value (must not be null).
         /// </summary>
-        internal static string StaticMethodMustNotBeVoidDescription {
+        public static string StaticMethodMustNotBeVoidDescription {
             get {
                 return ResourceManager.GetString("StaticMethodMustNotBeVoidDescription", resourceCulture);
             }
@@ -127,7 +127,7 @@ namespace Arnolyzer {
         /// <summary>
         ///   Looks up a localized string similar to Static method &apos;{0}&apos; is void. It should return a value.
         /// </summary>
-        internal static string StaticMethodMustNotBeVoidMessageFormat {
+        public static string StaticMethodMustNotBeVoidMessageFormat {
             get {
                 return ResourceManager.GetString("StaticMethodMustNotBeVoidMessageFormat", resourceCulture);
             }
@@ -136,7 +136,7 @@ namespace Arnolyzer {
         /// <summary>
         ///   Looks up a localized string similar to Static methods must not be void.
         /// </summary>
-        internal static string StaticMethodMustNotBeVoidTitle {
+        public static string StaticMethodMustNotBeVoidTitle {
             get {
                 return ResourceManager.GetString("StaticMethodMustNotBeVoidTitle", resourceCulture);
             }

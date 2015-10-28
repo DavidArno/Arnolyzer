@@ -3,7 +3,7 @@ using Arnolyzer.Factories;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace Arnolyzer.SHOFAnalyzers
+namespace Arnolyzer.SyntacticAnalyzers.SHOFAnalyzers
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class StaticMethodMustNotBeVoidAnalyzer : DiagnosticAnalyzer
@@ -16,10 +16,13 @@ namespace Arnolyzer.SHOFAnalyzers
             LocalizableStringFactory.LocalizableResourceString(nameof(Resources.StaticMethodMustNotBeVoidMessageFormat));
         private static readonly LocalizableString Description = 
             LocalizableStringFactory.LocalizableResourceString(nameof(Resources.StaticMethodMustNotBeVoidDescription));
-        private const string Category = "SHOF Analyzers";
 
         private static readonly DiagnosticDescriptor Rule = 
-            DiagnosticDescriptorFactory.EnabledByDefaultErrorDescriptor(Category, DiagnosticId, Title, MessageFormat, Description);
+            DiagnosticDescriptorFactory.EnabledByDefaultErrorDescriptor(AnalyzerCategories.ShofAnalyzers, 
+                                                                        DiagnosticId, 
+                                                                        Title, 
+                                                                        MessageFormat, 
+                                                                        Description);
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
 
