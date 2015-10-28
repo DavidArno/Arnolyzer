@@ -5,6 +5,7 @@ using Arnolyzer.Test.DiagnosticVerification;
 using Microsoft.CodeAnalysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SuccincT.Options;
+using static System.String;
 
 namespace Arnolyzer.Test.SyntacticAnalyzers.SingleResponsibilityAnalyzersTests
 {
@@ -12,43 +13,41 @@ namespace Arnolyzer.Test.SyntacticAnalyzers.SingleResponsibilityAnalyzersTests
     public class FileMustOnlyContainOneTypeDefinitionAnalyzerTests
     {
         [TestMethod]
-        public void NoCode_ShouldYieldNoDiagnostics()
-        {
-            var test = @"";
-
-            DiagnosticVerifier.VerifyDiagnostics<MethodParameterMustNotBeRefOrOutAnalyzer>(test);
-        }
+        public void NoCode_ShouldYieldNoDiagnostics() =>
+            DiagnosticVerifier.VerifyDiagnostics<MethodParameterMustNotBeRefOrOutAnalyzer>("");
 
         [TestMethod]
         public void MethodsWithRefOrOutParams_YieldsDiagnostics()
         {
             var test = File.ReadAllText(@"..\..\CodeUnderTest\CodeToTestFileMustOnlyContainOneTypeDefinition.cs");
-            var expected1 = new DiagnosticResult(
-                Option<DiagnosticResultLocation>.Some(new DiagnosticResultLocation("Test0.cs", 3, 18, 24)),
-                DiagnosticSeverity.Error,
-                AnalyzerCategories.SingleResponsibiltyAnalyzers,
-                FileMustOnlyContainOneTypeDefinitionAnalyzer.DiagnosticId);
+            var commonExpected =
+                new DiagnosticResultCommonProperties(Resources.FileMustOnlyContainOneTypeDefinitionTitle,
+                                                     Resources.FileMustOnlyContainOneTypeDefinitionDescription,
+                                                     DiagnosticSeverity.Error,
+                                                     AnalyzerCategories.SingleResponsibiltyAnalyzers,
+                                                     FileMustOnlyContainOneTypeDefinitionAnalyzer.DiagnosticId);
+            var expected1 =
+                new DiagnosticResult(commonExpected,
+                                     Format(Resources.FileMustOnlyContainOneTypeDefinitionMessageFormat, "Class1"),
+                                     Option<DiagnosticLocation>.Some(new DiagnosticLocation(3, 18, 24)));
 
-            var expected2 = new DiagnosticResult(
-                Option<DiagnosticResultLocation>.Some(new DiagnosticResultLocation("Test0.cs", 11, 21, 28)),
-                DiagnosticSeverity.Error,
-                AnalyzerCategories.SingleResponsibiltyAnalyzers,
-                FileMustOnlyContainOneTypeDefinitionAnalyzer.DiagnosticId);
+            var expected2 =
+                new DiagnosticResult(commonExpected,
+                                     Format(Resources.FileMustOnlyContainOneTypeDefinitionMessageFormat, "Struct2"),
+                                     Option<DiagnosticLocation>.Some(new DiagnosticLocation(11, 21, 28)));
 
-            var expected3 = new DiagnosticResult(
-                Option<DiagnosticResultLocation>.Some(new DiagnosticResultLocation("Test0.cs", 19, 22, 32)),
-                DiagnosticSeverity.Error,
-                AnalyzerCategories.SingleResponsibiltyAnalyzers,
-                FileMustOnlyContainOneTypeDefinitionAnalyzer.DiagnosticId);
+            var expected3 =
+                new DiagnosticResult(commonExpected,
+                                     Format(Resources.FileMustOnlyContainOneTypeDefinitionMessageFormat, "Interface3"),
+                                     Option<DiagnosticLocation>.Some(new DiagnosticLocation(19, 22, 32)));
 
-            var expected4 = new DiagnosticResult(
-                Option<DiagnosticResultLocation>.Some(new DiagnosticResultLocation("Test0.cs", 21, 19, 24)),
-                DiagnosticSeverity.Error,
-                AnalyzerCategories.SingleResponsibiltyAnalyzers,
-                FileMustOnlyContainOneTypeDefinitionAnalyzer.DiagnosticId);
+            var expected4 =
+                new DiagnosticResult(commonExpected,
+                                     Format(Resources.FileMustOnlyContainOneTypeDefinitionMessageFormat, "Enum3"),
+                                     Option<DiagnosticLocation>.Some(new DiagnosticLocation(21, 19, 24)));
 
-            DiagnosticVerifier.VerifyDiagnostics<FileMustOnlyContainOneTypeDefinitionAnalyzer>(test, 
-                                                                                               expected1, 
+            DiagnosticVerifier.VerifyDiagnostics<FileMustOnlyContainOneTypeDefinitionAnalyzer>(test,
+                                                                                               expected1,
                                                                                                expected2,
                                                                                                expected3,
                                                                                                expected4);

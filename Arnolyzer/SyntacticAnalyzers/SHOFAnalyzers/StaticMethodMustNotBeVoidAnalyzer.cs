@@ -2,6 +2,7 @@ using System.Collections.Immutable;
 using Arnolyzer.Factories;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
+using static Arnolyzer.Factories.LocalizableStringFactory;
 
 namespace Arnolyzer.SyntacticAnalyzers.SHOFAnalyzers
 {
@@ -10,23 +11,24 @@ namespace Arnolyzer.SyntacticAnalyzers.SHOFAnalyzers
     {
         public const string DiagnosticId = "StaticMethodMustNotBeVoid";
 
-        private static readonly LocalizableString Title = 
-            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.StaticMethodMustNotBeVoidTitle));
-        private static readonly LocalizableString MessageFormat = 
-            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.StaticMethodMustNotBeVoidMessageFormat));
-        private static readonly LocalizableString Description = 
-            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.StaticMethodMustNotBeVoidDescription));
+        private static readonly LocalizableString Title =
+            LocalizableResourceString(nameof(Resources.StaticMethodMustNotBeVoidTitle));
+        private static readonly LocalizableString MessageFormat =
+            LocalizableResourceString(nameof(Resources.StaticMethodMustNotBeVoidMessageFormat));
+        private static readonly LocalizableString Description =
+            LocalizableResourceString(nameof(Resources.StaticMethodMustNotBeVoidDescription));
 
-        private static readonly DiagnosticDescriptor Rule = 
-            DiagnosticDescriptorFactory.EnabledByDefaultErrorDescriptor(AnalyzerCategories.ShofAnalyzers, 
-                                                                        DiagnosticId, 
-                                                                        Title, 
-                                                                        MessageFormat, 
+        private static readonly DiagnosticDescriptor Rule =
+            DiagnosticDescriptorFactory.EnabledByDefaultErrorDescriptor(AnalyzerCategories.ShofAnalyzers,
+                                                                        DiagnosticId,
+                                                                        Title,
+                                                                        MessageFormat,
                                                                         Description);
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
 
-        public override void Initialize(AnalysisContext context) => context.RegisterSymbolAction(AnalyzeSymbol, SymbolKind.Method);
+        public override void Initialize(AnalysisContext context) =>
+            context.RegisterSymbolAction(AnalyzeSymbol, SymbolKind.Method);
 
         private static void AnalyzeSymbol(SymbolAnalysisContext context)
         {

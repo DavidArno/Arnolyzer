@@ -1,27 +1,22 @@
-﻿using Microsoft.CodeAnalysis;
-using SuccincT.Options;
+﻿using SuccincT.Options;
 
 namespace Arnolyzer.Test.DiagnosticVerification
 {
-    public struct DiagnosticResult
+    internal class DiagnosticResult
     {
-        public DiagnosticResult(Option<DiagnosticResultLocation> location, 
-                                DiagnosticSeverity severity, 
-                                string category,
-                                string id)
+        public DiagnosticResult(DiagnosticResultCommonProperties commonProperties,
+                                string message,
+                                Option<DiagnosticLocation> location)
         {
+            CommonProperties = commonProperties;
+            Message = message;
             Location = location;
-            Severity = severity;
-            Category = category;
-            Id = id;
         }
 
-        public DiagnosticSeverity Severity { get; }
+        public Option<DiagnosticLocation> Location { get; }
 
-        public string Category { get; }
+        public string Message { get; }
 
-        public string Id { get; }
-
-        public Option<DiagnosticResultLocation> Location { get; }
+        public DiagnosticResultCommonProperties CommonProperties { get; }
     }
 }

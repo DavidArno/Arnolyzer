@@ -2,21 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.Text;
 
 namespace Arnolyzer.Test.DiagnosticVerification
 {
     internal static class DocumentSetCreator
     {
-        private static readonly MetadataReference CorlibReference = 
+        private static readonly MetadataReference CorlibReference =
             MetadataReference.CreateFromFile(typeof(object).Assembly.Location);
-        private static readonly MetadataReference SystemCoreReference = 
+        private static readonly MetadataReference SystemCoreReference =
             MetadataReference.CreateFromFile(typeof(Enumerable).Assembly.Location);
-        private static readonly MetadataReference CSharpSymbolsReference = 
-            MetadataReference.CreateFromFile(typeof(CSharpCompilation).Assembly.Location);
-        private static readonly MetadataReference CodeAnalysisReference = 
-            MetadataReference.CreateFromFile(typeof(Compilation).Assembly.Location);
 
         private const string DefaultFilePathPrefix = "Test";
         private const string CSharpDefaultFileExt = "cs";

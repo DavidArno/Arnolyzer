@@ -14,15 +14,15 @@ namespace Arnolyzer.SyntacticAnalyzers.SingleResponsibilityAnalyzers
         public const string DiagnosticId = "FileMustOnlyContainOneTypeDefinition";
 
         private static readonly LocalizableString Title =
-            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.MethodParameterMustNotBeRefOrOutTitle));
+            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.FileMustOnlyContainOneTypeDefinitionTitle));
 
         private static readonly LocalizableString MessageFormat =
             LocalizableStringFactory.LocalizableResourceString(
-                nameof(Resources.MethodParameterMustNotBeRefOrOutMessageFormat));
+                nameof(Resources.FileMustOnlyContainOneTypeDefinitionMessageFormat));
 
         private static readonly LocalizableString Description =
             LocalizableStringFactory.LocalizableResourceString(
-                nameof(Resources.MethodParameterMustNotBeRefOrOutDescription));
+                nameof(Resources.FileMustOnlyContainOneTypeDefinitionDescription));
 
         private static readonly DiagnosticDescriptor Rule =
             DiagnosticDescriptorFactory.EnabledByDefaultErrorDescriptor(AnalyzerCategories.SingleResponsibiltyAnalyzers, 

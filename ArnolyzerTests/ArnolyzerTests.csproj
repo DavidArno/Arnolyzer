@@ -110,6 +110,7 @@
     <Compile Include="CodeUnderTest\CodeToTestDetectingOutAndRefParameters.cs" />
     <Compile Include="CodeUnderTest\CodeToTestFileMustOnlyContainOneTypeDefinition.cs" />
     <Compile Include="CodeUnderTest\CodeToTestStaticVoidAnalyzer.cs" />
+    <Compile Include="DiagnosticVerification\DiagnosticResultCommonProperties.cs" />
     <Compile Include="DiagnosticVerification\DiagnosticResultLocation.cs" />
     <Compile Include="DiagnosticVerification\DiagnosticsGenerator.cs" />
     <Compile Include="DiagnosticVerification\DiagnosticVerifier.cs" />
@@ -133,9 +134,7 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Helpers\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup Condition="'$(NCrunch)' != '1'">
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />

@@ -62,6 +62,33 @@ namespace Arnolyzer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to To comply with the single responsibility principle, a file should only contain one non-private type definition..
+        /// </summary>
+        public static string FileMustOnlyContainOneTypeDefinitionDescription {
+            get {
+                return ResourceManager.GetString("FileMustOnlyContainOneTypeDefinitionDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type {0} is located in a file that contains other type definitions.
+        /// </summary>
+        public static string FileMustOnlyContainOneTypeDefinitionMessageFormat {
+            get {
+                return ResourceManager.GetString("FileMustOnlyContainOneTypeDefinitionMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A file should only contain one type definition.
+        /// </summary>
+        public static string FileMustOnlyContainOneTypeDefinitionTitle {
+            get {
+                return ResourceManager.GetString("FileMustOnlyContainOneTypeDefinitionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Method parameters must not use REF or OUT parameters; all results should be via a return.
         /// </summary>
         public static string MethodParameterMustNotBeRefOrOutDescription {

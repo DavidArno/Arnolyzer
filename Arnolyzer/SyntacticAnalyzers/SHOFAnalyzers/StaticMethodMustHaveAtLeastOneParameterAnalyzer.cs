@@ -3,24 +3,23 @@ using Arnolyzer.Factories;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
 using static Arnolyzer.Factories.LocalizableStringFactory;
-using static Arnolyzer.SyntacticAnalyzers.AnalyzerCategories;
 
-namespace Arnolyzer.SHOFAnalyzers
+namespace Arnolyzer.SyntacticAnalyzers.SHOFAnalyzers
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class StaticMethodMustHaveAtLeastOneParameterAnalyzer : DiagnosticAnalyzer
     {
         public const string DiagnosticId = "StaticMethodMustHaveAtLeastOneParameter";
 
-        private static readonly LocalizableString Title = 
+        private static readonly LocalizableString Title =
             LocalizableResourceString(nameof(Resources.StaticMethodMustHaveAtLeastOneParameterTitle));
-        private static readonly LocalizableString MessageFormat = 
+        private static readonly LocalizableString MessageFormat =
             LocalizableResourceString(nameof(Resources.StaticMethodMustHaveAtLeastOneParameterMessageFormat));
-        private static readonly LocalizableString Description = 
+        private static readonly LocalizableString Description =
             LocalizableResourceString(nameof(Resources.StaticMethodMustHaveAtLeastOneParameterDescription));
 
         private static readonly DiagnosticDescriptor Rule =
-            DiagnosticDescriptorFactory.EnabledByDefaultErrorDescriptor(ShofAnalyzers,
+            DiagnosticDescriptorFactory.EnabledByDefaultErrorDescriptor(AnalyzerCategories.ShofAnalyzers,
                                                                         DiagnosticId,
                                                                         Title,
                                                                         MessageFormat,
@@ -28,7 +27,8 @@ namespace Arnolyzer.SHOFAnalyzers
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
 
-        public override void Initialize(AnalysisContext context) => context.RegisterSymbolAction(AnalyzeSymbol, SymbolKind.Method);
+        public override void Initialize(AnalysisContext context) =>
+            context.RegisterSymbolAction(AnalyzeSymbol, SymbolKind.Method);
 
         private static void AnalyzeSymbol(SymbolAnalysisContext context)
         {

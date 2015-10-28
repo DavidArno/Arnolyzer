@@ -14,41 +14,14 @@ namespace Arnolyzer.Test.DiagnosticVerification
 
         private static Diagnostic[] GetSortedDiagnosticsFromDocuments(DiagnosticAnalyzer analyzer, Document[] documents)
         {
-            var projects = new HashSet<Project>();
-            foreach (var document in documents)
-            {
-                projects.Add(document.Project);
-            }
+            var projects = (from document in documents select document.Project);
+            var diagnostics = projects.Select(project => project.GetCompilationAsync()
+                                                                .Result
+                                                                .WithAnalyzers(ImmutableArray.Create(analyzer)))
+                                      .SelectMany(compilationWithAnalyzers =>
+                                                  compilationWithAnalyzers.GetAnalyzerDiagnosticsAsync().Result);
 
-            var diagnostics = new List<Diagnostic>();
-            foreach (var project in projects)
-            {
-                var compilationWithAnalyzers = project.GetCompilationAsync().Result.WithAnalyzers(ImmutableArray.Create(analyzer));
-                var diags = compilationWithAnalyzers.GetAnalyzerDiagnosticsAsync().Result;
-                foreach (var diag in diags)
-                {
-                    if (diag.Location == Location.None || diag.Location.IsInMetadata)
-                    {
-                        diagnostics.Add(diag);
-                    }
-                    else
-                    {
-                        for (int i = 0; i < documents.Length; i++)
-                        {
-                            var document = documents[i];
-                            var tree = document.GetSyntaxTreeAsync().Result;
-                            if (tree == diag.Location.SourceTree)
-                            {
-                                diagnostics.Add(diag);
-                            }
-                        }
-                    }
-                }
-            }
-
-            var results = SortDiagnostics(diagnostics);
-            diagnostics.Clear();
-            return results;
+            return SortDiagnostics(diagnostics);
         }
 
         private static Diagnostic[] SortDiagnostics(IEnumerable<Diagnostic> diagnostics) =>

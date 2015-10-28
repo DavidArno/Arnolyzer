@@ -8,13 +8,15 @@ namespace Arnolyzer.Factories
                                                                            string diagnosticId,
                                                                            LocalizableString title,
                                                                            LocalizableString messageFormat,
-                                                                           LocalizableString description) =>
-            new DiagnosticDescriptor(diagnosticId, 
-                                     title, 
-                                     messageFormat, 
-                                     category, 
-                                     DiagnosticSeverity.Error, 
-                                     true, 
-                                     description);
+                                                                           LocalizableString description)
+        {
+            return new DiagnosticDescriptor(diagnosticId,
+                                            title,
+                                            messageFormat,
+                                            category,
+                                            DiagnosticSeverity.Error,
+                                            true,
+                                            description);
+        }
     }
 }

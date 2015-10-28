@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="FileMustOnlyContainOneTypeDefinitionDescription" xml:space="preserve">
+    <value>To comply with the single responsibility principle, a file should only contain one non-private type definition.</value>
+  </data>
+  <data name="FileMustOnlyContainOneTypeDefinitionMessageFormat" xml:space="preserve">
+    <value>Type {0} is located in a file that contains other type definitions</value>
+  </data>
+  <data name="FileMustOnlyContainOneTypeDefinitionTitle" xml:space="preserve">
+    <value>A file should only contain one type definition</value>
+  </data>
   <data name="MethodParameterMustNotBeRefOrOutDescription" xml:space="preserve">
     <value>Method parameters must not use REF or OUT parameters; all results should be via a return</value>
   </data>

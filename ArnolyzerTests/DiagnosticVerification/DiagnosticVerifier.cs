@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -9,35 +8,42 @@ namespace Arnolyzer.Test.DiagnosticVerification
 {
     internal static class DiagnosticVerifier
     {
-        public static void VerifyDiagnostics<T>(string source, params DiagnosticResult[] expected) where T : DiagnosticAnalyzer, new()
+        public static void VerifyDiagnostics<T>(string source, params DiagnosticResult[] expected)
+            where T : DiagnosticAnalyzer, new()
         {
             var analyzer = new T();
             var diagnostics = GetSortedDiagnostics(new[] { source }, analyzer);
             VerifyDiagnosticResults(diagnostics, analyzer, expected);
         }
 
-        private static void VerifyDiagnosticResults(Diagnostic[] actualResults, 
-                                                    DiagnosticAnalyzer analyzer, 
+        private static void VerifyDiagnosticResults(Diagnostic[] actualResults,
+                                                    DiagnosticAnalyzer analyzer,
                                                     params DiagnosticResult[] expectedResults)
         {
             var analyzerName = analyzer.GetType().Name;
             VerifyCorrectNumberOfDiagnostics(analyzerName, actualResults, expectedResults);
 
-            for (int i = 0; i < expectedResults.Count(); i++)
+            for (var i = 0; i < expectedResults.Length; i++)
             {
                 var actual = actualResults[i];
                 var expected = expectedResults[i];
 
                 VerifyLocationOfDiagnostic(analyzerName, expected, actual);
+                VerifyCategoryOfDiagnostic(analyzerName, expected, actual);
                 VerifyIdOfDiagnostic(analyzerName, expected, actual);
+                VerifyTitleOfDiagnostic(analyzerName, expected, actual);
+                VerifyDescriptionOfDiagnostic(analyzerName, expected, actual);
+                VerifyMessageOfDiagnostic(analyzerName, expected, actual);
                 VerifySeverityOfDiagnostic(analyzerName, expected, actual);
             }
         }
 
-        private static void VerifyCorrectNumberOfDiagnostics(string analyzerName, Diagnostic[] actualResults, DiagnosticResult[] expectedResults)
+        private static void VerifyCorrectNumberOfDiagnostics(string analyzerName,
+                                                             Diagnostic[] actualResults,
+                                                             DiagnosticResult[] expectedResults)
         {
-            var expectedCount = expectedResults.Count();
-            var actualCount = actualResults.Count();
+            var expectedCount = expectedResults.Length;
+            var actualCount = actualResults.Length;
 
             Assert.IsTrue(expectedCount == actualCount,
                           GenerateAssertMessage(analyzerName,
@@ -47,45 +53,84 @@ namespace Arnolyzer.Test.DiagnosticVerification
                                                 () => actualCount.ToString()));
         }
 
-        private static void VerifyLocationOfDiagnostic(string analyzerName,
-                                                       DiagnosticResult expected, 
-                                                       Diagnostic actual)
+        private static void VerifyLocationOfDiagnostic(string analyzerName, DiagnosticResult expected, Diagnostic actual)
         {
             Assert.IsTrue(expected.Location.HasValue && actual.Location != Location.None,
                           GenerateAssertMessage(analyzerName,
-                                                expected.Id,
+                                                expected.CommonProperties.Id,
                                                 "Expected a diagnostic with no location",
                                                 () => "No location",
-                                                () => FormatLocation(CreateCoordsFromLocation(actual.Location))));
+                                                () => FormatLocation(CreateCoordsFromActual(actual.Location))));
 
-            var expectedCoords = CreateCoordsFromExpectedLocation(expected.Location.Value);
-            var actualCoords = CreateCoordsFromLocation(actual.Location);
+            var expectedCoords = CreateCoordsFromExpected(expected.Location.Value);
+            var actualCoords = CreateCoordsFromActual(actual.Location);
             Assert.IsTrue(Equals(expectedCoords, actualCoords),
                           GenerateAssertMessage(analyzerName,
-                                                expected.Id,
+                                                expected.CommonProperties.Id,
                                                 "Expected and actual diagnostic locations differ",
-                                                () => FormatLocation(CreateCoordsFromExpectedLocation(expected.Location.Value)),
-                                                () => FormatLocation(CreateCoordsFromLocation(actual.Location))));
-
+                                                () => FormatLocation(CreateCoordsFromExpected(expected.Location.Value)),
+                                                () => FormatLocation(CreateCoordsFromActual(actual.Location))));
         }
 
         private static void VerifyIdOfDiagnostic(string analyzerName, DiagnosticResult expected, Diagnostic actual)
         {
-            Assert.IsTrue(Equals(expected.Id, actual.Id),
+            Assert.IsTrue(Equals(expected.CommonProperties.Id, actual.Id),
                           GenerateAssertMessage(analyzerName,
-                                                expected.Id,
+                                                expected.CommonProperties.Id,
                                                 "The diagnostic is different to that expected",
-                                                () => expected.Id,
+                                                () => expected.CommonProperties.Id,
                                                 () => actual.Id));
+        }
+
+        private static void VerifyCategoryOfDiagnostic(string analyzerName, DiagnosticResult expected, Diagnostic actual)
+        {
+            Assert.IsTrue(Equals(expected.CommonProperties.Category, actual.Descriptor.Category),
+                          GenerateAssertMessage(analyzerName,
+                                                expected.CommonProperties.Id,
+                                                "The diagnostic's category is different to that expected",
+                                                () => expected.CommonProperties.Category,
+                                                () => actual.Descriptor.Category));
+        }
+
+        private static void VerifyTitleOfDiagnostic(string analyzerName, DiagnosticResult expected, Diagnostic actual)
+        {
+            Assert.IsTrue(Equals(expected.CommonProperties.Title, actual.Descriptor.Title.ToString()),
+                          GenerateAssertMessage(analyzerName,
+                                                expected.CommonProperties.Id,
+                                                "The diagnostic's title is different to that expected",
+                                                () => expected.CommonProperties.Title,
+                                                () => actual.Descriptor.Title.ToString()));
+        }
+
+        private static void VerifyDescriptionOfDiagnostic(string analyzerName,
+                                                          DiagnosticResult expected,
+                                                          Diagnostic actual)
+        {
+            Assert.IsTrue(Equals(expected.CommonProperties.Description, actual.Descriptor.Description.ToString()),
+                          GenerateAssertMessage(analyzerName,
+                                                expected.CommonProperties.Id,
+                                                "The diagnostic's description is different to that expected",
+                                                () => expected.CommonProperties.Description,
+                                                () => actual.Descriptor.Description.ToString()));
+        }
+
+        private static void VerifyMessageOfDiagnostic(string analyzerName, DiagnosticResult expected, Diagnostic actual)
+        {
+            Assert.IsTrue(Equals(expected.Message, actual.GetMessage()),
+                          GenerateAssertMessage(analyzerName,
+                                                expected.CommonProperties.Id,
+                                                "The diagnostic's message is different to that expected",
+                                                () => expected.Message,
+                                                () => actual.GetMessage()));
         }
 
         private static void VerifySeverityOfDiagnostic(string analyzerName, DiagnosticResult expected, Diagnostic actual)
         {
-            Assert.IsTrue(Equals(expected.Id, actual.Id),
+            Assert.IsTrue(Equals(expected.CommonProperties.Id, actual.Id),
                           GenerateAssertMessage(analyzerName,
-                                                expected.Id,
+                                                expected.CommonProperties.Id,
                                                 "The severity of the diagnostic is different to that expected",
-                                                () => expected.Severity.ToString(),
+                                                () => expected.CommonProperties.Severity.ToString(),
                                                 () => actual.Severity.ToString()));
         }
 
@@ -93,21 +138,23 @@ namespace Arnolyzer.Test.DiagnosticVerification
                                                     string diagnosticId,
                                                     string message,
                                                     Func<string> expectedResult,
-                                                    Func<string> actualResult) =>
-                $"\r\n{FormatDiagnosticDetails(analyzerName, diagnosticId)} - {message}\r\n" +
-                $"Expected: {expectedResult()}\r\n" +
-                $"Actual: {actualResult()}";
+                                                    Func<string> actualResult)
+        {
+            return $"\r\n{FormatDiagnosticDetails(analyzerName, diagnosticId)} - {message}\r\n" +
+                   $"Expected: {expectedResult()}\r\n" +
+                   $"Actual: {actualResult()}";
+        }
 
-        private static string FormatDiagnosticDetails(string analyzerName, string diagnosticId) => 
+        private static string FormatDiagnosticDetails(string analyzerName, string diagnosticId) =>
             $"{analyzerName}{SlashIfNeeded(diagnosticId)}{diagnosticId}";
 
         private static string SlashIfNeeded(string diagnosticId) => diagnosticId == "" ? "" : "/";
 
-        private static string FormatLocation(Coords location) => 
+        private static string FormatLocation(Coords location) =>
             $"from line {location.StartLine}, col {location.StartColumn} " +
             $"to line {location.EndLine}, col {location.EndColumn}";
 
-        private static Coords CreateCoordsFromExpectedLocation(DiagnosticResultLocation location) => 
+        private static Coords CreateCoordsFromExpected(DiagnosticLocation location) =>
             new Coords
             {
                 StartLine = location.Line,
@@ -116,7 +163,7 @@ namespace Arnolyzer.Test.DiagnosticVerification
                 EndColumn = location.EndColumn
             };
 
-        private static Coords CreateCoordsFromLocation(Location location)
+        private static Coords CreateCoordsFromActual(Location location)
         {
             var startPosition = location.GetLineSpan().StartLinePosition;
             var endPosition = location.GetLineSpan().EndLinePosition;
