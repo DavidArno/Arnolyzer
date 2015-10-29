@@ -108,6 +108,7 @@
   <ItemGroup>
     <Compile Include="CodeUnderTest\CodeToTestAtLeastOneParameterAnalyzer.cs" />
     <Compile Include="CodeUnderTest\CodeToTestDetectingOutAndRefParameters.cs" />
+    <Compile Include="CodeUnderTest\CodeToTestInnerTypesMustBePrivate.cs" />
     <Compile Include="CodeUnderTest\CodeToTestFileMustOnlyContainOneTypeDefinition.cs" />
     <Compile Include="CodeUnderTest\CodeToTestStaticVoidAnalyzer.cs" />
     <Compile Include="DiagnosticVerification\DiagnosticResultCommonProperties.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="DiagnosticVerification\DiagnosticsGenerator.cs" />
     <Compile Include="DiagnosticVerification\DiagnosticVerifier.cs" />
     <Compile Include="DiagnosticVerification\DocumentSetCreator.cs" />
+    <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\InnerClassesMustBePrivateAnalyzerTests.cs" />
     <Compile Include="SyntacticAnalyzers\SHOFAnalyzersTests\StaticMethodMustHaveAtLeastOneParameterTests.cs" />
     <Compile Include="SyntacticAnalyzers\SHOFAnalyzersTests\StaticMethodMustNotBeVoidAnalyzerTests.cs" />
     <Compile Include="DiagnosticVerification\DiagnosticResult.cs" />

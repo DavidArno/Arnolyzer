@@ -35,6 +35,7 @@
   <ItemGroup>
     <Compile Include="Factories\LocalizableStringFactory.cs" />
     <Compile Include="SyntacticAnalyzers\AnalyzerCategories.cs" />
+    <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\InnerTypesMustBePrivateAnalyzer.cs" />
     <Compile Include="SyntacticAnalyzers\SingleResponsibilityAnalyzers\FileMustOnlyContainOneTypeDefinitionAnalyzer.cs" />
     <Compile Include="SyntacticAnalyzers\SingleResponsibilityAnalyzers\MethodParameterMustNotBeRefOrOutAnalyzer.cs" />
     <Compile Include="SyntacticAnalyzers\SHOFAnalyzers\StaticMethodMustHaveAtLeastOneParameterAnalyzer.cs" />
