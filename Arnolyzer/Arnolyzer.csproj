@@ -35,6 +35,7 @@
   <ItemGroup>
     <Compile Include="Factories\LocalizableStringFactory.cs" />
     <Compile Include="SyntacticAnalyzers\AnalyzerCategories.cs" />
+    <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\InterfacePropertiesShouldBeReadonlyAnalyzer.cs" />
     <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\InnerTypesMustBePrivateAnalyzer.cs" />
     <Compile Include="SyntacticAnalyzers\SingleResponsibilityAnalyzers\FileMustOnlyContainOneTypeDefinitionAnalyzer.cs" />
     <Compile Include="SyntacticAnalyzers\SingleResponsibilityAnalyzers\MethodParameterMustNotBeRefOrOutAnalyzer.cs" />
@@ -56,7 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Analysis.ruleset" />
-    <None Include="Diagnostic.nuspec">
+    <None Include="Arnolyzer.nuspec">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -128,7 +129,7 @@
     <GetAssemblyIdentity AssemblyFiles="$(OutDir)\$(AssemblyName).dll">
       <Output TaskParameter="Assemblies" ItemName="ArnolyzerAssemblyInfo" />
     </GetAssemblyIdentity>
-    <Exec Command="&quot;$(SolutionDir)packages\NuGet.CommandLine.2.8.5\tools\NuGet.exe&quot; pack Diagnostic.nuspec -NoPackageAnalysis -Version %(ArnolyzerAssemblyInfo.Version) -OutputDirectory ." WorkingDirectory="$(OutDir)" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
+    <Exec Command="&quot;$(SolutionDir)packages\NuGet.CommandLine.2.8.5\tools\NuGet.exe&quot; pack ..\..\Arnolyzer.csproj -NoPackageAnalysis -Version %(ArnolyzerAssemblyInfo.Version) -OutputDirectory ." WorkingDirectory="$(OutDir)" LogStandardErrorAsError="true" ConsoleToMSBuild="true">
       <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
     </Exec>
   </Target>

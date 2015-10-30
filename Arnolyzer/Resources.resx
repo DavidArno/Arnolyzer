@@ -135,6 +135,15 @@
   <data name="InnerTypesMustBePrivateTitle" xml:space="preserve">
     <value>Inner type declarations should be marked private</value>
   </data>
+  <data name="InterfacePropertiesShouldBeReadonlyDescription" xml:space="preserve">
+    <value>To provide encapsulation, properties should only make getters publicly available, so interfaces should not define setters for properties.</value>
+  </data>
+  <data name="InterfacePropertiesShouldBeReadonlyMessageFormat" xml:space="preserve">
+    <value>Property `{0}` of interface `{1}` should not define a setter</value>
+  </data>
+  <data name="InterfacePropertiesShouldBeReadonlyTitle" xml:space="preserve">
+    <value>Properties defined in interfaces should be read-only (not setter)</value>
+  </data>
   <data name="MethodParameterMustNotBeRefOrOutDescription" xml:space="preserve">
     <value>Method parameters must not use REF or OUT parameters; all results should be via a return</value>
   </data>

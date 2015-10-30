@@ -4,6 +4,7 @@ using Arnolyzer.Factories;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
+using static Arnolyzer.Factories.LocalizableStringFactory;
 
 namespace Arnolyzer.SyntacticAnalyzers.SingleResponsibilityAnalyzers
 {
@@ -12,18 +13,18 @@ namespace Arnolyzer.SyntacticAnalyzers.SingleResponsibilityAnalyzers
     {
         public const string DiagnosticId = "MethodParameterMustNotBeRefOrOut";
 
-        private static readonly LocalizableString Title = 
-            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.MethodParameterMustNotBeRefOrOutTitle));
-        private static readonly LocalizableString MessageFormat = 
-            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.MethodParameterMustNotBeRefOrOutMessageFormat));
-        private static readonly LocalizableString Description = 
-            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.MethodParameterMustNotBeRefOrOutDescription));
+        private static readonly LocalizableString Title =
+            LocalizableResourceString(nameof(Resources.MethodParameterMustNotBeRefOrOutTitle));
+        private static readonly LocalizableString MessageFormat =
+            LocalizableResourceString(nameof(Resources.MethodParameterMustNotBeRefOrOutMessageFormat));
+        private static readonly LocalizableString Description =
+            LocalizableResourceString(nameof(Resources.MethodParameterMustNotBeRefOrOutDescription));
 
-        private static readonly DiagnosticDescriptor Rule = 
-            DiagnosticDescriptorFactory.EnabledByDefaultErrorDescriptor(AnalyzerCategories.SingleResponsibiltyAnalyzers, 
-                                                                        DiagnosticId, 
-                                                                        Title, 
-                                                                        MessageFormat, 
+        private static readonly DiagnosticDescriptor Rule =
+            DiagnosticDescriptorFactory.EnabledByDefaultErrorDescriptor(AnalyzerCategories.SingleResponsibiltyAnalyzers,
+                                                                        DiagnosticId,
+                                                                        Title,
+                                                                        MessageFormat,
                                                                         Description);
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
@@ -37,7 +38,7 @@ namespace Arnolyzer.SyntacticAnalyzers.SingleResponsibilityAnalyzers
             foreach (var parameter in methodSymbol.Parameters.Where(parameter => parameter.RefKind != RefKind.None))
             {
                 var syntax = parameter.DeclaringSyntaxReferences[0].GetSyntax() as ParameterSyntax;
-                
+
                 context.ReportDiagnostic(Diagnostic.Create(Rule, syntax.GetLocation(), parameter.Name, methodSymbol.Name, RefOrOut(parameter.RefKind)));
             }
         }

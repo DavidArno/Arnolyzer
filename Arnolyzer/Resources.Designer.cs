@@ -116,6 +116,33 @@ namespace Arnolyzer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to To provide encapsulation, properties should only make getters publicly available, so interfaces should not define setters for properties..
+        /// </summary>
+        public static string InterfacePropertiesShouldBeReadonlyDescription {
+            get {
+                return ResourceManager.GetString("InterfacePropertiesShouldBeReadonlyDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Property `{0}` of interface `{1}` should not define a setter.
+        /// </summary>
+        public static string InterfacePropertiesShouldBeReadonlyMessageFormat {
+            get {
+                return ResourceManager.GetString("InterfacePropertiesShouldBeReadonlyMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Properties defined in interfaces should be read-only (not setter).
+        /// </summary>
+        public static string InterfacePropertiesShouldBeReadonlyTitle {
+            get {
+                return ResourceManager.GetString("InterfacePropertiesShouldBeReadonlyTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Method parameters must not use REF or OUT parameters; all results should be via a return.
         /// </summary>
         public static string MethodParameterMustNotBeRefOrOutDescription {

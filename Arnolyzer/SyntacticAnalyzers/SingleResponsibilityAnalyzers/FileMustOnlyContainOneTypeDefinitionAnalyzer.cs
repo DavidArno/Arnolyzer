@@ -5,6 +5,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
+using static Arnolyzer.Factories.LocalizableStringFactory;
 
 namespace Arnolyzer.SyntacticAnalyzers.SingleResponsibilityAnalyzers
 {
@@ -14,20 +15,18 @@ namespace Arnolyzer.SyntacticAnalyzers.SingleResponsibilityAnalyzers
         public const string DiagnosticId = "FileMustOnlyContainOneTypeDefinition";
 
         private static readonly LocalizableString Title =
-            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.FileMustOnlyContainOneTypeDefinitionTitle));
+            LocalizableResourceString(nameof(Resources.FileMustOnlyContainOneTypeDefinitionTitle));
 
         private static readonly LocalizableString MessageFormat =
-            LocalizableStringFactory.LocalizableResourceString(
-                nameof(Resources.FileMustOnlyContainOneTypeDefinitionMessageFormat));
+            LocalizableResourceString(nameof(Resources.FileMustOnlyContainOneTypeDefinitionMessageFormat));
 
         private static readonly LocalizableString Description =
-            LocalizableStringFactory.LocalizableResourceString(
-                nameof(Resources.FileMustOnlyContainOneTypeDefinitionDescription));
+            LocalizableResourceString(nameof(Resources.FileMustOnlyContainOneTypeDefinitionDescription));
 
         private static readonly DiagnosticDescriptor Rule =
-            DiagnosticDescriptorFactory.EnabledByDefaultErrorDescriptor(AnalyzerCategories.SingleResponsibiltyAnalyzers, 
-                                                                        DiagnosticId, 
-                                                                        Title, 
+            DiagnosticDescriptorFactory.EnabledByDefaultErrorDescriptor(AnalyzerCategories.SingleResponsibiltyAnalyzers,
+                                                                        DiagnosticId,
+                                                                        Title,
                                                                         MessageFormat,
                                                                         Description);
 
@@ -41,7 +40,7 @@ namespace Arnolyzer.SyntacticAnalyzers.SingleResponsibilityAnalyzers
             var syntaxRoot = context.Tree.GetRoot(context.CancellationToken);
             var typeDeclarations = syntaxRoot.DescendantNodes(IgnoreNodesInsideClassDeclarations).Where(NodeIsTypeDeclaration).ToList();
 
-            if (typeDeclarations.Count() <= 1) {  return; }
+            if (typeDeclarations.Count() <= 1) { return; }
 
             foreach (var node in typeDeclarations)
             {
