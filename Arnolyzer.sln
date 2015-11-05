@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArnolyzerTests", "Arnolyzer
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arnolyzer.Vsix", "Arnolyzer.Vsix\Arnolyzer.Vsix.csproj", "{835B7000-CF32-45A2-80AB-B7E4ACE43160}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArnolyzerExceptionAttributes", "ArnolyzerExceptionAttributes\ArnolyzerExceptionAttributes.csproj", "{FF984535-A70A-4B46-9537-D0297E1381A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{835B7000-CF32-45A2-80AB-B7E4ACE43160}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{835B7000-CF32-45A2-80AB-B7E4ACE43160}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{835B7000-CF32-45A2-80AB-B7E4ACE43160}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF984535-A70A-4B46-9537-D0297E1381A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF984535-A70A-4B46-9537-D0297E1381A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF984535-A70A-4B46-9537-D0297E1381A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF984535-A70A-4B46-9537-D0297E1381A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

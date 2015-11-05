@@ -5,6 +5,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
+using SuccincT.Options;
 using static Arnolyzer.Factories.LocalizableStringFactory;
 
 namespace Arnolyzer.SyntacticAnalyzers.EncapsulationAnalyzers
@@ -52,18 +53,18 @@ namespace Arnolyzer.SyntacticAnalyzers.EncapsulationAnalyzers
 
             foreach (var propertyDeclaration in propertyDeclarations)
             {
-                var setterList = propertyDeclaration.property.DescendantNodesAndTokens()
-                                                    .Where(n => n.IsKind(SyntaxKind.SetKeyword))
-                                                    .ToList();
-
-                if (setterList.Any())
-                {
-                    var setter = setterList[0].AsToken();
-                    context.ReportDiagnostic(Diagnostic.Create(Rule,
-                                                               setter.GetLocation(),
-                                                               propertyDeclaration.property.Identifier,
-                                                               propertyDeclaration.interfaceName));
-                }
+                propertyDeclaration.property.DescendantNodesAndTokens()
+                                   .Where(n => n.IsKind(SyntaxKind.SetKeyword))
+                                   .FirstOrNone()
+                                   .Match()
+                                   .Some()
+                                   .Do(setter => context.ReportDiagnostic(
+                                       Diagnostic.Create(Rule,
+                                                         setter.AsToken().GetLocation(),
+                                                         propertyDeclaration.property.Identifier,
+                                                         propertyDeclaration.interfaceName)))
+                                   .IgnoreElse()
+                                   .Exec();
             }
         }
 
