@@ -53,9 +53,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Arnolyzer\Arnolyzer.csproj">
+    <ProjectReference Include="..\Arnolyzer\ArnolyzerAnalyzers.csproj">
       <Project>{0EAB24DA-09A0-4340-8DA4-540D3DDEBBF4}</Project>
-      <Name>Arnolyzer</Name>
+      <Name>ArnolyzerAnalyzers</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

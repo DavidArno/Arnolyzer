@@ -1,5 +1,4 @@
 /bin/
 /obj/
-*.dll
-*.csproj.user
+/ArnolyzerTests.csproj.user
 *.v2.ncrunchproject

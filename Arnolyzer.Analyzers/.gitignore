@@ -1,0 +1,5 @@
+/bin/
+/obj/
+/Arnolyzer.csproj.user
+*.Analyzers.csproj.user
+*.Analyzers.v2.ncrunchproject
