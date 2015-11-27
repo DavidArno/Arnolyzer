@@ -1,0 +1,4 @@
+﻿DoNotTraverse : false
+IgnoreArnolyzerHome : true
+IgnorePaths: 
+  - "CodeUnderTest/*.cs"

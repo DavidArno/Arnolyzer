@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
+using Arnolyzer.SyntacticAnalyzers.Settings;
 using Microsoft.CodeAnalysis;
 using SuccincT.Options;
 
@@ -20,6 +22,22 @@ namespace Arnolyzer.SyntacticAnalyzers
         {
             return symbol.GetAttributes()
                          .Any(s => attributes.FirstOrNone(t => MatchAttributeName(t, s.AttributeClass.Name)).HasValue);
+        }
+
+        public static bool IgnoredFile(ISymbol symbol)
+        {
+            var syntaxTree = symbol.DeclaringSyntaxReferences[0].SyntaxTree;
+            var options = syntaxTree.ArnolyzerSettings();
+            return Regex.Match(syntaxTree.FilePath, options.IgnorePathsRegex).Success;
+        }
+
+        private static string ConvertPatternToRegex(string pattern)
+        {
+            return pattern.Replace(@"\", @"\\")
+                          .Replace("/", @"\.")
+                          .Replace(".", @"\.")
+                          .Replace("*", ".*")
+                          .TrimStart('*');
         }
 
         private static bool MatchAttributeName(Type attributeType, string name) =>

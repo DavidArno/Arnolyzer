@@ -1,0 +1,6 @@
+﻿DoNotTraverse : false
+IgnoreArnolyzerHome : true
+IgnorePaths: 
+  - "1"
+  - "2"
+  - "3"

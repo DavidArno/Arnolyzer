@@ -4,8 +4,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ArnolyzerAnalyzers")]
-[assembly: AssemblyDescription("Arnolyzer analyzers")]
+[assembly: AssemblyTitle("ArnolyzerDogfood")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("David Arno")]
 [assembly: AssemblyProduct("Arnolyzer")]
@@ -17,4 +17,7 @@ using System.Runtime.InteropServices;
 // to COM components.  If you need to access a type in this assembly from
 // COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
-[assembly: AssemblyVersion("1.0.0.*")]
+
+// The following GUID is for the ID of the typelib if this project is exposed to COM
+[assembly: Guid("ad9ed06d-673c-4455-b87c-6e420752daf8")]
+[assembly: AssemblyVersion("1.0.*")]

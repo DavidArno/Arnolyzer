@@ -6,16 +6,12 @@
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
-    <licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
-    <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>
-    <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Arnolyzer</description>
-    <releaseNotes>Initial release.</releaseNotes>
+    <description>Arnolyzer analyzer for Arnolyzer itself</description>
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
     <copyright>Copyright</copyright>
     <tags>Arnolyzer, analyzers</tags>
   </metadata>
-  <!-- The convention for analyzers is to put language agnostic dlls in analyzers\dotnet and language specific analyzers in either analyzers\dotnet\cs or analyzers\dotnet\vb -->
   <files>
     <file src="..\Arnolyzer.Analyzers\bin\$configuration$\ArnolyzerAnalyzers.dll" target="analyzers\dotnet\cs" />
     <file src="..\Arnolyzer.Analyzers\bin\$configuration$\SuccincT.dll" target="analyzers\dotnet\cs" />

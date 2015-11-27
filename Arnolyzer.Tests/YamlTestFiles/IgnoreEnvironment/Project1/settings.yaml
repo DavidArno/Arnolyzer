@@ -1,0 +1,5 @@
+﻿DoNotTraverse : true
+IgnoreArnolyzerHome : true
+IgnorePaths: 
+  - "*tmp.cs"
+  - "*.123"

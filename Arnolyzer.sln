@@ -12,6 +12,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arnolyzer", "Arnolyzer\Arno
 		{0EAB24DA-09A0-4340-8DA4-540D3DDEBBF4} = {0EAB24DA-09A0-4340-8DA4-540D3DDEBBF4}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArnolyzerDogfood", "ArnolyzerDogfood\ArnolyzerDogfood.csproj", "{AD9ED06D-673C-4455-B87C-6E420752DAF8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{00A23C16-3EAE-48F3-A595-FE6F45BAF625}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00A23C16-3EAE-48F3-A595-FE6F45BAF625}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00A23C16-3EAE-48F3-A595-FE6F45BAF625}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD9ED06D-673C-4455-B87C-6E420752DAF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD9ED06D-673C-4455-B87C-6E420752DAF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD9ED06D-673C-4455-B87C-6E420752DAF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD9ED06D-673C-4455-B87C-6E420752DAF8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

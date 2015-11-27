@@ -1,0 +1,5 @@
+﻿DoNotTraverse : true
+IgnoreArnolyzerHome : true
+IgnorePaths: 
+  - "e1"
+  - "e2"

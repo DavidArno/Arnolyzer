@@ -36,6 +36,10 @@
     <CodeAnalysisRuleSet>Arnolyzer.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ArnolyzerDogfood, Version=1.0.5800.16793, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ArnolyzerDogfood.1.0.5800.16793\lib\net452\ArnolyzerDogfood.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeAnalysis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeAnalysis.Common.1.0.0\lib\net45\Microsoft.CodeAnalysis.dll</HintPath>
       <Private>True</Private>
@@ -106,6 +110,10 @@
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
       <Private>false</Private>
     </Reference>
+    <Reference Include="YamlDotNet, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\YamlDotNet.3.7.0\lib\net35\YamlDotNet.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SyntacticAnalyzers\Factories\LocalizableStringFactory.cs" />
@@ -115,6 +123,9 @@
     <Compile Include="SyntacticAnalyzers\CommonFunctions.cs" />
     <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\InterfacePropertiesShouldBeReadonlyAnalyzer.cs" />
     <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\InnerTypesMustBePrivateAnalyzer.cs" />
+    <Compile Include="SyntacticAnalyzers\Settings\SettingsDetails.cs" />
+    <Compile Include="SyntacticAnalyzers\Settings\SettingsExtensions.cs" />
+    <Compile Include="SyntacticAnalyzers\Settings\SettingsHandler.cs" />
     <Compile Include="SyntacticAnalyzers\SingleResponsibilityAnalyzers\FileMustOnlyContainOneTypeDefinitionAnalyzer.cs" />
     <Compile Include="SyntacticAnalyzers\SingleResponsibilityAnalyzers\MethodParameterMustNotBeRefOrOutAnalyzer.cs" />
     <Compile Include="SyntacticAnalyzers\SHOFAnalyzers\StaticMethodMustHaveAtLeastOneParameterAnalyzer.cs" />
@@ -138,6 +149,7 @@
     <None Include="Arnolyzer.Analyzers.ruleset" />
     <None Include="packages.config" />
     <None Include="ReadMe.txt" />
+    <None Include="test.json" />
   </ItemGroup>
   <ItemGroup Condition="'$(NCrunch)' != '1'">
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
