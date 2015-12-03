@@ -46,6 +46,13 @@ namespace Arnolyzer.Tests.SyntacticAnalyzers.SHOFAnalyzersTests
         }
 
         [TestMethod]
+        public void CodeInIgnoredFile_YieldsNoDiagnostics()
+        {
+            var test = File.ReadAllText(@"..\..\CodeUnderTest\FileThatShouldBeIgnored.cs");
+            DiagnosticVerifier.VerifyDiagnostics<StaticMethodMustNotBeVoidAnalyzer>(test, @"..\..\arnolyzer.yaml");
+        }
+
+        [TestMethod]
         public void CodeWithSetters_YieldsNoDiagnostics()
         {
             var test = File.ReadAllText(@"..\..\CodeUnderTest\CodeToTestStaticVoidAnalyzerIgnoresSetters.cs");

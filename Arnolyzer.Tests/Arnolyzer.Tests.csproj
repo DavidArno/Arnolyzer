@@ -120,6 +120,7 @@
     <Compile Include="CodeUnderTest\CodeToTestInnerTypesMustBePrivate.cs" />
     <Compile Include="CodeUnderTest\CodeToTestFileMustOnlyContainOneTypeDefinition.cs" />
     <Compile Include="CodeUnderTest\CodeToTestInterfacePropertySetters.cs" />
+    <Compile Include="CodeUnderTest\FileThatShouldBeIgnored.cs" />
     <Compile Include="CodeUnderTest\CodeToTestStaticVoidAnalyzerRespectsAttributes.cs" />
     <Compile Include="CodeUnderTest\CodeToTestStaticVoidAnalyzerIgnoresSetters.cs" />
     <Compile Include="CodeUnderTest\CodeToTestStaticVoidAnalyzer.cs" />
@@ -157,18 +158,18 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Arnolyzer.Analyzers\Arnolyzer.Analyzers.csproj">
-      <Project>{0eab24da-09a0-4340-8da4-540d3ddebbf4}</Project>
-      <Name>Arnolyzer.Analyzers</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="YamlTestFiles\UseEnvironment\Project1\pretendSourceFile.txt" />
     <Content Include="YamlTestFiles\UseEnvironment\some.sln" />
     <Content Include="YamlTestFiles\IgnoreEnvironment\Project1\pretendSourceFile.txt" />
     <Content Include="YamlTestFiles\IgnoreEnvironment\Project1\randomfile.txt" />
     <Content Include="YamlTestFiles\IgnoreEnvironment\Project2\pretendSourceFile.txt" />
     <Content Include="YamlTestFiles\IgnoreEnvironment\some.sln" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Arnolyzer.Analyzers\Arnolyzer.Analyzers.csproj">
+      <Project>{0eab24da-09a0-4340-8da4-540d3ddebbf4}</Project>
+      <Name>Arnolyzer.Analyzers</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

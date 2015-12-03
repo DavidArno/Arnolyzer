@@ -17,6 +17,17 @@ namespace Arnolyzer.Tests.DiagnosticVerification
             VerifyDiagnosticResults(diagnostics, analyzer, expected);
         }
 
+        [HasSideEffects]
+        public static void VerifyDiagnostics<T>(string source, string settingsFile, params DiagnosticResult[] expected)
+            where T : DiagnosticAnalyzer, new()
+        {
+            var analyzer = new T();
+            var diagnostics = DiagnosticsGenerator.GetSortedDiagnosticsUsingSettings(new[] { source },
+                                                                                     analyzer,
+                                                                                     settingsFile);
+            VerifyDiagnosticResults(diagnostics, analyzer, expected);
+        }
+
         private static void VerifyDiagnosticResults(Diagnostic[] actualResults,
                                                     DiagnosticAnalyzer analyzer,
                                                     params DiagnosticResult[] expectedResults)

@@ -46,6 +46,7 @@ namespace Arnolyzer.Tests.DiagnosticVerification
                 var documentId = DocumentId.CreateNewId(projectId, newFileName);
                 solution = solution.AddDocument(documentId, newFileName, SourceText.From(source));
             }
+
             return solution.GetProject(projectId);
         }
     }

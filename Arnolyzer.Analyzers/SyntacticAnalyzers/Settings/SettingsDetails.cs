@@ -39,11 +39,11 @@ namespace Arnolyzer.SyntacticAnalyzers.Settings
 
         private static string ConvertPatternToRegex(string pattern)
         {
-            return pattern.Replace(@"\", @"\\")
+            return pattern.TrimStart('*')
+                          .Replace(@"\", @"\\")
                           .Replace("/", @"\.")
                           .Replace(".", @"\.")
-                          .Replace("*", ".*")
-                          .TrimStart('*');
+                          .Replace("*", ".*");
         }
     }
 }

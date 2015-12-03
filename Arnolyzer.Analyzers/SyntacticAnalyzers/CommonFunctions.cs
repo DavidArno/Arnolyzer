@@ -28,16 +28,7 @@ namespace Arnolyzer.SyntacticAnalyzers
         {
             var syntaxTree = symbol.DeclaringSyntaxReferences[0].SyntaxTree;
             var options = syntaxTree.ArnolyzerSettings();
-            return Regex.Match(syntaxTree.FilePath, options.IgnorePathsRegex).Success;
-        }
-
-        private static string ConvertPatternToRegex(string pattern)
-        {
-            return pattern.Replace(@"\", @"\\")
-                          .Replace("/", @"\.")
-                          .Replace(".", @"\.")
-                          .Replace("*", ".*")
-                          .TrimStart('*');
+            return options.IgnorePathsRegex != "" && Regex.Match(syntaxTree.FilePath, options.IgnorePathsRegex).Success;
         }
 
         private static bool MatchAttributeName(Type attributeType, string name) =>

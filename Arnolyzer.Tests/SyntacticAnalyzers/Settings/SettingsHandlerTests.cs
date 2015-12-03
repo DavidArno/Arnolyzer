@@ -26,9 +26,10 @@ namespace Arnolyzer.Tests.SyntacticAnalyzers.Settings
 
             Assert.IsTrue(settings.IgnoreArnolyzerHome);
             Assert.IsTrue(settings.DoNotTraverse);
-            Assert.AreEqual("*tmp.cs", settings.IgnorePaths.ToList()[0]);
+            Assert.AreEqual("tmp.cs", settings.IgnorePaths.ToList()[0]);
             Assert.AreEqual("*.123", settings.IgnorePaths.ToList()[1]);
             Assert.AreEqual(2, settings.IgnorePaths.Count());
+            Assert.AreEqual(@"(.*tmp\.cs)|(.*\.123)", settings.IgnorePathsRegex);
         }
 
         [TestMethod]
@@ -48,6 +49,7 @@ namespace Arnolyzer.Tests.SyntacticAnalyzers.Settings
             Assert.AreEqual("2", settings.IgnorePaths.ToList()[2]);
             Assert.AreEqual("3", settings.IgnorePaths.ToList()[3]);
             Assert.AreEqual(4, settings.IgnorePaths.Count());
+            Assert.AreEqual(@"(.*\..*)|(.*1)|(.*2)|(.*3)", settings.IgnorePathsRegex);
         }
 
         [TestMethod]
@@ -68,6 +70,7 @@ namespace Arnolyzer.Tests.SyntacticAnalyzers.Settings
             Assert.AreEqual("2", settings.IgnorePaths.ToList()[2]);
             Assert.AreEqual("3", settings.IgnorePaths.ToList()[3]);
             Assert.AreEqual(4, settings.IgnorePaths.Count());
+            Assert.AreEqual(@"(.*\..*)|(.*1)|(.*2)|(.*3)", settings.IgnorePathsRegex);
         }
 
         [TestMethod]
