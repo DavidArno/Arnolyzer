@@ -1,4 +1,4 @@
 ﻿DoNotTraverse : true
 IgnoreArnolyzerHome : true
 IgnorePaths: 
-  - "Test0.cs"
+  - "FileThatShouldBeIgnored.cs"

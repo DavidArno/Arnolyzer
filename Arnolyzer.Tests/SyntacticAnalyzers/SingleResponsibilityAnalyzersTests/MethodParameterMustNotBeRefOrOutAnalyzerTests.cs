@@ -1,11 +1,11 @@
 ﻿using System;
-using System.IO;
 using Arnolyzer.SyntacticAnalyzers;
 using Arnolyzer.SyntacticAnalyzers.SingleResponsibilityAnalyzers;
 using Arnolyzer.Tests.DiagnosticVerification;
 using Microsoft.CodeAnalysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SuccincT.Options;
+using static Arnolyzer.Tests.SyntacticAnalyzers.TestFiles;
 
 namespace Arnolyzer.Tests.SyntacticAnalyzers.SingleResponsibilityAnalyzersTests
 {
@@ -14,12 +14,11 @@ namespace Arnolyzer.Tests.SyntacticAnalyzers.SingleResponsibilityAnalyzersTests
     {
         [TestMethod]
         public void NoCode_ShouldYieldNoDiagnostics() =>
-            DiagnosticVerifier.VerifyDiagnostics<MethodParameterMustNotBeRefOrOutAnalyzer>("");
+            DiagnosticVerifier.VerifyDiagnostics<MethodParameterMustNotBeRefOrOutAnalyzer>(EmptyFile);
 
         [TestMethod]
         public void MethodsWithRefOrOutParams_YieldsDiagnostics()
         {
-            var test = File.ReadAllText(@"..\..\CodeUnderTest\CodeToTestDetectingOutAndRefParameters.cs");
             var commonExpected =
                 new DiagnosticResultCommonProperties(Resources.MethodParameterMustNotBeRefOrOutTitle,
                                                      Resources.MethodParameterMustNotBeRefOrOutDescription,
@@ -41,7 +40,10 @@ namespace Arnolyzer.Tests.SyntacticAnalyzers.SingleResponsibilityAnalyzersTests
                                                         "out"),
                                                  Option<DiagnosticLocation>.Some(new DiagnosticLocation(17, 45, 54)));
 
-            DiagnosticVerifier.VerifyDiagnostics<MethodParameterMustNotBeRefOrOutAnalyzer>(test, expected1, expected2);
+            DiagnosticVerifier.VerifyDiagnostics<MethodParameterMustNotBeRefOrOutAnalyzer>(
+                CodeToTestDetectingOutAndRefParameters,
+                expected1,
+                expected2);
         }
     }
 }

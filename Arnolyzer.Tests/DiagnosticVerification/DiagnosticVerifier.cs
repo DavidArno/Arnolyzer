@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Arnolyzer.RuleExceptionAttributes;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
@@ -8,36 +9,29 @@ namespace Arnolyzer.Tests.DiagnosticVerification
 {
     internal static class DiagnosticVerifier
     {
+        private const string SettingsFile = @"..\..\arnolyzer.yaml";
+
         [HasSideEffects]
-        public static void VerifyDiagnostics<T>(string source, params DiagnosticResult[] expected)
+        public static void VerifyDiagnostics<T>(string filePath, params DiagnosticResult[] expected)
             where T : DiagnosticAnalyzer, new()
         {
             var analyzer = new T();
-            var diagnostics = DiagnosticsGenerator.GetSortedDiagnostics(new[] { source }, analyzer);
+            var diagnostics = DiagnosticsGenerator.GetSortedDiagnostics(filePath, analyzer, SettingsFile);
             VerifyDiagnosticResults(diagnostics, analyzer, expected);
         }
 
-        [HasSideEffects]
-        public static void VerifyDiagnostics<T>(string source, string settingsFile, params DiagnosticResult[] expected)
-            where T : DiagnosticAnalyzer, new()
-        {
-            var analyzer = new T();
-            var diagnostics = DiagnosticsGenerator.GetSortedDiagnosticsUsingSettings(new[] { source },
-                                                                                     analyzer,
-                                                                                     settingsFile);
-            VerifyDiagnosticResults(diagnostics, analyzer, expected);
-        }
-
-        private static void VerifyDiagnosticResults(Diagnostic[] actualResults,
+        private static void VerifyDiagnosticResults(IOrderedEnumerable<Diagnostic> actualResults,
                                                     DiagnosticAnalyzer analyzer,
                                                     params DiagnosticResult[] expectedResults)
         {
             var analyzerName = analyzer.GetType().Name;
-            VerifyCorrectNumberOfDiagnostics(analyzerName, actualResults, expectedResults);
+            var actualResultsArray = actualResults.ToArray();
+
+            VerifyCorrectNumberOfDiagnostics(analyzerName, actualResultsArray, expectedResults);
 
             for (var i = 0; i < expectedResults.Length; i++)
             {
-                var actual = actualResults[i];
+                var actual = actualResultsArray[i];
                 var expected = expectedResults[i];
 
                 VerifyLocationOfDiagnostic(analyzerName, expected, actual);

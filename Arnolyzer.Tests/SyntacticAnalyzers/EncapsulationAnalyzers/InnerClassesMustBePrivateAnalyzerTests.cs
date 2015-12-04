@@ -1,5 +1,4 @@
-﻿using System.IO;
-using Arnolyzer.SyntacticAnalyzers;
+﻿using Arnolyzer.SyntacticAnalyzers;
 using Arnolyzer.SyntacticAnalyzers.EncapsulationAnalyzers;
 using Arnolyzer.Tests.DiagnosticVerification;
 using Microsoft.CodeAnalysis;
@@ -14,12 +13,11 @@ namespace Arnolyzer.Tests.SyntacticAnalyzers.EncapsulationAnalyzers
     {
         [TestMethod]
         public void NoCode_ShouldYieldNoDiagnostics() =>
-            DiagnosticVerifier.VerifyDiagnostics<InnerTypesMustBePrivateAnalyzer>("");
+            DiagnosticVerifier.VerifyDiagnostics<InnerTypesMustBePrivateAnalyzer>(@"..\..\CodeUnderTest\EmptyFile.cs");
 
         [TestMethod]
         public void MethodsWithRefOrOutParams_YieldsDiagnostics()
         {
-            var test = File.ReadAllText(@"..\..\CodeUnderTest\CodeToTestInnerTypesMustBePrivate.cs");
             var commonExpected =
                 new DiagnosticResultCommonProperties(Resources.InnerTypesMustBePrivateTitle,
                                                      Resources.InnerTypesMustBePrivateDescription,
@@ -41,8 +39,9 @@ namespace Arnolyzer.Tests.SyntacticAnalyzers.EncapsulationAnalyzers
                                      Format(Resources.InnerTypesMustBePrivateMessageFormat, "Class2"),
                                      Option<DiagnosticLocation>.Some(new DiagnosticLocation(9, 22, 28)));
 
-            DiagnosticVerifier.VerifyDiagnostics<InnerTypesMustBePrivateAnalyzer>(test,
-                                                                                  expected1,
+            DiagnosticVerifier.VerifyDiagnostics<InnerTypesMustBePrivateAnalyzer>(
+                @"..\..\CodeUnderTest\CodeToTestInnerTypesMustBePrivate.cs",
+                expected1,
                                                                                   expected2,
                                                                                   expected3);
         }

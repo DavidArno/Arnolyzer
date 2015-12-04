@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
@@ -8,44 +8,38 @@ namespace Arnolyzer.Tests.DiagnosticVerification
 {
     internal static class DocumentSetCreator
     {
-        private static readonly MetadataReference CorlibReference =
+        private static readonly MetadataReference _corlibReference =
             MetadataReference.CreateFromFile(typeof(object).Assembly.Location);
-        private static readonly MetadataReference SystemCoreReference =
+        private static readonly MetadataReference _systemCoreReference =
             MetadataReference.CreateFromFile(typeof(Enumerable).Assembly.Location);
 
-        private const string DefaultFilePathPrefix = "Test";
-        private const string CSharpDefaultFileExt = "cs";
         private const string TestProjectName = "TestProject";
 
-        public static Document[] CreateDocumentSetFromSources(string[] sources)
+        public static Document CreateDocumentSetFromSources(string filePath)
         {
-            var documents = CreateProject(sources).Documents.ToArray();
+            var documents = CreateProject(filePath).Documents.ToArray();
 
-            if (sources.Length != documents.Length)
+            if (documents.Length != 1)
             {
-                throw new SystemException("Amount of sources did not match amount of Documents created");
+                throw new SystemException($"Expected one document from the filePath, but got {documents.Length}");
             }
 
-            return documents;
+            return documents[0];
         }
 
-        private static Project CreateProject(IEnumerable<string> sources)
+        private static Project CreateProject(string filePath)
         {
             var projectId = ProjectId.CreateNewId(TestProjectName);
+            var source = File.ReadAllText(filePath);
+            var fileName = Path.GetFileName(filePath);
+            var documentId = DocumentId.CreateNewId(projectId, fileName);
 
             var solution = new AdhocWorkspace()
                 .CurrentSolution
                 .AddProject(projectId, TestProjectName, TestProjectName, LanguageNames.CSharp)
-                .AddMetadataReference(projectId, CorlibReference)
-                .AddMetadataReference(projectId, SystemCoreReference);
-
-            var count = 0;
-            foreach (var source in sources)
-            {
-                var newFileName = $"{DefaultFilePathPrefix}{count++}.{CSharpDefaultFileExt}";
-                var documentId = DocumentId.CreateNewId(projectId, newFileName);
-                solution = solution.AddDocument(documentId, newFileName, SourceText.From(source));
-            }
+                .AddMetadataReference(projectId, _corlibReference)
+                .AddMetadataReference(projectId, _systemCoreReference)
+                .AddDocument(documentId, fileName, SourceText.From(source));
 
             return solution.GetProject(projectId);
         }

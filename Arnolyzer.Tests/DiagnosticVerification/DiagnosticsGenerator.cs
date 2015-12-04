@@ -11,42 +11,31 @@ namespace Arnolyzer.Tests.DiagnosticVerification
 {
     internal static class DiagnosticsGenerator
     {
-        public static Diagnostic[] GetSortedDiagnostics(string[] sources,
-                                                        DiagnosticAnalyzer analyzer)
-        {
-            return GetSortedDiagnosticsFromDocuments(analyzer,
-                                                     DocumentSetCreator.CreateDocumentSetFromSources(sources),
-                                                     null);
-        }
-
-        public static Diagnostic[] GetSortedDiagnosticsUsingSettings(string[] sources,
-                                                                     DiagnosticAnalyzer analyzer,
-                                                                     string settingsPath)
+        public static IOrderedEnumerable<Diagnostic> GetSortedDiagnostics(string filePath,
+                                                                          DiagnosticAnalyzer analyzer,
+                                                                          string settingsPath)
         {
             var options = new AnalyzerOptions(ImmutableArray.Create<AdditionalText>(new SettingsFile(settingsPath)));
             return GetSortedDiagnosticsFromDocuments(analyzer,
-                                                     DocumentSetCreator.CreateDocumentSetFromSources(sources),
+                                                     DocumentSetCreator.CreateDocumentSetFromSources(filePath),
                                                      options);
         }
 
-        private static Diagnostic[] GetSortedDiagnosticsFromDocuments(DiagnosticAnalyzer analyzer,
-                                                                      Document[] documents,
-                                                                      AnalyzerOptions options)
+        private static IOrderedEnumerable<Diagnostic> GetSortedDiagnosticsFromDocuments(DiagnosticAnalyzer analyzer,
+                                                                                        TextDocument document,
+                                                                                        AnalyzerOptions options)
         {
-            var projects = (from document in documents select document.Project);
-
-            var diagnostics = projects.Select(project => project.GetCompilationAsync()
-                                                                .Result
-                                                                .WithAnalyzers(ImmutableArray.Create(analyzer),
-                                                                               options))
-                                      .SelectMany(compilationWithAnalyzers =>
-                                                  compilationWithAnalyzers.GetAnalyzerDiagnosticsAsync().Result);
+            var diagnostics = document.Project.GetCompilationAsync()
+                                      .Result
+                                      .WithAnalyzers(ImmutableArray.Create(analyzer),
+                                                     options)
+                                      .GetAnalyzerDiagnosticsAsync().Result;
 
             return SortDiagnostics(diagnostics);
         }
 
-        private static Diagnostic[] SortDiagnostics(IEnumerable<Diagnostic> diagnostics) =>
-            diagnostics.OrderBy(d => d.Location.SourceSpan.Start).ToArray();
+        private static IOrderedEnumerable<Diagnostic> SortDiagnostics(IEnumerable<Diagnostic> diagnostics) =>
+            diagnostics.OrderBy(d => d.Location.SourceSpan.Start);
 
         private sealed class SettingsFile : AdditionalText
         {
