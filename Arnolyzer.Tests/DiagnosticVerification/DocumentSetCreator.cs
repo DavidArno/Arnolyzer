@@ -8,9 +8,9 @@ namespace Arnolyzer.Tests.DiagnosticVerification
 {
     internal static class DocumentSetCreator
     {
-        private static readonly MetadataReference _corlibReference =
+        private static readonly MetadataReference CorlibReference =
             MetadataReference.CreateFromFile(typeof(object).Assembly.Location);
-        private static readonly MetadataReference _systemCoreReference =
+        private static readonly MetadataReference SystemCoreReference =
             MetadataReference.CreateFromFile(typeof(Enumerable).Assembly.Location);
 
         private const string TestProjectName = "TestProject";
@@ -37,8 +37,8 @@ namespace Arnolyzer.Tests.DiagnosticVerification
             var solution = new AdhocWorkspace()
                 .CurrentSolution
                 .AddProject(projectId, TestProjectName, TestProjectName, LanguageNames.CSharp)
-                .AddMetadataReference(projectId, _corlibReference)
-                .AddMetadataReference(projectId, _systemCoreReference)
+                .AddMetadataReference(projectId, CorlibReference)
+                .AddMetadataReference(projectId, SystemCoreReference)
                 .AddDocument(documentId, fileName, SourceText.From(source));
 
             return solution.GetProject(projectId);

@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ClassPropertyShouldBePubliclyReadOnlyDescription" xml:space="preserve">
+    <value>Public classes should not provide publicly accessible setters for properties</value>
+  </data>
+  <data name="ClassPropertyShouldBePubliclyReadOnlyMessageFormat" xml:space="preserve">
+    <value>Public property `{0}` of class `{1}` should not define a public setter</value>
+  </data>
+  <data name="ClassPropertyShouldBePubliclyReadOnlyTitle" xml:space="preserve">
+    <value>Public properties defined in public classes should be publicly read-only (no public setter)</value>
+  </data>
   <data name="FileMustOnlyContainOneTypeDefinitionDescription" xml:space="preserve">
     <value>To comply with the single responsibility principle, a file should only contain one non-private type definition.</value>
   </data>
@@ -142,7 +151,7 @@
     <value>Property `{0}` of interface `{1}` should not define a setter</value>
   </data>
   <data name="InterfacePropertiesShouldBeReadonlyTitle" xml:space="preserve">
-    <value>Properties defined in interfaces should be read-only (not setter)</value>
+    <value>Properties defined in interfaces should be read-only (no setter)</value>
   </data>
   <data name="MethodParameterMustNotBeRefOrOutDescription" xml:space="preserve">
     <value>Method parameters must not use REF or OUT parameters; all results should be via a return</value>

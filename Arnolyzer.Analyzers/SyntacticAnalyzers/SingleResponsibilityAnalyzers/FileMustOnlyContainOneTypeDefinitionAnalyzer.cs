@@ -41,7 +41,7 @@ namespace Arnolyzer.SyntacticAnalyzers.SingleResponsibilityAnalyzers
             var syntaxRoot = context.Tree.GetRoot(context.CancellationToken);
             var typeDeclarations = syntaxRoot.DescendantNodes(IgnoreNodesInsideClassDeclarations).Where(NodeIsTypeDeclaration).ToList();
 
-            if (typeDeclarations.Count() <= 1) { return; }
+            if (typeDeclarations.Count <= 1) { return; }
 
             foreach (var node in typeDeclarations)
             {

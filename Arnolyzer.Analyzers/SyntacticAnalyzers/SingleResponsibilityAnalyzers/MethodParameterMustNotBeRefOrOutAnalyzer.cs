@@ -9,7 +9,7 @@ using Microsoft.CodeAnalysis.Diagnostics;
 namespace Arnolyzer.SyntacticAnalyzers.SingleResponsibilityAnalyzers
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
-    public class MethodParameterMustNotBeRefOrOutAnalyzer : DiagnosticAnalyzer
+    public sealed class MethodParameterMustNotBeRefOrOutAnalyzer : DiagnosticAnalyzer
     {
         public const string DiagnosticId = "MethodParameterMustNotBeRefOrOut";
 

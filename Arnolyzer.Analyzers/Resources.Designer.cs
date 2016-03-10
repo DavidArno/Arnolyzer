@@ -61,6 +61,33 @@ namespace Arnolyzer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Public classes should not provide publicly accessible setters for properties.
+        /// </summary>
+        public static string ClassPropertyShouldBePubliclyReadOnlyDescription {
+            get {
+                return ResourceManager.GetString("ClassPropertyShouldBePubliclyReadOnlyDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Public property `{0}` of class `{1}` should not define a public setter.
+        /// </summary>
+        public static string ClassPropertyShouldBePubliclyReadOnlyMessageFormat {
+            get {
+                return ResourceManager.GetString("ClassPropertyShouldBePubliclyReadOnlyMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Public properties defined in public classes should be publicly read-only (no public setter).
+        /// </summary>
+        public static string ClassPropertyShouldBePubliclyReadOnlyTitle {
+            get {
+                return ResourceManager.GetString("ClassPropertyShouldBePubliclyReadOnlyTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To comply with the single responsibility principle, a file should only contain one non-private type definition..
         /// </summary>
         public static string FileMustOnlyContainOneTypeDefinitionDescription {
@@ -133,7 +160,7 @@ namespace Arnolyzer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Properties defined in interfaces should be read-only (not setter).
+        ///   Looks up a localized string similar to Properties defined in interfaces should be read-only (no setter).
         /// </summary>
         public static string InterfacePropertiesShouldBeReadonlyTitle {
             get {

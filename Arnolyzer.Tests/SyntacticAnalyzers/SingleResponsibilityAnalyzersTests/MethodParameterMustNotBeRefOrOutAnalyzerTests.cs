@@ -1,10 +1,10 @@
-﻿using System;
-using Arnolyzer.SyntacticAnalyzers;
+﻿using Arnolyzer.SyntacticAnalyzers;
 using Arnolyzer.SyntacticAnalyzers.SingleResponsibilityAnalyzers;
 using Arnolyzer.Tests.DiagnosticVerification;
 using Microsoft.CodeAnalysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SuccincT.Options;
+using static System.String;
 using static Arnolyzer.Tests.SyntacticAnalyzers.TestFiles;
 
 namespace Arnolyzer.Tests.SyntacticAnalyzers.SingleResponsibilityAnalyzersTests
@@ -27,14 +27,14 @@ namespace Arnolyzer.Tests.SyntacticAnalyzers.SingleResponsibilityAnalyzersTests
                                                      MethodParameterMustNotBeRefOrOutAnalyzer.DiagnosticId);
 
             var expected1 = new DiagnosticResult(commonExpected,
-                                                 String.Format(Resources.MethodParameterMustNotBeRefOrOutMessageFormat,
+                                                 Format(Resources.MethodParameterMustNotBeRefOrOutMessageFormat,
                                                         "p",
                                                         "UsesRefParameter",
                                                         "ref"),
                                                  Option<DiagnosticLocation>.Some(new DiagnosticLocation(11, 45, 54)));
 
             var expected2 = new DiagnosticResult(commonExpected,
-                                                 String.Format(Resources.MethodParameterMustNotBeRefOrOutMessageFormat,
+                                                 Format(Resources.MethodParameterMustNotBeRefOrOutMessageFormat,
                                                         "p",
                                                         "UsesOutParameter",
                                                         "out"),

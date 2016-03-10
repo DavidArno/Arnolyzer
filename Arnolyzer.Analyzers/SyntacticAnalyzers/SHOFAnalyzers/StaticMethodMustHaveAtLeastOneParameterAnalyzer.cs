@@ -15,21 +15,21 @@ namespace Arnolyzer.SyntacticAnalyzers.SHOFAnalyzers
     {
         public const string DiagnosticId = "StaticMethodMustHaveAtLeastOneParameter";
 
-        private static readonly LocalizableString _title =
+        private static readonly LocalizableString Title =
             LocalizableStringFactory.LocalizableResourceString(nameof(Resources.StaticMethodMustHaveAtLeastOneParameterTitle));
-        private static readonly LocalizableString _messageFormat =
+        private static readonly LocalizableString MessageFormat =
             LocalizableStringFactory.LocalizableResourceString(nameof(Resources.StaticMethodMustHaveAtLeastOneParameterMessageFormat));
-        private static readonly LocalizableString _description =
+        private static readonly LocalizableString Description =
             LocalizableStringFactory.LocalizableResourceString(nameof(Resources.StaticMethodMustHaveAtLeastOneParameterDescription));
 
-        private static readonly DiagnosticDescriptor _rule =
+        private static readonly DiagnosticDescriptor Rule =
             DiagnosticDescriptorFactory.EnabledByDefaultErrorDescriptor(AnalyzerCategories.ShofAnalyzers,
                                                                         DiagnosticId,
-                                                                        _title,
-                                                                        _messageFormat,
-                                                                        _description);
+                                                                        Title,
+                                                                        MessageFormat,
+                                                                        Description);
 
-        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(_rule);
+        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
 
         public override void Initialize(AnalysisContext context)
         {
@@ -54,7 +54,7 @@ namespace Arnolyzer.SyntacticAnalyzers.SHOFAnalyzers
                 methodSymbol.Parameters.IsEmpty &&
                 methodSymbol.MethodKind != MethodKind.PropertyGet)
             {
-                context.ReportDiagnostic(Diagnostic.Create(_rule, methodSymbol.Locations[0], methodSymbol.Name));
+                context.ReportDiagnostic(Diagnostic.Create(Rule, methodSymbol.Locations[0], methodSymbol.Name));
             }
         }
     }

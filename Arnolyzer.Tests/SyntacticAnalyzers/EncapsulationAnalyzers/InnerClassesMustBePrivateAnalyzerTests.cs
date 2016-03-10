@@ -16,7 +16,7 @@ namespace Arnolyzer.Tests.SyntacticAnalyzers.EncapsulationAnalyzers
             DiagnosticVerifier.VerifyDiagnostics<InnerTypesMustBePrivateAnalyzer>(@"..\..\CodeUnderTest\EmptyFile.cs");
 
         [TestMethod]
-        public void MethodsWithRefOrOutParams_YieldsDiagnostics()
+        public void NonPrivateInnerTypes_YieldDiagnostics()
         {
             var commonExpected =
                 new DiagnosticResultCommonProperties(Resources.InnerTypesMustBePrivateTitle,
@@ -42,8 +42,8 @@ namespace Arnolyzer.Tests.SyntacticAnalyzers.EncapsulationAnalyzers
             DiagnosticVerifier.VerifyDiagnostics<InnerTypesMustBePrivateAnalyzer>(
                 @"..\..\CodeUnderTest\CodeToTestInnerTypesMustBePrivate.cs",
                 expected1,
-                                                                                  expected2,
-                                                                                  expected3);
+                expected2,
+                expected3);
         }
     }
 }
