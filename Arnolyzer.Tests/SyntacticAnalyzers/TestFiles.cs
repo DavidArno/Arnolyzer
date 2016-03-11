@@ -33,5 +33,8 @@
 
         public const string CodeToTestStaticVoidAnalyzerRespectsAttributes =
             @"..\..\CodeUnderTest\CodeToTestStaticVoidAnalyzerRespectsAttributes.cs";
+
+        public const string CodeToTestMethodsWithAnd =
+            @"..\..\CodeUnderTest\CodeToTestMethodsWithAnd.cs";
     }
 }

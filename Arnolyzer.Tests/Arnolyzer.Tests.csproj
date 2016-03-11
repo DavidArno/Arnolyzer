@@ -79,6 +79,7 @@
     <Compile Include="CodeUnderTest\CodeToTestFileMustOnlyContainOneTypeDefinition.cs" />
     <Compile Include="CodeUnderTest\CodeToTestClassPropertySetters.cs" />
     <Compile Include="CodeUnderTest\CodeToTestInterfacePropertySetters.cs" />
+    <Compile Include="CodeUnderTest\CodeToTestMethodsWithAnd.cs" />
     <Compile Include="CodeUnderTest\EmptyFile.cs" />
     <Compile Include="CodeUnderTest\FileThatShouldBeIgnored.cs" />
     <Compile Include="CodeUnderTest\CodeToTestStaticVoidAnalyzerRespectsAttributes.cs" />
@@ -98,6 +99,7 @@
     <Compile Include="SyntacticAnalyzers\SHOFAnalyzersTests\StaticMethodMustNotBeVoidAnalyzerTests.cs" />
     <Compile Include="DiagnosticVerification\DiagnosticResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SyntacticAnalyzers\SingleResponsibilityAnalyzersTests\MethodShouldNotContainAndAnalyzerTests.cs" />
     <Compile Include="SyntacticAnalyzers\SingleResponsibilityAnalyzersTests\FileMustOnlyContainOneTypeDefinitionAnalyzerTests.cs" />
     <Compile Include="SyntacticAnalyzers\SingleResponsibilityAnalyzersTests\MethodParameterMustNotBeRefOrOutAnalyzerTests.cs" />
     <Compile Include="SyntacticAnalyzers\TestFiles.cs" />

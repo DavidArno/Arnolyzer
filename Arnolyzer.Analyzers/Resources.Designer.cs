@@ -196,6 +196,33 @@ namespace Arnolyzer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Method names that contain &quot;And&quot; often indicate a method is doing more than one thing. Consider refacting into two methods..
+        /// </summary>
+        public static string MethodShouldNotContainAndDescription {
+            get {
+                return ResourceManager.GetString("MethodShouldNotContainAndDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method &apos;{0}&apos; contains &quot;And&quot;, which might indicate it&apos;s doing more than one thing.
+        /// </summary>
+        public static string MethodShouldNotContainAndMessageFormat {
+            get {
+                return ResourceManager.GetString("MethodShouldNotContainAndMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Methods should not contain the word &quot;And&quot;.
+        /// </summary>
+        public static string MethodShouldNotContainAndTitle {
+            get {
+                return ResourceManager.GetString("MethodShouldNotContainAndTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Static methods should have at least one parameter.
         /// </summary>
         public static string StaticMethodMustHaveAtLeastOneParameterDescription {

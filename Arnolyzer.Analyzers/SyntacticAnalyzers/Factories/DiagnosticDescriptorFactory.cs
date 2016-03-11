@@ -18,5 +18,20 @@ namespace Arnolyzer.SyntacticAnalyzers.Factories
                                             true,
                                             description);
         }
+
+        public static DiagnosticDescriptor EnabledByDefaultWarningDescriptor(string category,
+                                                                             string diagnosticId,
+                                                                             LocalizableString title,
+                                                                             LocalizableString messageFormat,
+                                                                             LocalizableString description)
+        {
+            return new DiagnosticDescriptor(diagnosticId,
+                                            title,
+                                            messageFormat,
+                                            category,
+                                            DiagnosticSeverity.Warning,
+                                            true,
+                                            description);
+        }
     }
 }

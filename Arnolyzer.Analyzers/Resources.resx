@@ -162,6 +162,15 @@
   <data name="MethodParameterMustNotBeRefOrOutTitle" xml:space="preserve">
     <value>Method parameters must not  use REF or OUT</value>
   </data>
+  <data name="MethodShouldNotContainAndDescription" xml:space="preserve">
+    <value>Method names that contain "And" often indicate a method is doing more than one thing. Consider refacting into two methods.</value>
+  </data>
+  <data name="MethodShouldNotContainAndMessageFormat" xml:space="preserve">
+    <value>Method '{0}' contains "And", which might indicate it's doing more than one thing</value>
+  </data>
+  <data name="MethodShouldNotContainAndTitle" xml:space="preserve">
+    <value>Methods should not contain the word "And"</value>
+  </data>
   <data name="StaticMethodMustHaveAtLeastOneParameterDescription" xml:space="preserve">
     <value>Static methods should have at least one parameter</value>
   </data>
