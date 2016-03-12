@@ -88,6 +88,33 @@ namespace Arnolyzer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The NotImplementedException is a direct violation of the Liskov Substitution Principle (LSP) and so must not be used.
+        /// </summary>
+        public static string DoNotUseNotImplementedExceptionDescription {
+            get {
+                return ResourceManager.GetString("DoNotUseNotImplementedExceptionDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Throw statement uses the NotImplementedException, which is a violation of the LSP.
+        /// </summary>
+        public static string DoNotUseNotImplementedExceptionMessageFormat {
+            get {
+                return ResourceManager.GetString("DoNotUseNotImplementedExceptionMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The NotImplementedException violates the Liskov Substitution Principle (LSP).
+        /// </summary>
+        public static string DoNotUseNotImplementedExceptionTitle {
+            get {
+                return ResourceManager.GetString("DoNotUseNotImplementedExceptionTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To comply with the single responsibility principle, a file should only contain one non-private type definition..
         /// </summary>
         public static string FileMustOnlyContainOneTypeDefinitionDescription {

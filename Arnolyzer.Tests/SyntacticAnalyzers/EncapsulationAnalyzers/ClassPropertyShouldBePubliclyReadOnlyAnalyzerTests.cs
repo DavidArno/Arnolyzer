@@ -17,7 +17,7 @@ namespace Arnolyzer.Tests.SyntacticAnalyzers.EncapsulationAnalyzers
                 @"..\..\CodeUnderTest\EmptyFile.cs");
 
         [TestMethod]
-        public void InterfacePropertiesWithSetters_YieldsDiagnostics()
+        public void ClassPropertiesWithSetters_YieldsDiagnostics()
         {
             var commonExpected =
                 new DiagnosticResultCommonProperties(Resources.ClassPropertyShouldBePubliclyReadOnlyTitle,

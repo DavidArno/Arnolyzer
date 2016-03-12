@@ -126,6 +126,15 @@
   <data name="ClassPropertyShouldBePubliclyReadOnlyTitle" xml:space="preserve">
     <value>Public properties defined in public classes should be publicly read-only (no public setter)</value>
   </data>
+  <data name="DoNotUseNotImplementedExceptionDescription" xml:space="preserve">
+    <value>The NotImplementedException is a direct violation of the Liskov Substitution Principle (LSP) and so must not be used</value>
+  </data>
+  <data name="DoNotUseNotImplementedExceptionMessageFormat" xml:space="preserve">
+    <value>Throw statement uses the NotImplementedException, which is a violation of the LSP</value>
+  </data>
+  <data name="DoNotUseNotImplementedExceptionTitle" xml:space="preserve">
+    <value>The NotImplementedException violates the Liskov Substitution Principle (LSP)</value>
+  </data>
   <data name="FileMustOnlyContainOneTypeDefinitionDescription" xml:space="preserve">
     <value>To comply with the single responsibility principle, a file should only contain one non-private type definition.</value>
   </data>
