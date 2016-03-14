@@ -95,6 +95,7 @@
     <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\ClassPropertyShouldBePubliclyReadOnlyAnalyzerTests.cs" />
     <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\InterfacePropertiesShouldBeReadonlyTests.cs" />
     <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\InnerClassesMustBePrivateAnalyzerTests.cs" />
+    <Compile Include="SyntacticAnalyzers\LiskovSubstitutionPrincipleAnalyzers\DoNotUseNotSupportedExceptionAnalyzerTests.cs" />
     <Compile Include="SyntacticAnalyzers\LiskovSubstitutionPrincipleAnalyzers\DoNotUseNotImplementedExceptionAnalyzerTests.cs" />
     <Compile Include="SyntacticAnalyzers\Settings\SettingsHandlerTests.cs" />
     <Compile Include="SyntacticAnalyzers\SHOFAnalyzersTests\StaticMethodMustHaveAtLeastOneParameterTests.cs" />

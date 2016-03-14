@@ -36,8 +36,8 @@
     <CodeAnalysisRuleSet>Arnolyzer.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ArnolyzerDogfood, Version=1.0.5912.15851, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ArnolyzerDogfood.1.0.5912.15851\lib\net452\ArnolyzerDogfood.dll</HintPath>
+    <Reference Include="ArnolyzerDogfood, Version=1.0.5915.40051, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ArnolyzerDogfood.1.0.5915.40051\lib\net452\ArnolyzerDogfood.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -73,7 +73,9 @@
     <Compile Include="SyntacticAnalyzers\CommonFunctions.cs" />
     <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\InterfacePropertiesShouldBeReadonlyAnalyzer.cs" />
     <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\InnerTypesMustBePrivateAnalyzer.cs" />
+    <Compile Include="SyntacticAnalyzers\LiskovSubstitutionPrincipleAnalyzers\DoNotUseNotSupportedExceptionAnalyzer.cs" />
     <Compile Include="SyntacticAnalyzers\LiskovSubstitutionPrincipleAnalyzers\DoNotUseNotImplementedExceptionAnalyzer.cs" />
+    <Compile Include="SyntacticAnalyzers\LiskovSubstitutionPrincipleAnalyzers\LSPViolatingExceptionReporter.cs" />
     <Compile Include="SyntacticAnalyzers\Settings\SettingsDetails.cs" />
     <Compile Include="SyntacticAnalyzers\Settings\SettingsExtensions.cs" />
     <Compile Include="SyntacticAnalyzers\Settings\SettingsHandler.cs" />
@@ -94,6 +96,7 @@
     <EmbeddedResource Include="Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

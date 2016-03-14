@@ -135,6 +135,15 @@
   <data name="DoNotUseNotImplementedExceptionTitle" xml:space="preserve">
     <value>The NotImplementedException violates the Liskov Substitution Principle (LSP)</value>
   </data>
+  <data name="DoNotUseNotSupportedExceptionDescription" xml:space="preserve">
+    <value>The NotSupportedException is a direct violation of the Liskov Substitution Principle (LSP) and so must not be used</value>
+  </data>
+  <data name="DoNotUseNotSupportedExceptionMessageFormat" xml:space="preserve">
+    <value>Throw statement uses the NotSupportedException, which is a violation of the LSP</value>
+  </data>
+  <data name="DoNotUseNotSupportedExceptionTitle" xml:space="preserve">
+    <value>The NotSupportedException violates the Liskov Substitution Principle (LSP)</value>
+  </data>
   <data name="FileMustOnlyContainOneTypeDefinitionDescription" xml:space="preserve">
     <value>To comply with the single responsibility principle, a file should only contain one non-private type definition.</value>
   </data>

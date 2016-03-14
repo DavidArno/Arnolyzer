@@ -17,7 +17,7 @@ namespace Arnolyzer.Tests.SyntacticAnalyzers.LiskovSubstitutionPrincipleAnalyzer
                 @"..\..\CodeUnderTest\EmptyFile.cs");
 
         [TestMethod]
-        public void InterfacePropertiesWithSetters_YieldsDiagnostics()
+        public void ThrowingNotImplemented_YieldsDiagnostics()
         {
             var commonExpected =
                 new DiagnosticResultCommonProperties(Resources.DoNotUseNotImplementedExceptionTitle,
@@ -28,22 +28,22 @@ namespace Arnolyzer.Tests.SyntacticAnalyzers.LiskovSubstitutionPrincipleAnalyzer
             var expected1 =
                 new DiagnosticResult(commonExpected,
                                      Format(Resources.DoNotUseNotImplementedExceptionMessageFormat),
-                                     Option<DiagnosticLocation>.Some(new DiagnosticLocation(18, 23, 46)));
+                                     Option<DiagnosticLocation>.Some(new DiagnosticLocation(21, 23, 46)));
 
             var expected2 =
                 new DiagnosticResult(commonExpected,
                                      Format(Resources.DoNotUseNotImplementedExceptionMessageFormat),
-                                     Option<DiagnosticLocation>.Some(new DiagnosticLocation(23, 19, 22)));
+                                     Option<DiagnosticLocation>.Some(new DiagnosticLocation(26, 19, 22)));
 
             var expected3 =
                 new DiagnosticResult(commonExpected,
                                      Format(Resources.DoNotUseNotImplementedExceptionMessageFormat),
-                                     Option<DiagnosticLocation>.Some(new DiagnosticLocation(34, 19, 21)));
+                                     Option<DiagnosticLocation>.Some(new DiagnosticLocation(37, 19, 21)));
 
             var expected4 =
                 new DiagnosticResult(commonExpected,
                                      Format(Resources.DoNotUseNotImplementedExceptionMessageFormat),
-                                     Option<DiagnosticLocation>.Some(new DiagnosticLocation(39, 19, 32)));
+                                     Option<DiagnosticLocation>.Some(new DiagnosticLocation(42, 19, 32)));
 
             DiagnosticVerifier.VerifyDiagnostics<DoNotUseNotImplementedExceptionAnalyzer>(
                 @"..\..\CodeUnderTest\CodeToTestLSPViolatingExceptions.cs",

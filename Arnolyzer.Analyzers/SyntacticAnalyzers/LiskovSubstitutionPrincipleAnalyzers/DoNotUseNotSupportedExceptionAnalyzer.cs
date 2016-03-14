@@ -8,18 +8,18 @@ using static Arnolyzer.SyntacticAnalyzers.LiskovSubstitutionPrincipleAnalyzers.L
 namespace Arnolyzer.SyntacticAnalyzers.LiskovSubstitutionPrincipleAnalyzers
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
-    public class DoNotUseNotImplementedExceptionAnalyzer : DiagnosticAnalyzer
+    public class DoNotUseNotSupportedExceptionAnalyzer : DiagnosticAnalyzer
     {
-        public const string DiagnosticId = "DoNotUseNotImplementedException";
+        public const string DiagnosticId = "DoNotUseNotSupportedException";
 
         private static readonly LocalizableString Title =
-            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.DoNotUseNotImplementedExceptionTitle));
+            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.DoNotUseNotSupportedExceptionTitle));
 
         private static readonly LocalizableString MessageFormat =
-            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.DoNotUseNotImplementedExceptionMessageFormat));
+            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.DoNotUseNotSupportedExceptionMessageFormat));
 
         private static readonly LocalizableString Description =
-            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.DoNotUseNotImplementedExceptionDescription));
+            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.DoNotUseNotSupportedExceptionDescription));
 
         private static readonly DiagnosticDescriptor Rule =
             DiagnosticDescriptorFactory.EnabledByDefaultErrorDescriptor(AnalyzerCategories.EncapsulationAnalyzers,
@@ -37,11 +37,12 @@ namespace Arnolyzer.SyntacticAnalyzers.LiskovSubstitutionPrincipleAnalyzers
             context.RegisterCompilationStartAction(
                 compileContext =>
                 {
-                    var notImplementedExceptionName = compileContext.Compilation.GetTypeByMetadataName("System.NotImplementedException");
+                    var notSupportedExceptionName = compileContext.Compilation.GetTypeByMetadataName("System.NotSupportedException");
                     compileContext.RegisterSyntaxNodeAction(
-                        symbolContext => DetectAndReportLSPViolatingException(symbolContext, notImplementedExceptionName, Rule), 
+                        symbolContext => DetectAndReportLSPViolatingException(symbolContext, notSupportedExceptionName, Rule), 
                         SyntaxKind.ThrowStatement);
                 });
         }
+
     }
 }
