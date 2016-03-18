@@ -106,8 +106,9 @@
   <ItemGroup>
     <None Include="Analysis.ruleset" />
     <None Include="Arnolyzer.Analyzers.ruleset" />
-    <None Include="DocumentationTemplates\AA1102InterfacePropertiesMustBeRead_OnlyAnalyzer.mdt" />
-    <None Include="DocumentationTemplates\AA1103ClassPropertiesMustBePubliclyRead_OnlyAnalyzer.mdt" />
+    <None Include="DocumentationTemplates\AnalyzerTemplate.md" />
+    <Content Include="DocumentationTemplates\AA1102InterfacePropertiesMustBeRead_OnlyAnalyzer.cause.txt" />
+    <Content Include="DocumentationTemplates\AA1103ClassPropertiesMustBePubliclyRead_OnlyAnalyzer.cause.txt" />
     <None Include="packages.config" />
     <None Include="ReadMe.txt" />
     <None Include="test.json" />

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using Arnolyzer.RuleExceptionAttributes;
-using Arnolyzer.SyntacticAnalyzers.Factories;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 using SuccincT.Options;
 using static Arnolyzer.SyntacticAnalyzers.CommonFunctions;
+using static Arnolyzer.SyntacticAnalyzers.Factories.DiagnosticDescriptorFactory;
 
 namespace Arnolyzer.SyntacticAnalyzers.EncapsulationAnalyzers
 {
@@ -28,8 +28,7 @@ namespace Arnolyzer.SyntacticAnalyzers.EncapsulationAnalyzers
 
         public AnalyzerDetails GetAnalyzerDetails() => AA1102Details;
 
-        private static readonly DiagnosticDescriptor Rule =
-            DiagnosticDescriptorFactory.EnabledByDefaultErrorDescriptor(AA1102Details);
+        private static readonly DiagnosticDescriptor Rule = EnabledByDefaultErrorDescriptor(AA1102Details);
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
 
