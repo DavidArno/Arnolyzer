@@ -1,4 +1,6 @@
-﻿namespace Arnolyzer.Tests.CodeUnderTest
+﻿using Arnolyzer.RuleExceptionAttributes;
+
+namespace Arnolyzer.Tests.CodeUnderTest
 {
     public interface IContainsSetters
     {
@@ -8,5 +10,8 @@
         void AnotherMethod();
         int Property3 { get; set; }
         bool Property4 { set; get; }
+
+        [MutableProperty]
+        bool Property5 { set; get; }
     }
 }

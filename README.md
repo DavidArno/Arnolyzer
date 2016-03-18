@@ -1,7 +1,7 @@
 # Arnolyzer
 A clean-code, Roslyn-based, analyzer for C# 6.
 
-Readme last updated: 14th Mar 2016.
+Readme last updated: 18th Mar 2016.
 
 ## Why does this project exist?
 Let's roll back the clock a bit to life before C# 6 and the Roslyn compiler. There existed a tool called StyleCop. Its idea was a good one: automate the checking of coding standards. Its execution though was poor: it focused on the mundane (eg checking correct spacing around keywords and symbols) and the downright bad, such as insisting one clutter a source file was distracting noise. Noise like mandating the superfluous use of `this.` and the requirement to create long-winded XML-based comments for properties, resulting in nonsense like:
@@ -22,7 +22,7 @@ Its aims are simple: provide a set of rules that encourage modern, functional-or
 ## What's implemented
 Thus far, the analyzers implemented are:
 
-**ClassPropertyShouldBePubliclyReadOnly**
+**AA1103-ClassPropertiesMustBePubliclyReadOnly**
 
 **DoNotUseNotImplementedException**
 
@@ -32,7 +32,7 @@ Thus far, the analyzers implemented are:
 
 **InnerTypesMustBePrivate**
 
-**InterfacePropertiesShouldBeReadonly**
+**AA1102-InterfacePropertiesMustBeReadOnly**
 
 **MethodParameterMustNotBeRefOrOut**
 
@@ -92,28 +92,28 @@ A SHOF must only derive a result from the supplied parameter(s). It must not acc
 #### AA1003 Static Methods Must Not Create State
 The only result from calling a SHOF must be the returned value, or an exception. Therefore it must not invoke any method that has a void return type, nor write to any field or property.
 
-### Immutability
+### Immutability and Encapsulation
 A badly named variable that has many values written to it over the course of a long-winded method makes for hard-to-read code. Variables that only written to once both make for easier reading, as a new appropriately named variable must be created for each assignment, and encourage the principle of least surprise. The following rules enforce that idea:
 
-#### AA2000 Parameters Should Not Be Modified
+#### AA1100 Parameters Should Not Be Modified
 Reports when a parameter is used as a mutable variable.
 
-#### AA2001 Variables Should Be Assigned Once
+#### AA1101 Variables Should Be Assigned Once
 Reports when a variable is re-assigned.
 
-#### AA2002 Interface Properties Should Be Read-Only
+#### AA1102 Interface Properties Must Be Read-Only
 Properties defined by interfaces should not have setters.
 
-#### AA2003 Class Properties Should Be Publicly Read-Only
+#### AA1103 Class Properties Must Be Publicly Read-Only
 Class properties should not have public setters.
 
 ###No global/static state
 Global (and to a lesser extent, any static) state creates a testing and maintenance nightmare as code becomes both tightly coupled and tests must be run in sequence through fear that two tests might call two pieces of code that both modify shared state resulting in brittle tests. These rules prevent global and static state:
 
-#### AA3000 Do Not Use Static Fields
+#### AA1200 Do Not Use Static Fields
 Static fields contain static scope and so should be avoided.
 
-#### AA3001 Do Not Use Static Properties
+#### AA1201 Do Not Use Static Properties
 Static properties contain static scope and so should be avoided.
 
 ###Liskov Substitution Principle
@@ -122,10 +122,10 @@ From the [Liskov Substitution Principle](https://en.wikipedia.org/wiki/Liskov_su
 
 Two exceptions defined by the .NET framework are a direct violation of this principle (LSP) and the following two rules check for such violations:
 
-#### AA4000 Do Not Use NotImplementedException
+#### AA2000 Do Not Use NotImplementedException
 NotImplementedException violates LSP and should not be used.
 
-#### AA4001 Do Not Use NotSupportedException
+#### AA2001 Do Not Use NotSupportedException
 NotSupportedException violates LSP and should not be used.
 
 ###Single responsibility principle
@@ -134,17 +134,17 @@ The [single responsibility principle](https://en.wikipedia.org/wiki/Single_respo
 
 The following rules extend this principle to methods and files and seek to identify sections of code that may break that principle:
 
-#### AA5000 Method Parameters Must Not Be Ref Or Out
+#### AA2100 Method Parameters Must Not Be Ref Or Out
 Reports when either `ref` or `out` are used for any parameter of any method. Both of these keywords lead to a method that returns two results via two different routes, breaking the single responsibility principle.
 
-#### AA5001 Method Too Long
+#### AA2101 Method Too Long
 A long method is likely to break the principle by carrying out too many functions. What is too long is highly subjective, so this rule will need to be configurable to allow the maximum lines to be specified.
 
-#### AA5002 File Too Long
+#### AA2102 File Too Long
 A long class is likely to break the principle by carrying out too many functions. What is too long is highly subjective, so this rule will need to be configurable to allow the maximum lines to be specified.
 
-#### AA5003 Method Name Contains And
+#### AA2103 Method Name Contains And
 Methods that contain "And" in their name often undertake two tasks and thus have two responsibilities. Thus they are likely to violate the principle.
 
-#### AA5004 File Must Only Contain One Type Definition
+#### AA2104 File Must Only Contain One Type Definition
 A file that contains more than one class, enum or interface definition inherently contains more than one responsibility.  

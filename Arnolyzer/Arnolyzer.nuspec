@@ -11,13 +11,14 @@
     <iconUrl>https://raw.githubusercontent.com/DavidArno/Arnolyzer/master/arnolyzer-logo.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>Arnolyzer Analyzers</description>
-    <releaseNotes>Initial release.</releaseNotes>
+    <releaseNotes>Added missing YamlDotNet.dll</releaseNotes>
     <copyright>Copyright David Arno, 2016</copyright>
     <tags>Arnolyzer, analyzers</tags>
   </metadata>
   <files>
     <file src="..\Arnolyzer.Analyzers\bin\$configuration$\ArnolyzerAnalyzers.dll" target="analyzers\dotnet\cs" />
     <file src="..\Arnolyzer.Analyzers\bin\$configuration$\SuccincT.dll" target="analyzers\dotnet\cs" />
+    <file src="..\Arnolyzer.Analyzers\bin\$configuration$\YamlDotNet.dll" target="analyzers\dotnet\cs" />
     <file src="tools\*.ps1" target="tools\" />
   </files>
 </package>

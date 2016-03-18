@@ -61,29 +61,56 @@ namespace Arnolyzer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to To provide encapsulation, properties should only make getters publicly available, so interfaces should not define setters for properties..
+        /// </summary>
+        public static string AA1102InterfacePropertiesMustBeReadOnlyDescription {
+            get {
+                return ResourceManager.GetString("AA1102InterfacePropertiesMustBeReadOnlyDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Property `{0}` of interface `{1}` should not define a setter.
+        /// </summary>
+        public static string AA1102InterfacePropertiesMustBeReadOnlyMessageFormat {
+            get {
+                return ResourceManager.GetString("AA1102InterfacePropertiesMustBeReadOnlyMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Properties defined in interfaces should be read-only (no setter).
+        /// </summary>
+        public static string AA1102InterfacePropertiesMustBeReadOnlyTitle {
+            get {
+                return ResourceManager.GetString("AA1102InterfacePropertiesMustBeReadOnlyTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Public classes should not provide publicly accessible setters for properties.
         /// </summary>
-        public static string ClassPropertyShouldBePubliclyReadOnlyDescription {
+        public static string AA1103ClassPropertiesMustBePubliclyReadOnlyDescription {
             get {
-                return ResourceManager.GetString("ClassPropertyShouldBePubliclyReadOnlyDescription", resourceCulture);
+                return ResourceManager.GetString("AA1103ClassPropertiesMustBePubliclyReadOnlyDescription", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Public property `{0}` of class `{1}` should not define a public setter.
         /// </summary>
-        public static string ClassPropertyShouldBePubliclyReadOnlyMessageFormat {
+        public static string AA1103ClassPropertiesMustBePubliclyReadOnlyMessageFormat {
             get {
-                return ResourceManager.GetString("ClassPropertyShouldBePubliclyReadOnlyMessageFormat", resourceCulture);
+                return ResourceManager.GetString("AA1103ClassPropertiesMustBePubliclyReadOnlyMessageFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Public properties defined in public classes should be publicly read-only (no public setter).
+        ///   Looks up a localized string similar to AA1103-ClassPropertiesShouldBePubliclyReadOnly.
         /// </summary>
-        public static string ClassPropertyShouldBePubliclyReadOnlyTitle {
+        public static string AA1103ClassPropertiesMustBePubliclyReadOnlyTitle {
             get {
-                return ResourceManager.GetString("ClassPropertyShouldBePubliclyReadOnlyTitle", resourceCulture);
+                return ResourceManager.GetString("AA1103ClassPropertiesMustBePubliclyReadOnlyTitle", resourceCulture);
             }
         }
         
@@ -192,33 +219,6 @@ namespace Arnolyzer {
         public static string InnerTypesMustBePrivateTitle {
             get {
                 return ResourceManager.GetString("InnerTypesMustBePrivateTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to To provide encapsulation, properties should only make getters publicly available, so interfaces should not define setters for properties..
-        /// </summary>
-        public static string InterfacePropertiesShouldBeReadonlyDescription {
-            get {
-                return ResourceManager.GetString("InterfacePropertiesShouldBeReadonlyDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Property `{0}` of interface `{1}` should not define a setter.
-        /// </summary>
-        public static string InterfacePropertiesShouldBeReadonlyMessageFormat {
-            get {
-                return ResourceManager.GetString("InterfacePropertiesShouldBeReadonlyMessageFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Properties defined in interfaces should be read-only (no setter).
-        /// </summary>
-        public static string InterfacePropertiesShouldBeReadonlyTitle {
-            get {
-                return ResourceManager.GetString("InterfacePropertiesShouldBeReadonlyTitle", resourceCulture);
             }
         }
         

@@ -33,5 +33,16 @@ namespace Arnolyzer.SyntacticAnalyzers.Factories
                                             true,
                                             description);
         }
+
+        internal static DiagnosticDescriptor EnabledByDefaultErrorDescriptor(AnalyzerDetails details)
+        {
+            return new DiagnosticDescriptor(details.DiagnosticId,
+                                            details.Title,
+                                            details.MessageFormat,
+                                            details.Category,
+                                            DiagnosticSeverity.Error,
+                                            true,
+                                            details.Description);
+        }
     }
 }

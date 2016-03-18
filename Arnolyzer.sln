@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arnolyzer.Analyzers", "Arnolyzer.Analyzers\Arnolyzer.Analyzers.csproj", "{0EAB24DA-09A0-4340-8DA4-540D3DDEBBF4}"
 EndProject
@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arnolyzer", "Arnolyzer\Arno
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArnolyzerDogfood", "ArnolyzerDogfood\ArnolyzerDogfood.csproj", "{AD9ED06D-673C-4455-B87C-6E420752DAF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArnolyzerDocumentationGenerator", "ArnolyzerDocumentationGenerator\ArnolyzerDocumentationGenerator.csproj", "{71443423-EFF6-4DA6-BE35-804A1424134A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +38,10 @@ Global
 		{AD9ED06D-673C-4455-B87C-6E420752DAF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD9ED06D-673C-4455-B87C-6E420752DAF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD9ED06D-673C-4455-B87C-6E420752DAF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71443423-EFF6-4DA6-BE35-804A1424134A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71443423-EFF6-4DA6-BE35-804A1424134A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71443423-EFF6-4DA6-BE35-804A1424134A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71443423-EFF6-4DA6-BE35-804A1424134A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

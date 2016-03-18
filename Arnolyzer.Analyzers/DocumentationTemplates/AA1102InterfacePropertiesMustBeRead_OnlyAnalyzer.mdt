@@ -1,0 +1,37 @@
+﻿# %CODE% - %NAME%
+
+## Summary
+<table>
+<tr>
+  <td><strong>Analyzer</strong></td>
+  <td>%ID%</td>
+</tr>
+<tr>
+  <td><strong>Description</strong></td>
+  <td>%DESCRIPTION%</td>
+</tr>
+<tr>
+  <td><strong>Category</strong></td>
+  <td>%CATEGORY%</td>
+</tr>
+</table>
+
+## Cause
+
+A property that providers a getter is likely either:
+1. Violating emcapsulation by providing direct read/write access to a backing field, effectively making that field public, or
+2. Breaking the principle of least astonishment by manipulating the value provided to the setter, such that requesting the value
+back supplies a different value to that set.
+
+In addition, mutable properties break the immutability pattern: the value can change throughout the application. This can lead to
+thread-unsafe code and can make both testing and maintenance harder.
+
+Therefore, interfaces should not, in most cases, define setters as that forces implementing classes down the above violation routes.
+
+## How to fix violations
+
+%CODEFIXES%
+
+## How to suppress violations
+
+%SUPPRESSIONS%

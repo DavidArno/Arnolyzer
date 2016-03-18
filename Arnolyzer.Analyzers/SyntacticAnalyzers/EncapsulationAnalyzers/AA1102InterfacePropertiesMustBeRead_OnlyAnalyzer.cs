@@ -1,4 +1,6 @@
-﻿using System.Collections.Immutable;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using Arnolyzer.RuleExceptionAttributes;
 using Arnolyzer.SyntacticAnalyzers.Factories;
@@ -7,36 +9,34 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 using SuccincT.Options;
+using static Arnolyzer.SyntacticAnalyzers.CommonFunctions;
 
 namespace Arnolyzer.SyntacticAnalyzers.EncapsulationAnalyzers
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
-    public class InterfacePropertiesShouldBeReadonlyAnalyzer : DiagnosticAnalyzer
+    public class AA1102InterfacePropertiesMustBeRead_OnlyAnalyzer : DiagnosticAnalyzer, IAnalyzerDetailsReporter
     {
-        public const string DiagnosticId = "InterfacePropertiesShouldBeReadonly";
+        private static readonly IList<Type> SuppressionAttributes = new List<Type> { typeof(MutablePropertyAttribute) };
 
-        private static readonly LocalizableString Title =
-            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.InterfacePropertiesShouldBeReadonlyTitle));
+        private static readonly AnalyzerDetails AA1102Details =
+            new AnalyzerDetails(nameof(AA1102InterfacePropertiesMustBeRead_OnlyAnalyzer),
+                                AnalyzerCategories.EncapsulationAnalyzers,
+                                nameof(Resources.AA1102InterfacePropertiesMustBeReadOnlyTitle),
+                                nameof(Resources.AA1102InterfacePropertiesMustBeReadOnlyDescription),
+                                nameof(Resources.AA1102InterfacePropertiesMustBeReadOnlyMessageFormat),
+                                SuppressionAttributes);
 
-        private static readonly LocalizableString MessageFormat =
-            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.InterfacePropertiesShouldBeReadonlyMessageFormat));
-
-        private static readonly LocalizableString Description =
-            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.InterfacePropertiesShouldBeReadonlyDescription));
+        public AnalyzerDetails GetAnalyzerDetails() => AA1102Details;
 
         private static readonly DiagnosticDescriptor Rule =
-            DiagnosticDescriptorFactory.EnabledByDefaultErrorDescriptor(AnalyzerCategories.EncapsulationAnalyzers,
-                                                                        DiagnosticId,
-                                                                        Title,
-                                                                        MessageFormat,
-                                                                        Description);
+            DiagnosticDescriptorFactory.EnabledByDefaultErrorDescriptor(AA1102Details);
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
 
-        public override void Initialize(AnalysisContext context)
-            => context.RegisterSyntaxTreeAction(AnalyzeSyntaxTree);
+        public override void Initialize(AnalysisContext context) => 
+            context.RegisterSyntaxTreeAction(AnalyzeSyntaxTree);
 
-        [MutatesParameter]
+        [HasSideEffects]
         private static void AnalyzeSyntaxTree(SyntaxTreeAnalysisContext context)
         {
             var syntaxRoot = context.Tree.GetRoot(context.CancellationToken);
@@ -44,12 +44,13 @@ namespace Arnolyzer.SyntacticAnalyzers.EncapsulationAnalyzers
                 syntaxRoot.DescendantNodes(DoNotDescendIntoTypeDeclarations).Where(NodeIsInterfaceDeclaration).ToList();
 
             var propertyDeclarations = from node in interfaceDeclarations
-                                       from property in node.DescendantNodes().Where(NodeIsPropertyDeclaration)
+                                       from property in node.DescendantNodes().Where(NodeIsPropertyDeclaration).Cast<PropertyDeclarationSyntax>()
+                                       where !PropertyHasIgnoreRuleAttribute(property, SuppressionAttributes)
                                        let interfaceNode = node as InterfaceDeclarationSyntax
                                        select new
                                        {
                                            interfaceName = interfaceNode.Identifier.Text,
-                                           property = property as PropertyDeclarationSyntax
+                                           property
                                        };
 
             foreach (var propertyDeclaration in propertyDeclarations)

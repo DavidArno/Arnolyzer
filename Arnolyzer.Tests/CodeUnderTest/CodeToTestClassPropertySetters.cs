@@ -1,9 +1,11 @@
-﻿namespace Arnolyzer.Tests.CodeUnderTest
+﻿using Arnolyzer.RuleExceptionAttributes;
+
+namespace Arnolyzer.Tests.CodeUnderTest
 {
     public class ContainsSetters
     {
         private bool _property7;
-        public void SomeMethod() { }
+
         public int Property1 { get; }
         public bool Property2 { get; set; }
         public void AnotherMethod() { }
@@ -17,5 +19,8 @@
             get { return _property7; }
             set { _property7 = value; }
         }
+
+        [MutableProperty]
+        public int Property8 { get; set; }
     }
 }

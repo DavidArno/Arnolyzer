@@ -65,14 +65,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\ClassPropertyShouldBePubliclyReadOnlyAnalyzer.cs" />
+    <Compile Include="RuleExceptionAttributes\IAttributeDescriber.cs" />
+    <Compile Include="RuleExceptionAttributes\MutablePropertyAttribute.cs" />
+    <Compile Include="SyntacticAnalyzers\AnalyzerDetails.cs" />
+    <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\AA1103ClassPropertiesMustBePubliclyRead_OnlyAnalyzer.cs" />
     <Compile Include="SyntacticAnalyzers\Factories\LocalizableStringFactory.cs" />
-    <Compile Include="RuleExceptionAttributes\HasSideEffects.cs" />
-    <Compile Include="RuleExceptionAttributes\MutatesParameter.cs" />
+    <Compile Include="RuleExceptionAttributes\HasSideEffectsAttribute.cs" />
+    <Compile Include="RuleExceptionAttributes\MutatesParameterAttribute.cs" />
     <Compile Include="SyntacticAnalyzers\AnalyzerCategories.cs" />
     <Compile Include="SyntacticAnalyzers\CommonFunctions.cs" />
-    <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\InterfacePropertiesShouldBeReadonlyAnalyzer.cs" />
+    <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\AA1102InterfacePropertiesMustBeRead_OnlyAnalyzer.cs" />
     <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\InnerTypesMustBePrivateAnalyzer.cs" />
+    <Compile Include="SyntacticAnalyzers\IAnalyzerDetailsReporter.cs" />
     <Compile Include="SyntacticAnalyzers\LiskovSubstitutionPrincipleAnalyzers\DoNotUseNotSupportedExceptionAnalyzer.cs" />
     <Compile Include="SyntacticAnalyzers\LiskovSubstitutionPrincipleAnalyzers\DoNotUseNotImplementedExceptionAnalyzer.cs" />
     <Compile Include="SyntacticAnalyzers\LiskovSubstitutionPrincipleAnalyzers\LSPViolatingExceptionReporter.cs" />
@@ -102,6 +106,8 @@
   <ItemGroup>
     <None Include="Analysis.ruleset" />
     <None Include="Arnolyzer.Analyzers.ruleset" />
+    <None Include="DocumentationTemplates\AA1102InterfacePropertiesMustBeRead_OnlyAnalyzer.mdt" />
+    <None Include="DocumentationTemplates\AA1103ClassPropertiesMustBePubliclyRead_OnlyAnalyzer.mdt" />
     <None Include="packages.config" />
     <None Include="ReadMe.txt" />
     <None Include="test.json" />

@@ -92,8 +92,8 @@
     <Compile Include="DiagnosticVerification\DiagnosticsGenerator.cs" />
     <Compile Include="DiagnosticVerification\DiagnosticVerifier.cs" />
     <Compile Include="DiagnosticVerification\DocumentSetCreator.cs" />
-    <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\ClassPropertyShouldBePubliclyReadOnlyAnalyzerTests.cs" />
-    <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\InterfacePropertiesShouldBeReadonlyTests.cs" />
+    <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\AA1103ClassPropertiesShouldBePubliclyRead_OnlyAnalyzer_Tests.cs" />
+    <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\AA1102InterfacePropertiesMustBeRead_OnlyAnalyzerTests.cs" />
     <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\InnerClassesMustBePrivateAnalyzerTests.cs" />
     <Compile Include="SyntacticAnalyzers\LiskovSubstitutionPrincipleAnalyzers\DoNotUseNotSupportedExceptionAnalyzerTests.cs" />
     <Compile Include="SyntacticAnalyzers\LiskovSubstitutionPrincipleAnalyzers\DoNotUseNotImplementedExceptionAnalyzerTests.cs" />

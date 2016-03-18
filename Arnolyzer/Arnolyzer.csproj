@@ -36,11 +36,14 @@
     <CodeAnalysisRuleSet>Arnolyzer.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\Arnolyzer.Analyzers\RuleExceptionAttributes\HasSideEffects.cs">
-      <Link>RuleExceptionAttributes\HasSideEffects.cs</Link>
+    <Compile Include="..\Arnolyzer.Analyzers\RuleExceptionAttributes\HasSideEffectsAttribute.cs">
+      <Link>RuleExceptionAttributes\HasSideEffectsAttribute.cs</Link>
     </Compile>
-    <Compile Include="..\Arnolyzer.Analyzers\RuleExceptionAttributes\MutatesParameter.cs">
-      <Link>RuleExceptionAttributes\MutatesParameter.cs</Link>
+    <Compile Include="..\Arnolyzer.Analyzers\RuleExceptionAttributes\MutablePropertyAttribute.cs">
+      <Link>RuleExceptionAttributes\MutablePropertyAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\Arnolyzer.Analyzers\RuleExceptionAttributes\MutatesParameterAttribute.cs">
+      <Link>RuleExceptionAttributes\MutatesParameterAttribute.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

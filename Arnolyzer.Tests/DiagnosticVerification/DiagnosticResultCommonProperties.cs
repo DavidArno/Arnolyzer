@@ -1,4 +1,5 @@
-﻿using Microsoft.CodeAnalysis;
+﻿using Arnolyzer.SyntacticAnalyzers;
+using Microsoft.CodeAnalysis;
 
 namespace Arnolyzer.Tests.DiagnosticVerification
 {
@@ -15,6 +16,15 @@ namespace Arnolyzer.Tests.DiagnosticVerification
             Severity = severity;
             Category = category;
             Id = id;
+        }
+
+        public DiagnosticResultCommonProperties(AnalyzerDetails analyzerDetails, DiagnosticSeverity severity)
+        {
+            Severity = severity;
+            Title = analyzerDetails.Title.ToString();
+            Description = analyzerDetails.Description.ToString();
+            Category = analyzerDetails.Category;
+            Id = analyzerDetails.DiagnosticId;
         }
 
         public string Title { get; }
