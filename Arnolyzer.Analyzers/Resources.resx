@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AA1102InterfacePropertiesMustBeReadOnlyDescription" xml:space="preserve">
+    <value>To provide encapsulation, properties should only make getters publicly available, so interfaces should not define setters for properties.</value>
+  </data>
+  <data name="AA1102InterfacePropertiesMustBeReadOnlyMessageFormat" xml:space="preserve">
+    <value>Property `{0}` of interface `{1}` should not define a setter</value>
+  </data>
+  <data name="AA1102InterfacePropertiesMustBeReadOnlyTitle" xml:space="preserve">
+    <value>AA1102-InterfacePropertiesMustBeReadOnly</value>
+  </data>
   <data name="AA1103ClassPropertiesMustBePubliclyReadOnlyDescription" xml:space="preserve">
     <value>Public classes should not provide publicly accessible setters for properties</value>
   </data>
@@ -124,7 +133,7 @@
     <value>Public property `{0}` of class `{1}` should not define a public setter</value>
   </data>
   <data name="AA1103ClassPropertiesMustBePubliclyReadOnlyTitle" xml:space="preserve">
-    <value>AA1103-ClassPropertiesShouldBePubliclyReadOnly</value>
+    <value>AA1103-ClassPropertiesMustBePubliclyReadOnly</value>
   </data>
   <data name="DoNotUseNotImplementedExceptionDescription" xml:space="preserve">
     <value>The NotImplementedException is a direct violation of the Liskov Substitution Principle (LSP) and so must not be used</value>
@@ -161,15 +170,6 @@
   </data>
   <data name="InnerTypesMustBePrivateTitle" xml:space="preserve">
     <value>Inner type declarations should be marked private</value>
-  </data>
-  <data name="AA1102InterfacePropertiesMustBeReadOnlyDescription" xml:space="preserve">
-    <value>To provide encapsulation, properties should only make getters publicly available, so interfaces should not define setters for properties.</value>
-  </data>
-  <data name="AA1102InterfacePropertiesMustBeReadOnlyMessageFormat" xml:space="preserve">
-    <value>Property `{0}` of interface `{1}` should not define a setter</value>
-  </data>
-  <data name="AA1102InterfacePropertiesMustBeReadOnlyTitle" xml:space="preserve">
-    <value>Properties defined in interfaces should be read-only (no setter)</value>
   </data>
   <data name="MethodParameterMustNotBeRefOrOutDescription" xml:space="preserve">
     <value>Method parameters must not use REF or OUT parameters; all results should be via a return</value>

@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using Arnolyzer.RuleExceptionAttributes;
-using Arnolyzer.SyntacticAnalyzers.Factories;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 using SuccincT.Options;
 using static Arnolyzer.SyntacticAnalyzers.CommonFunctions;
+using static Arnolyzer.SyntacticAnalyzers.DefaultState;
+using static Microsoft.CodeAnalysis.DiagnosticSeverity;
 
 namespace Arnolyzer.SyntacticAnalyzers.EncapsulationAnalyzers
 {
@@ -21,6 +22,8 @@ namespace Arnolyzer.SyntacticAnalyzers.EncapsulationAnalyzers
         private static readonly AnalyzerDetails AA1103Details =
             new AnalyzerDetails(nameof(AA1103ClassPropertiesMustBePubliclyRead_OnlyAnalyzer),
                                 AnalyzerCategories.EncapsulationAnalyzers,
+                                EnabledByDefault,
+                                Error, 
                                 nameof(Resources.AA1103ClassPropertiesMustBePubliclyReadOnlyTitle),
                                 nameof(Resources.AA1103ClassPropertiesMustBePubliclyReadOnlyDescription),
                                 nameof(Resources.AA1103ClassPropertiesMustBePubliclyReadOnlyMessageFormat),
@@ -28,8 +31,7 @@ namespace Arnolyzer.SyntacticAnalyzers.EncapsulationAnalyzers
 
         public AnalyzerDetails GetAnalyzerDetails() => AA1103Details;
 
-        private static readonly DiagnosticDescriptor Rule =
-            DiagnosticDescriptorFactory.EnabledByDefaultErrorDescriptor(AA1103Details);
+        private static readonly DiagnosticDescriptor Rule = AA1103Details.GetDiagnosticDescriptor();
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
 

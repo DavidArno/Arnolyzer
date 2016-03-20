@@ -26,10 +26,12 @@ namespace ArnolyzerDocumentationGenerator
 
                 var processedContents = template
                     .Replace("%NAME%", details.Name)
-                    .Replace("%CODE%", details.Code)
+                    .Replace("%CODE%", details.Title.ToString())
                     .Replace("%ID%", details.DiagnosticId)
                     .Replace("%DESCRIPTION%", details.Description.ToString())
                     .Replace("%CATEGORY%", details.Category)
+                    .Replace("%SEVERITY%", details.SeverityText)
+                    .Replace("%ENABLED-BY_DEFAULT%", details.EnabledByDefault ? "Yes" : "No")
                     .Replace("%CAUSE-WORDS%", extraWords.Cause)
                     .Replace("%PRE-CODEFIX-WORDS%", extraWords.PreCodeFix)
                     .Replace("%POST-CODEFIX-WORDS%", extraWords.PostCodeFix)
@@ -38,7 +40,7 @@ namespace ArnolyzerDocumentationGenerator
                     .Replace("%CODEFIXES%", "There currently aren't any implemented code-fixes for this rule.")
                     .Replace("%SUPPRESSIONS%", GenerateSuppressionMessages(details.SuppressionAttributes));
 
-                File.WriteAllText($@"..\..\..\..\Arnolyzer.wiki\{analyzerName}.md",
+                File.WriteAllText($@"..\..\..\Arnolyzer.Analyzers\Documentation\{analyzerName}.md",
                                   processedContents);
             }
         }

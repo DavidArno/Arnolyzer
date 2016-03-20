@@ -68,6 +68,7 @@
     <Compile Include="RuleExceptionAttributes\IAttributeDescriber.cs" />
     <Compile Include="RuleExceptionAttributes\MutablePropertyAttribute.cs" />
     <Compile Include="SyntacticAnalyzers\AnalyzerDetails.cs" />
+    <Compile Include="SyntacticAnalyzers\DefaultState.cs" />
     <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\AA1103ClassPropertiesMustBePubliclyRead_OnlyAnalyzer.cs" />
     <Compile Include="SyntacticAnalyzers\Factories\LocalizableStringFactory.cs" />
     <Compile Include="RuleExceptionAttributes\HasSideEffectsAttribute.cs" />

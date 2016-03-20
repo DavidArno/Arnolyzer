@@ -79,7 +79,7 @@ namespace Arnolyzer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Properties defined in interfaces should be read-only (no setter).
+        ///   Looks up a localized string similar to AA1102-InterfacePropertiesMustBeReadOnly.
         /// </summary>
         public static string AA1102InterfacePropertiesMustBeReadOnlyTitle {
             get {
@@ -106,7 +106,7 @@ namespace Arnolyzer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AA1103-ClassPropertiesShouldBePubliclyReadOnly.
+        ///   Looks up a localized string similar to AA1103-ClassPropertiesMustBePubliclyReadOnly.
         /// </summary>
         public static string AA1103ClassPropertiesMustBePubliclyReadOnlyTitle {
             get {

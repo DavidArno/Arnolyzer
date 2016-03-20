@@ -9,7 +9,8 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 using SuccincT.Options;
 using static Arnolyzer.SyntacticAnalyzers.CommonFunctions;
-using static Arnolyzer.SyntacticAnalyzers.Factories.DiagnosticDescriptorFactory;
+using static Arnolyzer.SyntacticAnalyzers.DefaultState;
+using static Microsoft.CodeAnalysis.DiagnosticSeverity;
 
 namespace Arnolyzer.SyntacticAnalyzers.EncapsulationAnalyzers
 {
@@ -21,6 +22,8 @@ namespace Arnolyzer.SyntacticAnalyzers.EncapsulationAnalyzers
         private static readonly AnalyzerDetails AA1102Details =
             new AnalyzerDetails(nameof(AA1102InterfacePropertiesMustBeRead_OnlyAnalyzer),
                                 AnalyzerCategories.EncapsulationAnalyzers,
+                                EnabledByDefault,
+                                Error,
                                 nameof(Resources.AA1102InterfacePropertiesMustBeReadOnlyTitle),
                                 nameof(Resources.AA1102InterfacePropertiesMustBeReadOnlyDescription),
                                 nameof(Resources.AA1102InterfacePropertiesMustBeReadOnlyMessageFormat),
@@ -28,7 +31,7 @@ namespace Arnolyzer.SyntacticAnalyzers.EncapsulationAnalyzers
 
         public AnalyzerDetails GetAnalyzerDetails() => AA1102Details;
 
-        private static readonly DiagnosticDescriptor Rule = EnabledByDefaultErrorDescriptor(AA1102Details);
+        private static readonly DiagnosticDescriptor Rule = AA1102Details.GetDiagnosticDescriptor();
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
 

@@ -16,10 +16,9 @@ namespace Arnolyzer.Tests.SyntacticAnalyzers.EncapsulationAnalyzers
         public void AnalyzerCorrectlySetsItsDetails()
         {
             var details = new AA1103ClassPropertiesMustBePubliclyRead_OnlyAnalyzer().GetAnalyzerDetails();
-            AreEqual("AA1103", details.Code);
             AreEqual(AnalyzerCategories.EncapsulationAnalyzers, details.Category);
             AreEqual("Class Properties Must Be Publicly Read-Only", details.Name);
-            AreEqual("AA1103ClassPropertiesMustBePubliclyRead_Only", details.DiagnosticId);
+            AreEqual("AA1103ClassPropertiesMustBePubliclyReadOnly", details.DiagnosticId);
             AreEqual(Resources.AA1103ClassPropertiesMustBePubliclyReadOnlyTitle, details.Title.ToString());
             AreEqual(Resources.AA1103ClassPropertiesMustBePubliclyReadOnlyDescription, details.Description.ToString());
             AreEqual(Resources.AA1103ClassPropertiesMustBePubliclyReadOnlyMessageFormat, details.MessageFormat.ToString());
