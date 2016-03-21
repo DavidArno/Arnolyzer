@@ -135,6 +135,15 @@
   <data name="AA1103ClassPropertiesMustBePubliclyReadOnlyTitle" xml:space="preserve">
     <value>AA1103-ClassPropertiesMustBePubliclyReadOnly</value>
   </data>
+  <data name="AA1104InnerTypesMustBePrivateDescription" xml:space="preserve">
+    <value>Inner types should be treated as implementation details and encapsulated by marking them as private</value>
+  </data>
+  <data name="AA1104InnerTypesMustBePrivateMessageFormat" xml:space="preserve">
+    <value>Type `{0}` is defined inside another type, so should be made private</value>
+  </data>
+  <data name="AA1104InnerTypesMustBePrivateTitle" xml:space="preserve">
+    <value>AA1104-InnerTypesMustBePrivate</value>
+  </data>
   <data name="DoNotUseNotImplementedExceptionDescription" xml:space="preserve">
     <value>The NotImplementedException is a direct violation of the Liskov Substitution Principle (LSP) and so must not be used</value>
   </data>
@@ -161,15 +170,6 @@
   </data>
   <data name="FileMustOnlyContainOneTypeDefinitionTitle" xml:space="preserve">
     <value>A file should only contain one type definition</value>
-  </data>
-  <data name="InnerTypesMustBePrivateDescription" xml:space="preserve">
-    <value>Inner types should be treated as implementation details and encapsulated by marking them as private</value>
-  </data>
-  <data name="InnerTypesMustBePrivateMessageFormat" xml:space="preserve">
-    <value>Type `{0}` is defined inside another type, so should be made private</value>
-  </data>
-  <data name="InnerTypesMustBePrivateTitle" xml:space="preserve">
-    <value>Inner type declarations should be marked private</value>
   </data>
   <data name="MethodParameterMustNotBeRefOrOutDescription" xml:space="preserve">
     <value>Method parameters must not use REF or OUT parameters; all results should be via a return</value>

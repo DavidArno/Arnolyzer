@@ -1,41 +1,42 @@
-﻿using System.Collections.Immutable;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using Arnolyzer.RuleExceptionAttributes;
-using Arnolyzer.SyntacticAnalyzers.Factories;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
+using static Arnolyzer.SyntacticAnalyzers.DefaultState;
+using static Microsoft.CodeAnalysis.DiagnosticSeverity;
 
 namespace Arnolyzer.SyntacticAnalyzers.EncapsulationAnalyzers
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
-    public class InnerTypesMustBePrivateAnalyzer : DiagnosticAnalyzer
+    public class AA1104InnerTypesMustBePrivateAnalyzer : DiagnosticAnalyzer, IAnalyzerDetailsReporter
     {
-        public const string DiagnosticId = "InnerTypesMustBePrivate";
+        private static readonly IList<Type> SuppressionAttributes = new List<Type>();
 
-        private static readonly LocalizableString Title =
-            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.InnerTypesMustBePrivateTitle));
+        private static readonly AnalyzerDetails AA1104Details =
+            new AnalyzerDetails(nameof(AA1104InnerTypesMustBePrivateAnalyzer),
+                                AnalyzerCategories.EncapsulationAnalyzers,
+                                EnabledByDefault,
+                                Error,
+                                nameof(Resources.AA1104InnerTypesMustBePrivateTitle),
+                                nameof(Resources.AA1104InnerTypesMustBePrivateDescription),
+                                nameof(Resources.AA1104InnerTypesMustBePrivateMessageFormat),
+                                SuppressionAttributes);
 
-        private static readonly LocalizableString MessageFormat =
-            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.InnerTypesMustBePrivateMessageFormat));
+        public AnalyzerDetails GetAnalyzerDetails() => AA1104Details;
 
-        private static readonly LocalizableString Description =
-            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.InnerTypesMustBePrivateDescription));
-
-        private static readonly DiagnosticDescriptor Rule =
-            DiagnosticDescriptorFactory.EnabledByDefaultErrorDescriptor(AnalyzerCategories.EncapsulationAnalyzers,
-                                                                        DiagnosticId,
-                                                                        Title,
-                                                                        MessageFormat,
-                                                                        Description);
+        private static readonly DiagnosticDescriptor Rule = AA1104Details.GetDiagnosticDescriptor();
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
 
         public override void Initialize(AnalysisContext context)
             => context.RegisterSyntaxTreeAction(AnalyzeSyntaxTree);
 
-        [MutatesParameter]
+        [HasSideEffects]
         private static void AnalyzeSyntaxTree(SyntaxTreeAnalysisContext context)
         {
             var syntaxRoot = context.Tree.GetRoot(context.CancellationToken);
@@ -46,14 +47,13 @@ namespace Arnolyzer.SyntacticAnalyzers.EncapsulationAnalyzers
                                          from innerNode in node.DescendantNodes().Where(NodeIsTypeDeclaration)
                                          select innerNode).Cast<BaseTypeDeclarationSyntax>();
 
-            foreach (var typeDeclaration in innerTypeDeclarations)
+            foreach (var identifier in 
+                     from typeDeclaration in innerTypeDeclarations
+                     where typeDeclaration.Modifiers.Count(t => t.Kind() == SyntaxKind.InternalKeyword ||
+                                                                t.Kind() == SyntaxKind.PublicKeyword) > 0
+                     select typeDeclaration.Identifier)
             {
-                if (typeDeclaration.Modifiers.Count(t => t.Kind() == SyntaxKind.InternalKeyword ||
-                                                         t.Kind() == SyntaxKind.PublicKeyword) > 0)
-                {
-                    var identifier = typeDeclaration.Identifier;
-                    context.ReportDiagnostic(Diagnostic.Create(Rule, identifier.GetLocation(), identifier.Text));
-                }
+                context.ReportDiagnostic(Diagnostic.Create(Rule, identifier.GetLocation(), identifier.Text));
             }
         }
 

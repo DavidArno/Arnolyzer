@@ -1,7 +1,6 @@
 ﻿using Arnolyzer.SyntacticAnalyzers;
 using Arnolyzer.SyntacticAnalyzers.EncapsulationAnalyzers;
 using Arnolyzer.Tests.DiagnosticVerification;
-using Microsoft.CodeAnalysis;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SuccincT.Options;
 using static System.String;
@@ -33,8 +32,7 @@ namespace Arnolyzer.Tests.SyntacticAnalyzers.EncapsulationAnalyzers
         public void ClassPropertiesWithSetters_YieldsDiagnostics()
         {
             var commonExpected =
-                new DiagnosticResultCommonProperties(new AA1103ClassPropertiesMustBePubliclyRead_OnlyAnalyzer().GetAnalyzerDetails(),
-                                                     DiagnosticSeverity.Error);
+                new DiagnosticResultCommonProperties(new AA1103ClassPropertiesMustBePubliclyRead_OnlyAnalyzer());
             var expected1 =
                 new DiagnosticResult(commonExpected,
                                      Format(Resources.AA1103ClassPropertiesMustBePubliclyReadOnlyMessageFormat,

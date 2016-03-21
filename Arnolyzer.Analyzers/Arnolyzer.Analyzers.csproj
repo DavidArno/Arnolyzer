@@ -36,8 +36,8 @@
     <CodeAnalysisRuleSet>Arnolyzer.Analyzers.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ArnolyzerDogfood, Version=1.0.5915.40051, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ArnolyzerDogfood.1.0.5915.40051\lib\net452\ArnolyzerDogfood.dll</HintPath>
+    <Reference Include="ArnolyzerDogfood, Version=1.0.5921.15302, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ArnolyzerDogfood.1.0.5921.15302\lib\net452\ArnolyzerDogfood.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CodeAnalysis, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -76,7 +76,7 @@
     <Compile Include="SyntacticAnalyzers\AnalyzerCategories.cs" />
     <Compile Include="SyntacticAnalyzers\CommonFunctions.cs" />
     <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\AA1102InterfacePropertiesMustBeRead_OnlyAnalyzer.cs" />
-    <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\InnerTypesMustBePrivateAnalyzer.cs" />
+    <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\AA1104InnerTypesMustBePrivateAnalyzer.cs" />
     <Compile Include="SyntacticAnalyzers\IAnalyzerDetailsReporter.cs" />
     <Compile Include="SyntacticAnalyzers\LiskovSubstitutionPrincipleAnalyzers\DoNotUseNotSupportedExceptionAnalyzer.cs" />
     <Compile Include="SyntacticAnalyzers\LiskovSubstitutionPrincipleAnalyzers\DoNotUseNotImplementedExceptionAnalyzer.cs" />
@@ -105,6 +105,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DocumentationTemplates\AA1104InnerTypesMustBePrivateAnalyzer.cause.txt" />
     <None Include="Analysis.ruleset" />
     <None Include="Arnolyzer.Analyzers.ruleset" />
     <None Include="DocumentationTemplates\AnalyzerTemplate.md" />

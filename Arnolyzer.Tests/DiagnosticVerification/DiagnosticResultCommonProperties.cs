@@ -18,13 +18,14 @@ namespace Arnolyzer.Tests.DiagnosticVerification
             Id = id;
         }
 
-        public DiagnosticResultCommonProperties(AnalyzerDetails analyzerDetails, DiagnosticSeverity severity)
+        public DiagnosticResultCommonProperties(IAnalyzerDetailsReporter analyzer)
         {
-            Severity = severity;
-            Title = analyzerDetails.Title.ToString();
-            Description = analyzerDetails.Description.ToString();
-            Category = analyzerDetails.Category;
-            Id = analyzerDetails.DiagnosticId;
+            var details = analyzer.GetAnalyzerDetails();
+            Severity = details.Severity;
+            Title = details.Title.ToString();
+            Description = details.Description.ToString();
+            Category = details.Category;
+            Id = details.DiagnosticId;
         }
 
         public string Title { get; }

@@ -115,6 +115,33 @@ namespace Arnolyzer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Inner types should be treated as implementation details and encapsulated by marking them as private.
+        /// </summary>
+        public static string AA1104InnerTypesMustBePrivateDescription {
+            get {
+                return ResourceManager.GetString("AA1104InnerTypesMustBePrivateDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type `{0}` is defined inside another type, so should be made private.
+        /// </summary>
+        public static string AA1104InnerTypesMustBePrivateMessageFormat {
+            get {
+                return ResourceManager.GetString("AA1104InnerTypesMustBePrivateMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AA1104-InnerTypesMustBePrivate.
+        /// </summary>
+        public static string AA1104InnerTypesMustBePrivateTitle {
+            get {
+                return ResourceManager.GetString("AA1104InnerTypesMustBePrivateTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The NotImplementedException is a direct violation of the Liskov Substitution Principle (LSP) and so must not be used.
         /// </summary>
         public static string DoNotUseNotImplementedExceptionDescription {
@@ -192,33 +219,6 @@ namespace Arnolyzer {
         public static string FileMustOnlyContainOneTypeDefinitionTitle {
             get {
                 return ResourceManager.GetString("FileMustOnlyContainOneTypeDefinitionTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Inner types should be treated as implementation details and encapsulated by marking them as private.
-        /// </summary>
-        public static string InnerTypesMustBePrivateDescription {
-            get {
-                return ResourceManager.GetString("InnerTypesMustBePrivateDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Type `{0}` is defined inside another type, so should be made private.
-        /// </summary>
-        public static string InnerTypesMustBePrivateMessageFormat {
-            get {
-                return ResourceManager.GetString("InnerTypesMustBePrivateMessageFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Inner type declarations should be marked private.
-        /// </summary>
-        public static string InnerTypesMustBePrivateTitle {
-            get {
-                return ResourceManager.GetString("InnerTypesMustBePrivateTitle", resourceCulture);
             }
         }
         

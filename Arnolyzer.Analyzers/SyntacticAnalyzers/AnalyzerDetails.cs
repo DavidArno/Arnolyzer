@@ -9,7 +9,6 @@ namespace Arnolyzer.SyntacticAnalyzers
     public class AnalyzerDetails
     {
         private readonly DefaultState _defaultState;
-        private readonly DiagnosticSeverity _severity;
 
         public AnalyzerDetails(string className, 
                                string category,
@@ -26,7 +25,7 @@ namespace Arnolyzer.SyntacticAnalyzers
 
             Category = category;
             _defaultState = defaultState;
-            _severity = severity;
+            Severity = severity;
             SuppressionAttributes = suppressionAttributes;
 
             Title = LocalizableResourceString(titleResourceName);
@@ -45,7 +44,8 @@ namespace Arnolyzer.SyntacticAnalyzers
         public LocalizableString Title { get; }
         public LocalizableString Description { get; }
         public LocalizableString MessageFormat { get; }
-        public string SeverityText => _severity.SeverityType();
+        public DiagnosticSeverity Severity;
+        public string SeverityText => Severity.SeverityType();
         public bool EnabledByDefault => _defaultState.IsEnabledByDefault();
 
         public DiagnosticDescriptor GetDiagnosticDescriptor() =>
@@ -53,7 +53,7 @@ namespace Arnolyzer.SyntacticAnalyzers
                                      Title,
                                      MessageFormat,
                                      Category,
-                                     _severity,
+                                     Severity,
                                      EnabledByDefault,
                                      Description);
 

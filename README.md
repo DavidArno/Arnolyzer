@@ -1,7 +1,7 @@
 # Arnolyzer
 A clean-code, Roslyn-based, analyzer for C# 6.
 
-Readme last updated: 18th Mar 2016.
+Readme last updated: 21st Mar 2016.
 
 ## Why does this project exist?
 Let's roll back the clock a bit to life before C# 6 and the Roslyn compiler. There existed a tool called StyleCop. Its idea was a good one: automate the checking of coding standards. Its execution though was poor: it focused on the mundane (eg checking correct spacing around keywords and symbols) and the downright bad, such as insisting one clutter a source file was distracting noise. Noise like mandating the superfluous use of `this.` and the requirement to create long-winded XML-based comments for properties, resulting in nonsense like:
@@ -30,7 +30,7 @@ Thus far, the analyzers implemented are:
 
 **FileMustOnlyContainOneTypeDefinition**
 
-**InnerTypesMustBePrivate**
+**AA1104-InnerTypesMustBePrivate**
 
 **AA1102-InterfacePropertiesMustBeReadOnly**
 
@@ -95,17 +95,20 @@ The only result from calling a SHOF must be the returned value, or an exception.
 ### Immutability and Encapsulation
 A badly named variable that has many values written to it over the course of a long-winded method makes for hard-to-read code. Variables that only written to once both make for easier reading, as a new appropriately named variable must be created for each assignment, and encourage the principle of least surprise. The following rules enforce that idea:
 
-#### AA1100 Parameters Should Not Be Modified
+#### AA1100 - Parameters Should Not Be Modified
 Reports when a parameter is used as a mutable variable.
 
-#### AA1101 Variables Should Be Assigned Once
+#### AA1101 - Variables Should Be Assigned Once
 Reports when a variable is re-assigned.
 
-#### AA1102 Interface Properties Must Be Read-Only
+#### AA1102 - Interface Properties Must Be Read-Only
 Properties defined by interfaces should not have setters.
 
-#### AA1103 Class Properties Must Be Publicly Read-Only
+#### AA1103 - Class Properties Must Be Publicly Read-Only
 Class properties should not have public setters.
+
+#### AA1104 - Inner Types Must Be Private
+Inner types should not be marked `internal` or `public` as this leads to leaky abstractions.
 
 ###No global/static state
 Global (and to a lesser extent, any static) state creates a testing and maintenance nightmare as code becomes both tightly coupled and tests must be run in sequence through fear that two tests might call two pieces of code that both modify shared state resulting in brittle tests. These rules prevent global and static state:

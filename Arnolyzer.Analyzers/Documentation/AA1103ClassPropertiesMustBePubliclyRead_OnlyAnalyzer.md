@@ -24,7 +24,7 @@
 ## Cause
 
 A property that providers a getter is likely either:
-1. Violating emcapsulation by providing direct read/write access to a backing field, effectively making that field public, or
+1. Violating encapsulation by providing direct read/write access to a backing field, effectively making that field public, or
 2. Breaking the principle of least astonishment by manipulating the value provided to the setter, such that requesting the value
 back supplies a different value to that set.
 
@@ -40,4 +40,4 @@ There currently aren't any implemented code-fixes for this rule.
 This rule can be suppressed using the following attributes: 
 
 **[MutableProperty]**<br/>
-A public setter may sometiomes be required. It is therefore allowed if decorated with the MutableProperty attribute as it explicitly reaffirms the need for the property to be mutable.
+A public setter may sometimes be required. It is therefore allowed if decorated with the MutableProperty attribute as it explicitly reaffirms the need for the property to be mutable.

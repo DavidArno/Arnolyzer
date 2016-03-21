@@ -67,7 +67,7 @@ namespace ArnolyzerDocumentationGenerator
         private static string GenerateSuppressionMessages(IList<Type> suppressionAttributes) => 
             suppressionAttributes.Any()
                 ? $"This rule can be suppressed using the following attributes: {DescribeEachAttribute(suppressionAttributes)}"
-                : "";
+                : "This rule cannot be suppressed.";
 
         private static string DescribeEachAttribute(IEnumerable<Type> suppressionAttributes) => 
             suppressionAttributes.Aggregate("", (previous, attribute) => $"{previous}{NewLine}{NewLine}{FormatAttribute(attribute)}");
