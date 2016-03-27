@@ -5,19 +5,6 @@ namespace Arnolyzer.Tests.DiagnosticVerification
 {
     internal class DiagnosticResultCommonProperties
     {
-        public DiagnosticResultCommonProperties(string title,
-                                                string description,
-                                                DiagnosticSeverity severity,
-                                                string category,
-                                                string id)
-        {
-            Title = title;
-            Description = description;
-            Severity = severity;
-            Category = category;
-            Id = id;
-        }
-
         public DiagnosticResultCommonProperties(IAnalyzerDetailsReporter analyzer)
         {
             var details = analyzer.GetAnalyzerDetails();

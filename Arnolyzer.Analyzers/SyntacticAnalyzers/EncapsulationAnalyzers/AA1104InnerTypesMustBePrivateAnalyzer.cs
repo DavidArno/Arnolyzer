@@ -19,7 +19,7 @@ namespace Arnolyzer.SyntacticAnalyzers.EncapsulationAnalyzers
 
         private static readonly AnalyzerDetails AA1104Details =
             new AnalyzerDetails(nameof(AA1104InnerTypesMustBePrivateAnalyzer),
-                                AnalyzerCategories.EncapsulationAnalyzers,
+                                AnalyzerCategories.EncapsulationAndImmutabilityAnalyzers,
                                 EnabledByDefault,
                                 Error,
                                 nameof(Resources.AA1104InnerTypesMustBePrivateTitle),

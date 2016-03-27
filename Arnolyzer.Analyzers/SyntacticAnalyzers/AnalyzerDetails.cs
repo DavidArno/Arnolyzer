@@ -44,7 +44,7 @@ namespace Arnolyzer.SyntacticAnalyzers
         public LocalizableString Title { get; }
         public LocalizableString Description { get; }
         public LocalizableString MessageFormat { get; }
-        public DiagnosticSeverity Severity;
+        public DiagnosticSeverity Severity { get; }
         public string SeverityText => Severity.SeverityType();
         public bool EnabledByDefault => _defaultState.IsEnabledByDefault();
 

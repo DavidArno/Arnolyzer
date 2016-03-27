@@ -61,6 +61,60 @@ namespace Arnolyzer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Static methods should return a value (must not be null).
+        /// </summary>
+        public static string AA1000StaticMethodsMustNotBeVoidDescription {
+            get {
+                return ResourceManager.GetString("AA1000StaticMethodsMustNotBeVoidDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Static method &apos;{0}&apos; is void. It should return a value.
+        /// </summary>
+        public static string AA1000StaticMethodsMustNotBeVoidMessageFormat {
+            get {
+                return ResourceManager.GetString("AA1000StaticMethodsMustNotBeVoidMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AA1000-StaticMethodsMustNotBeVoid.
+        /// </summary>
+        public static string AA1000StaticMethodsMustNotBeVoidTitle {
+            get {
+                return ResourceManager.GetString("AA1000StaticMethodsMustNotBeVoidTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Static methods should have at least one parameter.
+        /// </summary>
+        public static string AA1001StaticMethodsMustHaveAtLeastOneParameterDescription {
+            get {
+                return ResourceManager.GetString("AA1001StaticMethodsMustHaveAtLeastOneParameterDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Static method &apos;{0}&apos; doesn&apos;t have any parameters. It should have at least one.
+        /// </summary>
+        public static string AA1001StaticMethodsMustHaveAtLeastOneParameterMessageFormat {
+            get {
+                return ResourceManager.GetString("AA1001StaticMethodsMustHaveAtLeastOneParameterMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AA1001-StaticMethodsMustHaveAtLeastOneParameter.
+        /// </summary>
+        public static string AA1001StaticMethodsMustHaveAtLeastOneParameterTitle {
+            get {
+                return ResourceManager.GetString("AA1001StaticMethodsMustHaveAtLeastOneParameterTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To provide encapsulation, properties should only make getters publicly available, so interfaces should not define setters for properties..
         /// </summary>
         public static string AA1102InterfacePropertiesMustBeReadOnlyDescription {
@@ -144,189 +198,135 @@ namespace Arnolyzer {
         /// <summary>
         ///   Looks up a localized string similar to The NotImplementedException is a direct violation of the Liskov Substitution Principle (LSP) and so must not be used.
         /// </summary>
-        public static string DoNotUseNotImplementedExceptionDescription {
+        public static string AA2000DoNotUseNotImplementedExceptionDescription {
             get {
-                return ResourceManager.GetString("DoNotUseNotImplementedExceptionDescription", resourceCulture);
+                return ResourceManager.GetString("AA2000DoNotUseNotImplementedExceptionDescription", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Throw statement uses the NotImplementedException, which is a violation of the LSP.
         /// </summary>
-        public static string DoNotUseNotImplementedExceptionMessageFormat {
+        public static string AA2000DoNotUseNotImplementedExceptionMessageFormat {
             get {
-                return ResourceManager.GetString("DoNotUseNotImplementedExceptionMessageFormat", resourceCulture);
+                return ResourceManager.GetString("AA2000DoNotUseNotImplementedExceptionMessageFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The NotImplementedException violates the Liskov Substitution Principle (LSP).
+        ///   Looks up a localized string similar to AA2000-DoNotUseNotImplementedException.
         /// </summary>
-        public static string DoNotUseNotImplementedExceptionTitle {
+        public static string AA2000DoNotUseNotImplementedExceptionTitle {
             get {
-                return ResourceManager.GetString("DoNotUseNotImplementedExceptionTitle", resourceCulture);
+                return ResourceManager.GetString("AA2000DoNotUseNotImplementedExceptionTitle", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to The NotSupportedException is a direct violation of the Liskov Substitution Principle (LSP) and so must not be used.
         /// </summary>
-        public static string DoNotUseNotSupportedExceptionDescription {
+        public static string AA2001DoNotUseNotSupportedExceptionDescription {
             get {
-                return ResourceManager.GetString("DoNotUseNotSupportedExceptionDescription", resourceCulture);
+                return ResourceManager.GetString("AA2001DoNotUseNotSupportedExceptionDescription", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Throw statement uses the NotSupportedException, which is a violation of the LSP.
         /// </summary>
-        public static string DoNotUseNotSupportedExceptionMessageFormat {
+        public static string AA2001DoNotUseNotSupportedExceptionMessageFormat {
             get {
-                return ResourceManager.GetString("DoNotUseNotSupportedExceptionMessageFormat", resourceCulture);
+                return ResourceManager.GetString("AA2001DoNotUseNotSupportedExceptionMessageFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The NotSupportedException violates the Liskov Substitution Principle (LSP).
+        ///   Looks up a localized string similar to AA2001-DoNotUseNotSupportedException.
         /// </summary>
-        public static string DoNotUseNotSupportedExceptionTitle {
+        public static string AA2001DoNotUseNotSupportedExceptionTitle {
             get {
-                return ResourceManager.GetString("DoNotUseNotSupportedExceptionTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to To comply with the single responsibility principle, a file should only contain one non-private type definition..
-        /// </summary>
-        public static string FileMustOnlyContainOneTypeDefinitionDescription {
-            get {
-                return ResourceManager.GetString("FileMustOnlyContainOneTypeDefinitionDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Type `{0}` is located in a file that contains other type definitions.
-        /// </summary>
-        public static string FileMustOnlyContainOneTypeDefinitionMessageFormat {
-            get {
-                return ResourceManager.GetString("FileMustOnlyContainOneTypeDefinitionMessageFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to A file should only contain one type definition.
-        /// </summary>
-        public static string FileMustOnlyContainOneTypeDefinitionTitle {
-            get {
-                return ResourceManager.GetString("FileMustOnlyContainOneTypeDefinitionTitle", resourceCulture);
+                return ResourceManager.GetString("AA2001DoNotUseNotSupportedExceptionTitle", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Method parameters must not use REF or OUT parameters; all results should be via a return.
         /// </summary>
-        public static string MethodParameterMustNotBeRefOrOutDescription {
+        public static string AA2100MethodParametersMustNotBeRefOrOutDescription {
             get {
-                return ResourceManager.GetString("MethodParameterMustNotBeRefOrOutDescription", resourceCulture);
+                return ResourceManager.GetString("AA2100MethodParametersMustNotBeRefOrOutDescription", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Parameter `{0}` of method `{1}` must not use {2}.
         /// </summary>
-        public static string MethodParameterMustNotBeRefOrOutMessageFormat {
+        public static string AA2100MethodParametersMustNotBeRefOrOutMessageFormat {
             get {
-                return ResourceManager.GetString("MethodParameterMustNotBeRefOrOutMessageFormat", resourceCulture);
+                return ResourceManager.GetString("AA2100MethodParametersMustNotBeRefOrOutMessageFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Method parameters must not  use REF or OUT.
+        ///   Looks up a localized string similar to AA2100-MethodParametersMustNotBeRefOrOut.
         /// </summary>
-        public static string MethodParameterMustNotBeRefOrOutTitle {
+        public static string AA2100MethodParametersMustNotBeRefOrOutTitle {
             get {
-                return ResourceManager.GetString("MethodParameterMustNotBeRefOrOutTitle", resourceCulture);
+                return ResourceManager.GetString("AA2100MethodParametersMustNotBeRefOrOutTitle", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Method names that contain &quot;And&quot; often indicate a method is doing more than one thing. Consider refacting into two methods..
         /// </summary>
-        public static string MethodShouldNotContainAndDescription {
+        public static string AA2103MethodShouldNotContainAndDescription {
             get {
-                return ResourceManager.GetString("MethodShouldNotContainAndDescription", resourceCulture);
+                return ResourceManager.GetString("AA2103MethodShouldNotContainAndDescription", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Method &apos;{0}&apos; contains &quot;And&quot;, which might indicate it&apos;s doing more than one thing.
         /// </summary>
-        public static string MethodShouldNotContainAndMessageFormat {
+        public static string AA2103MethodShouldNotContainAndMessageFormat {
             get {
-                return ResourceManager.GetString("MethodShouldNotContainAndMessageFormat", resourceCulture);
+                return ResourceManager.GetString("AA2103MethodShouldNotContainAndMessageFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Methods should not contain the word &quot;And&quot;.
+        ///   Looks up a localized string similar to AA2103-MethodShouldNotContainAnd.
         /// </summary>
-        public static string MethodShouldNotContainAndTitle {
+        public static string AA2103MethodShouldNotContainAndTitle {
             get {
-                return ResourceManager.GetString("MethodShouldNotContainAndTitle", resourceCulture);
+                return ResourceManager.GetString("AA2103MethodShouldNotContainAndTitle", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Static methods should have at least one parameter.
+        ///   Looks up a localized string similar to To comply with the single responsibility principle, a file should only contain one non-private type definition..
         /// </summary>
-        public static string StaticMethodMustHaveAtLeastOneParameterDescription {
+        public static string AA2104FileMustOnlyContainOneTypeDefinitionDescription {
             get {
-                return ResourceManager.GetString("StaticMethodMustHaveAtLeastOneParameterDescription", resourceCulture);
+                return ResourceManager.GetString("AA2104FileMustOnlyContainOneTypeDefinitionDescription", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Static method &apos;{0}&apos; doesn&apos;t have any parameters. It should have at least one.
+        ///   Looks up a localized string similar to Type `{0}` is located in a file that contains other type definitions.
         /// </summary>
-        public static string StaticMethodMustHaveAtLeastOneParameterMessageFormat {
+        public static string AA2104FileMustOnlyContainOneTypeDefinitionMessageFormat {
             get {
-                return ResourceManager.GetString("StaticMethodMustHaveAtLeastOneParameterMessageFormat", resourceCulture);
+                return ResourceManager.GetString("AA2104FileMustOnlyContainOneTypeDefinitionMessageFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Static methods must have at least one parameter.
+        ///   Looks up a localized string similar to AA2104-FileMustOnlyContainOneTypeDefinition.
         /// </summary>
-        public static string StaticMethodMustHaveAtLeastOneParameterTitle {
+        public static string AA2104FileMustOnlyContainOneTypeDefinitionTitle {
             get {
-                return ResourceManager.GetString("StaticMethodMustHaveAtLeastOneParameterTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Static methods should return a value (must not be null).
-        /// </summary>
-        public static string StaticMethodMustNotBeVoidDescription {
-            get {
-                return ResourceManager.GetString("StaticMethodMustNotBeVoidDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Static method &apos;{0}&apos; is void. It should return a value.
-        /// </summary>
-        public static string StaticMethodMustNotBeVoidMessageFormat {
-            get {
-                return ResourceManager.GetString("StaticMethodMustNotBeVoidMessageFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Static methods must not be void.
-        /// </summary>
-        public static string StaticMethodMustNotBeVoidTitle {
-            get {
-                return ResourceManager.GetString("StaticMethodMustNotBeVoidTitle", resourceCulture);
+                return ResourceManager.GetString("AA2104FileMustOnlyContainOneTypeDefinitionTitle", resourceCulture);
             }
         }
     }

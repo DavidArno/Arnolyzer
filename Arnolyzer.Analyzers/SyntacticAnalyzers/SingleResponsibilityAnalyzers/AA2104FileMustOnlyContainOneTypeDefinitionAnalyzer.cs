@@ -1,39 +1,39 @@
-﻿using System.Collections.Immutable;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 using Arnolyzer.RuleExceptionAttributes;
-using Arnolyzer.SyntacticAnalyzers.Factories;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
+using static Arnolyzer.SyntacticAnalyzers.DefaultState;
+using static Microsoft.CodeAnalysis.DiagnosticSeverity;
 
 namespace Arnolyzer.SyntacticAnalyzers.SingleResponsibilityAnalyzers
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
-    public class FileMustOnlyContainOneTypeDefinitionAnalyzer : DiagnosticAnalyzer
+    public class AA2104FileMustOnlyContainOneTypeDefinitionAnalyzer : DiagnosticAnalyzer, IAnalyzerDetailsReporter
     {
-        public const string DiagnosticId = "FileMustOnlyContainOneTypeDefinition";
+        private static readonly IList<Type> SuppressionAttributes = new List<Type>();
 
-        private static readonly LocalizableString Title =
-            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.FileMustOnlyContainOneTypeDefinitionTitle));
+        private static readonly AnalyzerDetails AA2104Details =
+            new AnalyzerDetails(nameof(AA2104FileMustOnlyContainOneTypeDefinitionAnalyzer),
+                                AnalyzerCategories.SingleResponsibiltyAnalyzers,
+                                EnabledByDefault,
+                                Error,
+                                nameof(Resources.AA2104FileMustOnlyContainOneTypeDefinitionTitle),
+                                nameof(Resources.AA2104FileMustOnlyContainOneTypeDefinitionDescription),
+                                nameof(Resources.AA2104FileMustOnlyContainOneTypeDefinitionMessageFormat),
+                                SuppressionAttributes);
 
-        private static readonly LocalizableString MessageFormat =
-            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.FileMustOnlyContainOneTypeDefinitionMessageFormat));
+        public AnalyzerDetails GetAnalyzerDetails() => AA2104Details;
 
-        private static readonly LocalizableString Description =
-            LocalizableStringFactory.LocalizableResourceString(nameof(Resources.FileMustOnlyContainOneTypeDefinitionDescription));
-
-        private static readonly DiagnosticDescriptor Rule =
-            DiagnosticDescriptorFactory.EnabledByDefaultErrorDescriptor(AnalyzerCategories.SingleResponsibiltyAnalyzers,
-                                                                        DiagnosticId,
-                                                                        Title,
-                                                                        MessageFormat,
-                                                                        Description);
+        private static readonly DiagnosticDescriptor Rule = AA2104Details.GetDiagnosticDescriptor();
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
 
-        public override void Initialize(AnalysisContext context)
-            => context.RegisterSyntaxTreeAction(AnalyzeSyntaxTree);
+        public override void Initialize(AnalysisContext context) => context.RegisterSyntaxTreeAction(AnalyzeSyntaxTree);
 
         [MutatesParameter]
         private static void AnalyzeSyntaxTree(SyntaxTreeAnalysisContext context)

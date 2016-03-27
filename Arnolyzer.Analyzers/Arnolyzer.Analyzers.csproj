@@ -78,18 +78,17 @@
     <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\AA1102InterfacePropertiesMustBeRead_OnlyAnalyzer.cs" />
     <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\AA1104InnerTypesMustBePrivateAnalyzer.cs" />
     <Compile Include="SyntacticAnalyzers\IAnalyzerDetailsReporter.cs" />
-    <Compile Include="SyntacticAnalyzers\LiskovSubstitutionPrincipleAnalyzers\DoNotUseNotSupportedExceptionAnalyzer.cs" />
-    <Compile Include="SyntacticAnalyzers\LiskovSubstitutionPrincipleAnalyzers\DoNotUseNotImplementedExceptionAnalyzer.cs" />
+    <Compile Include="SyntacticAnalyzers\LiskovSubstitutionPrincipleAnalyzers\AA2001DoNotUseNotSupportedExceptionAnalyzer.cs" />
+    <Compile Include="SyntacticAnalyzers\LiskovSubstitutionPrincipleAnalyzers\AA2000DoNotUseNotImplementedExceptionAnalyzer.cs" />
     <Compile Include="SyntacticAnalyzers\LiskovSubstitutionPrincipleAnalyzers\LSPViolatingExceptionReporter.cs" />
     <Compile Include="SyntacticAnalyzers\Settings\SettingsDetails.cs" />
     <Compile Include="SyntacticAnalyzers\Settings\SettingsExtensions.cs" />
     <Compile Include="SyntacticAnalyzers\Settings\SettingsHandler.cs" />
-    <Compile Include="SyntacticAnalyzers\SingleResponsibilityAnalyzers\FileMustOnlyContainOneTypeDefinitionAnalyzer.cs" />
-    <Compile Include="SyntacticAnalyzers\SingleResponsibilityAnalyzers\MethodShouldNotContainAndAnalyzer.cs" />
-    <Compile Include="SyntacticAnalyzers\SingleResponsibilityAnalyzers\MethodParameterMustNotBeRefOrOutAnalyzer.cs" />
-    <Compile Include="SyntacticAnalyzers\SHOFAnalyzers\StaticMethodMustHaveAtLeastOneParameterAnalyzer.cs" />
-    <Compile Include="SyntacticAnalyzers\SHOFAnalyzers\StaticMethodMustNotBeVoidAnalyzer.cs" />
-    <Compile Include="SyntacticAnalyzers\Factories\DiagnosticDescriptorFactory.cs" />
+    <Compile Include="SyntacticAnalyzers\SingleResponsibilityAnalyzers\AA2104FileMustOnlyContainOneTypeDefinitionAnalyzer.cs" />
+    <Compile Include="SyntacticAnalyzers\SingleResponsibilityAnalyzers\AA2103MethodShouldNotContainAndAnalyzer.cs" />
+    <Compile Include="SyntacticAnalyzers\SingleResponsibilityAnalyzers\AA2100MethodParametersMustNotBeRefOrOutAnalyzer.cs" />
+    <Compile Include="SyntacticAnalyzers\SHOFAnalyzers\AA1001StaticMethodsMustHaveAtLeastOneParameterAnalyzer.cs" />
+    <Compile Include="SyntacticAnalyzers\SHOFAnalyzers\AA1000StaticMethodsMustNotBeVoidAnalyzer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -105,7 +104,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DocumentationTemplates\AA1000StaticMethodsMustNotBeVoidAnalyzer.cause.txt" />
+    <Content Include="DocumentationTemplates\AA1001StaticMethodsMustHaveAtLeastOneParameterAnalyzer.cause.txt" />
     <Content Include="DocumentationTemplates\AA1104InnerTypesMustBePrivateAnalyzer.cause.txt" />
+    <Content Include="DocumentationTemplates\AA2001DoNotUseNotSupportedExceptionAnalyzer.cause.txt" />
+    <Content Include="DocumentationTemplates\AA2000DoNotUseNotImplementedExceptionAnalyzer.cause.txt" />
+    <Content Include="DocumentationTemplates\AA2100MethodParametersMustNotBeRefOrOutAnalyzer.cause.txt" />
     <None Include="Analysis.ruleset" />
     <None Include="Arnolyzer.Analyzers.ruleset" />
     <None Include="DocumentationTemplates\AnalyzerTemplate.md" />

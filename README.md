@@ -146,7 +146,7 @@ A long method is likely to break the principle by carrying out too many function
 #### AA2102 File Too Long
 A long class is likely to break the principle by carrying out too many functions. What is too long is highly subjective, so this rule will need to be configurable to allow the maximum lines to be specified.
 
-#### AA2103 Method Name Contains And
+#### AA2103 Method Should Not Contain And
 Methods that contain "And" in their name often undertake two tasks and thus have two responsibilities. Thus they are likely to violate the principle.
 
 #### AA2104 File Must Only Contain One Type Definition

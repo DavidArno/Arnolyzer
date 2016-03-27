@@ -2,10 +2,11 @@
 
 namespace Arnolyzer.RuleExceptionAttributes
 {
-    /// <summary>
-    /// A static method annotated with the MutatesParameter is allowed to be void as it's explicitly declaring its
-    /// intent to return a result through mutating the contents of a parameter.
-    /// </summary>
     [AttributeUsage(AttributeTargets.Method)]
-    public class MutatesParameterAttribute : Attribute { }
+    public class MutatesParameterAttribute : Attribute, IAttributeDescriber
+    {
+        public string AttributeDescription =>
+            $"A static method annotated with {nameof(MutatesParameterAttribute)} is allowed to be void as it " +
+            "is explicitly declaring its intent to return a result through mutating the contents of a parameter.";
+    }
 }

@@ -21,7 +21,7 @@ namespace Arnolyzer.SyntacticAnalyzers.EncapsulationAnalyzers
 
         private static readonly AnalyzerDetails AA1103Details =
             new AnalyzerDetails(nameof(AA1103ClassPropertiesMustBePubliclyRead_OnlyAnalyzer),
-                                AnalyzerCategories.EncapsulationAnalyzers,
+                                AnalyzerCategories.EncapsulationAndImmutabilityAnalyzers,
                                 EnabledByDefault,
                                 Error, 
                                 nameof(Resources.AA1103ClassPropertiesMustBePubliclyReadOnlyTitle),

@@ -117,6 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AA1000StaticMethodsMustNotBeVoidDescription" xml:space="preserve">
+    <value>Static methods should return a value (must not be null)</value>
+  </data>
+  <data name="AA1000StaticMethodsMustNotBeVoidMessageFormat" xml:space="preserve">
+    <value>Static method '{0}' is void. It should return a value</value>
+  </data>
+  <data name="AA1000StaticMethodsMustNotBeVoidTitle" xml:space="preserve">
+    <value>AA1000-StaticMethodsMustNotBeVoid</value>
+  </data>
+  <data name="AA1001StaticMethodsMustHaveAtLeastOneParameterDescription" xml:space="preserve">
+    <value>Static methods should have at least one parameter</value>
+  </data>
+  <data name="AA1001StaticMethodsMustHaveAtLeastOneParameterMessageFormat" xml:space="preserve">
+    <value>Static method '{0}' doesn't have any parameters. It should have at least one</value>
+  </data>
+  <data name="AA1001StaticMethodsMustHaveAtLeastOneParameterTitle" xml:space="preserve">
+    <value>AA1001-StaticMethodsMustHaveAtLeastOneParameter</value>
+  </data>
   <data name="AA1102InterfacePropertiesMustBeReadOnlyDescription" xml:space="preserve">
     <value>To provide encapsulation, properties should only make getters publicly available, so interfaces should not define setters for properties.</value>
   </data>
@@ -144,67 +162,49 @@
   <data name="AA1104InnerTypesMustBePrivateTitle" xml:space="preserve">
     <value>AA1104-InnerTypesMustBePrivate</value>
   </data>
-  <data name="DoNotUseNotImplementedExceptionDescription" xml:space="preserve">
+  <data name="AA2000DoNotUseNotImplementedExceptionDescription" xml:space="preserve">
     <value>The NotImplementedException is a direct violation of the Liskov Substitution Principle (LSP) and so must not be used</value>
   </data>
-  <data name="DoNotUseNotImplementedExceptionMessageFormat" xml:space="preserve">
+  <data name="AA2000DoNotUseNotImplementedExceptionMessageFormat" xml:space="preserve">
     <value>Throw statement uses the NotImplementedException, which is a violation of the LSP</value>
   </data>
-  <data name="DoNotUseNotImplementedExceptionTitle" xml:space="preserve">
-    <value>The NotImplementedException violates the Liskov Substitution Principle (LSP)</value>
+  <data name="AA2000DoNotUseNotImplementedExceptionTitle" xml:space="preserve">
+    <value>AA2000-DoNotUseNotImplementedException</value>
   </data>
-  <data name="DoNotUseNotSupportedExceptionDescription" xml:space="preserve">
+  <data name="AA2001DoNotUseNotSupportedExceptionDescription" xml:space="preserve">
     <value>The NotSupportedException is a direct violation of the Liskov Substitution Principle (LSP) and so must not be used</value>
   </data>
-  <data name="DoNotUseNotSupportedExceptionMessageFormat" xml:space="preserve">
+  <data name="AA2001DoNotUseNotSupportedExceptionMessageFormat" xml:space="preserve">
     <value>Throw statement uses the NotSupportedException, which is a violation of the LSP</value>
   </data>
-  <data name="DoNotUseNotSupportedExceptionTitle" xml:space="preserve">
-    <value>The NotSupportedException violates the Liskov Substitution Principle (LSP)</value>
+  <data name="AA2001DoNotUseNotSupportedExceptionTitle" xml:space="preserve">
+    <value>AA2001-DoNotUseNotSupportedException</value>
   </data>
-  <data name="FileMustOnlyContainOneTypeDefinitionDescription" xml:space="preserve">
-    <value>To comply with the single responsibility principle, a file should only contain one non-private type definition.</value>
-  </data>
-  <data name="FileMustOnlyContainOneTypeDefinitionMessageFormat" xml:space="preserve">
-    <value>Type `{0}` is located in a file that contains other type definitions</value>
-  </data>
-  <data name="FileMustOnlyContainOneTypeDefinitionTitle" xml:space="preserve">
-    <value>A file should only contain one type definition</value>
-  </data>
-  <data name="MethodParameterMustNotBeRefOrOutDescription" xml:space="preserve">
+  <data name="AA2100MethodParametersMustNotBeRefOrOutDescription" xml:space="preserve">
     <value>Method parameters must not use REF or OUT parameters; all results should be via a return</value>
   </data>
-  <data name="MethodParameterMustNotBeRefOrOutMessageFormat" xml:space="preserve">
+  <data name="AA2100MethodParametersMustNotBeRefOrOutMessageFormat" xml:space="preserve">
     <value>Parameter `{0}` of method `{1}` must not use {2}</value>
   </data>
-  <data name="MethodParameterMustNotBeRefOrOutTitle" xml:space="preserve">
-    <value>Method parameters must not  use REF or OUT</value>
+  <data name="AA2100MethodParametersMustNotBeRefOrOutTitle" xml:space="preserve">
+    <value>AA2100-MethodParametersMustNotBeRefOrOut</value>
   </data>
-  <data name="MethodShouldNotContainAndDescription" xml:space="preserve">
+  <data name="AA2103MethodShouldNotContainAndDescription" xml:space="preserve">
     <value>Method names that contain "And" often indicate a method is doing more than one thing. Consider refacting into two methods.</value>
   </data>
-  <data name="MethodShouldNotContainAndMessageFormat" xml:space="preserve">
+  <data name="AA2103MethodShouldNotContainAndMessageFormat" xml:space="preserve">
     <value>Method '{0}' contains "And", which might indicate it's doing more than one thing</value>
   </data>
-  <data name="MethodShouldNotContainAndTitle" xml:space="preserve">
-    <value>Methods should not contain the word "And"</value>
+  <data name="AA2103MethodShouldNotContainAndTitle" xml:space="preserve">
+    <value>AA2103-MethodShouldNotContainAnd</value>
   </data>
-  <data name="StaticMethodMustHaveAtLeastOneParameterDescription" xml:space="preserve">
-    <value>Static methods should have at least one parameter</value>
+  <data name="AA2104FileMustOnlyContainOneTypeDefinitionDescription" xml:space="preserve">
+    <value>To comply with the single responsibility principle, a file should only contain one non-private type definition.</value>
   </data>
-  <data name="StaticMethodMustHaveAtLeastOneParameterMessageFormat" xml:space="preserve">
-    <value>Static method '{0}' doesn't have any parameters. It should have at least one</value>
+  <data name="AA2104FileMustOnlyContainOneTypeDefinitionMessageFormat" xml:space="preserve">
+    <value>Type `{0}` is located in a file that contains other type definitions</value>
   </data>
-  <data name="StaticMethodMustHaveAtLeastOneParameterTitle" xml:space="preserve">
-    <value>Static methods must have at least one parameter</value>
-  </data>
-  <data name="StaticMethodMustNotBeVoidDescription" xml:space="preserve">
-    <value>Static methods should return a value (must not be null)</value>
-  </data>
-  <data name="StaticMethodMustNotBeVoidMessageFormat" xml:space="preserve">
-    <value>Static method '{0}' is void. It should return a value</value>
-  </data>
-  <data name="StaticMethodMustNotBeVoidTitle" xml:space="preserve">
-    <value>Static methods must not be void</value>
+  <data name="AA2104FileMustOnlyContainOneTypeDefinitionTitle" xml:space="preserve">
+    <value>AA2104-FileMustOnlyContainOneTypeDefinition</value>
   </data>
 </root>

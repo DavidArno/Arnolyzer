@@ -9,7 +9,7 @@
 </tr>
 <tr>
   <td><strong>Category</strong></td>
-  <td>Encapsulation Analyzers</td>
+  <td>Encapsulation and Immutability Analyzers</td>
 </tr>
 <tr>
   <td><strong>Enabled by default:</strong></td>

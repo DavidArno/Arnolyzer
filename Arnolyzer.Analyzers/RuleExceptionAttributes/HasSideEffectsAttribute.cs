@@ -2,10 +2,11 @@
 
 namespace Arnolyzer.RuleExceptionAttributes
 {
-    /// <summary>
-    /// A static method annotated with the HasSideEffects is allowed to be void and/or have no parameters as it's
-    /// explicitly declaring its intent to cause side effects.
-    /// </summary>
     [AttributeUsage(AttributeTargets.Method)]
-    public class HasSideEffectsAttribute : Attribute { }
+    public class HasSideEffectsAttribute : Attribute, IAttributeDescriber
+    {
+        public string AttributeDescription =>
+            $"A static method annotated with {nameof(HasSideEffectsAttribute)} is allowed to be void and have no " +
+            "parameters as it is explicitly declaring its intent to cause side effects.";
+    }
 }
