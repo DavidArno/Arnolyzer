@@ -1,0 +1,3 @@
+﻿Static methods that take an input, and generate a deterministic output from that input, without having any side-effects are termed pure functions. These methods are thread-safe and easy to test.
+
+Static methods that are declared `void`, do not meet the critia of a pure function: they will have side-effects as they do not return a result. These methods are likely to not be thread-safe or easy to test as a result. Therefore `void` methods should not be made static.

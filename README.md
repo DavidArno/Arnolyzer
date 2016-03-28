@@ -1,48 +1,16 @@
 # Arnolyzer
 A clean-code, Roslyn-based, analyzer for C# 6.
 
-Readme last updated: 21st Mar 2016.
+Readme last updated: 28th Mar 2016.
 
-## Why does this project exist?
-Let's roll back the clock a bit to life before C# 6 and the Roslyn compiler. There existed a tool called StyleCop. Its idea was a good one: automate the checking of coding standards. Its execution though was poor: it focused on the mundane (eg checking correct spacing around keywords and symbols) and the downright bad, such as insisting one clutter a source file was distracting noise. Noise like mandating the superfluous use of `this.` and the requirement to create long-winded XML-based comments for properties, resulting in nonsense like:
-
-    /// <summary>
-    /// Gets/sets the customer ID.
-    /// </summary>
-    /// <returns>The customer ID</returns>
-    /// <value>A new customer ID</value>
-    public int Id { get; set; }
-
-What saved StyleCop from itself was an excellent extension called StyleCop+. This extension replaced many of StyleCop's weaker rules with more powerful ones and, most importantly, it introduced rules that encouraged the writing of better code, such as maximum method and file lengths.
-
-Fast forward to the summer of 2015 and Roslyn effectively killed off StyleCop. It introduced a new way of writing analyzers using the compiler. A number of analyzer projects exist, but the best known one disappointingly just replicates the rules of StyleCop. Yet Roslyn offers the opportunity to support such so much more, and thus this project was created.
 
 Its aims are simple: provide a set of rules that encourage modern, functional-orientated, coding standards in C#. Pure functions, no inheritance, no global state, immutable variables and short, concise sections of code.
    
 ## What's implemented
 Thus far, the analyzers implemented are:
 
-**AA1103-ClassPropertiesMustBePubliclyReadOnly**
+**[AA1000 - Static Methods Should Not Be Void](Arnolyzer/Documentation/AA1000StaticMethodsShouldNotBeVoidAnalyzer.md)**
 
-**DoNotUseNotImplementedException**
-
-**DoNotUseNotSupportedException**
-
-**FileMustOnlyContainOneTypeDefinition**
-
-**AA1104-InnerTypesMustBePrivate**
-
-**AA1102-InterfacePropertiesMustBeReadOnly**
-
-**MethodParameterMustNotBeRefOrOut**
-
-**MethodShouldNotContainAnd**
-
-**StaticMethodMustHaveAtLeastOneParameter**
-
-**StaticMethodMustNotBeVoid**
-
-For details of each of these, please see the descriptions below.
 
 ## What's planned
 The following planned analyzers haven't yet been implemented:

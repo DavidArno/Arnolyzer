@@ -1,4 +1,4 @@
-﻿using Arnolyzer.SyntacticAnalyzers.LiskovSubstitutionPrincipleAnalyzers;
+﻿using Arnolyzer.Analyzers.LiskovSubstitutionPrincipleAnalyzers;
 using Arnolyzer.Tests.DiagnosticVerification;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SuccincT.Options;

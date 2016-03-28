@@ -117,23 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AA1000StaticMethodsMustNotBeVoidDescription" xml:space="preserve">
+  <data name="AA1000StaticMethodsShouldNotBeVoidDescription" xml:space="preserve">
     <value>Static methods should return a value (must not be null)</value>
   </data>
-  <data name="AA1000StaticMethodsMustNotBeVoidMessageFormat" xml:space="preserve">
+  <data name="AA1000StaticMethodsShouldNotBeVoidMessageFormat" xml:space="preserve">
     <value>Static method '{0}' is void. It should return a value</value>
   </data>
-  <data name="AA1000StaticMethodsMustNotBeVoidTitle" xml:space="preserve">
-    <value>AA1000-StaticMethodsMustNotBeVoid</value>
+  <data name="AA1000StaticMethodsShouldNotBeVoidTitle" xml:space="preserve">
+    <value>AA1000-StaticMethodsShouldNotBeVoid</value>
   </data>
-  <data name="AA1001StaticMethodsMustHaveAtLeastOneParameterDescription" xml:space="preserve">
+  <data name="AA1001StaticMethodsShouldHaveAtLeastOneParameterDescription" xml:space="preserve">
     <value>Static methods should have at least one parameter</value>
   </data>
-  <data name="AA1001StaticMethodsMustHaveAtLeastOneParameterMessageFormat" xml:space="preserve">
+  <data name="AA1001StaticMethodsShouldHaveAtLeastOneParameterMessageFormat" xml:space="preserve">
     <value>Static method '{0}' doesn't have any parameters. It should have at least one</value>
   </data>
-  <data name="AA1001StaticMethodsMustHaveAtLeastOneParameterTitle" xml:space="preserve">
-    <value>AA1001-StaticMethodsMustHaveAtLeastOneParameter</value>
+  <data name="AA1001StaticMethodsShouldHaveAtLeastOneParameterTitle" xml:space="preserve">
+    <value>AA1001-StaticMethodsShouldHaveAtLeastOneParameter</value>
   </data>
   <data name="AA1102InterfacePropertiesMustBeReadOnlyDescription" xml:space="preserve">
     <value>To provide encapsulation, properties should only make getters publicly available, so interfaces should not define setters for properties.</value>

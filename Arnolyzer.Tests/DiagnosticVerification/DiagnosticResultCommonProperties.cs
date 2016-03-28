@@ -1,4 +1,4 @@
-﻿using Arnolyzer.SyntacticAnalyzers;
+﻿using Arnolyzer.Analyzers;
 using Microsoft.CodeAnalysis;
 
 namespace Arnolyzer.Tests.DiagnosticVerification

@@ -1,5 +1,5 @@
-﻿using Arnolyzer.SyntacticAnalyzers;
-using Arnolyzer.SyntacticAnalyzers.EncapsulationAnalyzers;
+﻿using Arnolyzer.Analyzers;
+using Arnolyzer.Analyzers.EncapsulationAnalyzers;
 using Arnolyzer.Tests.DiagnosticVerification;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SuccincT.Options;

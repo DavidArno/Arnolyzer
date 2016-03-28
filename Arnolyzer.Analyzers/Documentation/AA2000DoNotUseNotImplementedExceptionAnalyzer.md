@@ -23,7 +23,12 @@
 
 ## Cause
 
+From the [Liskov Substitution Principle](https://en.wikipedia.org/wiki/Liskov_substitution_principle) (LSP) article on Wikipedia:
+> Substitutability is a principle in object-oriented programming. It states that, in a computer program, if S is a subtype of T, then objects of type T may be replaced with objects of type S 
+(i.e., objects of type S may substitute objects of type T) without altering any of the desirable properties of that program (correctness, task performed, etc.)
 
+A subtype (or interface implementation) that throws a `NotImplementedException` cannot be used as a substitute to its parent "without altering any of the desirable properties of that program". 
+Therefore the use of this exception is a violation of the  LSP.
 
 ## How to fix violations
 

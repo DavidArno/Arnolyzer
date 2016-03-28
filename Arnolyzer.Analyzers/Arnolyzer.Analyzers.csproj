@@ -67,28 +67,28 @@
   <ItemGroup>
     <Compile Include="RuleExceptionAttributes\IAttributeDescriber.cs" />
     <Compile Include="RuleExceptionAttributes\MutablePropertyAttribute.cs" />
-    <Compile Include="SyntacticAnalyzers\AnalyzerDetails.cs" />
-    <Compile Include="SyntacticAnalyzers\DefaultState.cs" />
-    <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\AA1103ClassPropertiesMustBePubliclyRead_OnlyAnalyzer.cs" />
-    <Compile Include="SyntacticAnalyzers\Factories\LocalizableStringFactory.cs" />
+    <Compile Include="Analyzers\AnalyzerDetails.cs" />
+    <Compile Include="Analyzers\DefaultState.cs" />
+    <Compile Include="Analyzers\EncapsulationAnalyzers\AA1103ClassPropertiesMustBePubliclyRead_OnlyAnalyzer.cs" />
+    <Compile Include="Analyzers\Factories\LocalizableStringFactory.cs" />
     <Compile Include="RuleExceptionAttributes\HasSideEffectsAttribute.cs" />
     <Compile Include="RuleExceptionAttributes\MutatesParameterAttribute.cs" />
-    <Compile Include="SyntacticAnalyzers\AnalyzerCategories.cs" />
-    <Compile Include="SyntacticAnalyzers\CommonFunctions.cs" />
-    <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\AA1102InterfacePropertiesMustBeRead_OnlyAnalyzer.cs" />
-    <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\AA1104InnerTypesMustBePrivateAnalyzer.cs" />
-    <Compile Include="SyntacticAnalyzers\IAnalyzerDetailsReporter.cs" />
-    <Compile Include="SyntacticAnalyzers\LiskovSubstitutionPrincipleAnalyzers\AA2001DoNotUseNotSupportedExceptionAnalyzer.cs" />
-    <Compile Include="SyntacticAnalyzers\LiskovSubstitutionPrincipleAnalyzers\AA2000DoNotUseNotImplementedExceptionAnalyzer.cs" />
-    <Compile Include="SyntacticAnalyzers\LiskovSubstitutionPrincipleAnalyzers\LSPViolatingExceptionReporter.cs" />
-    <Compile Include="SyntacticAnalyzers\Settings\SettingsDetails.cs" />
-    <Compile Include="SyntacticAnalyzers\Settings\SettingsExtensions.cs" />
-    <Compile Include="SyntacticAnalyzers\Settings\SettingsHandler.cs" />
-    <Compile Include="SyntacticAnalyzers\SingleResponsibilityAnalyzers\AA2104FileMustOnlyContainOneTypeDefinitionAnalyzer.cs" />
-    <Compile Include="SyntacticAnalyzers\SingleResponsibilityAnalyzers\AA2103MethodShouldNotContainAndAnalyzer.cs" />
-    <Compile Include="SyntacticAnalyzers\SingleResponsibilityAnalyzers\AA2100MethodParametersMustNotBeRefOrOutAnalyzer.cs" />
-    <Compile Include="SyntacticAnalyzers\SHOFAnalyzers\AA1001StaticMethodsMustHaveAtLeastOneParameterAnalyzer.cs" />
-    <Compile Include="SyntacticAnalyzers\SHOFAnalyzers\AA1000StaticMethodsMustNotBeVoidAnalyzer.cs" />
+    <Compile Include="Analyzers\AnalyzerCategories.cs" />
+    <Compile Include="Analyzers\CommonFunctions.cs" />
+    <Compile Include="Analyzers\EncapsulationAnalyzers\AA1102InterfacePropertiesMustBeRead_OnlyAnalyzer.cs" />
+    <Compile Include="Analyzers\EncapsulationAnalyzers\AA1104InnerTypesMustBePrivateAnalyzer.cs" />
+    <Compile Include="Analyzers\IAnalyzerDetailsReporter.cs" />
+    <Compile Include="Analyzers\LiskovSubstitutionPrincipleAnalyzers\AA2001DoNotUseNotSupportedExceptionAnalyzer.cs" />
+    <Compile Include="Analyzers\LiskovSubstitutionPrincipleAnalyzers\AA2000DoNotUseNotImplementedExceptionAnalyzer.cs" />
+    <Compile Include="Analyzers\LiskovSubstitutionPrincipleAnalyzers\LSPViolatingExceptionReporter.cs" />
+    <Compile Include="Analyzers\Settings\SettingsDetails.cs" />
+    <Compile Include="Analyzers\Settings\SettingsExtensions.cs" />
+    <Compile Include="Analyzers\Settings\SettingsHandler.cs" />
+    <Compile Include="Analyzers\SingleResponsibilityAnalyzers\AA2104FileMustOnlyContainOneTypeDefinitionAnalyzer.cs" />
+    <Compile Include="Analyzers\SingleResponsibilityAnalyzers\AA2103MethodShouldNotContainAndAnalyzer.cs" />
+    <Compile Include="Analyzers\SingleResponsibilityAnalyzers\AA2100MethodParametersMustNotBeRefOrOutAnalyzer.cs" />
+    <Compile Include="Analyzers\PureFunctionAnalyzers\AA1001StaticMethodsShouldHaveAtLeastOneParameterAnalyzer.cs" />
+    <Compile Include="Analyzers\PureFunctionAnalyzers\AA1000StaticMethodsShouldNotBeVoidAnalyzer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -104,8 +104,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DocumentationTemplates\AA1000StaticMethodsMustNotBeVoidAnalyzer.cause.txt" />
-    <Content Include="DocumentationTemplates\AA1001StaticMethodsMustHaveAtLeastOneParameterAnalyzer.cause.txt" />
+    <Content Include="DocumentationTemplates\AA1000StaticMethodsShouldNotBeVoidAnalyzer.cause.txt" />
+    <Content Include="DocumentationTemplates\AA1001StaticMethodsShouldHaveAtLeastOneParameterAnalyzer.cause.txt" />
     <Content Include="DocumentationTemplates\AA1104InnerTypesMustBePrivateAnalyzer.cause.txt" />
     <Content Include="DocumentationTemplates\AA2001DoNotUseNotSupportedExceptionAnalyzer.cause.txt" />
     <Content Include="DocumentationTemplates\AA2000DoNotUseNotImplementedExceptionAnalyzer.cause.txt" />

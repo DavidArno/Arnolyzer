@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Arnolyzer.Analyzers;
 using Arnolyzer.RuleExceptionAttributes;
-using Arnolyzer.SyntacticAnalyzers;
 using static System.Environment;
 
 namespace ArnolyzerDocumentationGenerator
@@ -77,7 +77,7 @@ namespace ArnolyzerDocumentationGenerator
             var instance = (IAttributeDescriber) Activator.CreateInstance(attribute);
             var name = attribute.Name.Replace("Attribute", "");
             var description = instance.AttributeDescription.Replace("Attribute", " attribute");
-            return $"**[{name}]**<br/>{NewLine}{description}";
+            return $"**[{name}]**{NewLine}{description}";
         }
 
         private class WordSectionContents

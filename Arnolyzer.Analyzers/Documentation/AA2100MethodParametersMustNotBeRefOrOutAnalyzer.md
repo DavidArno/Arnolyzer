@@ -23,7 +23,8 @@
 
 ## Cause
 
-
+`out` parameters are normally used to return a second value from a method, which in turn is often a sign that the method is
+doing more than one thing and thus is breaking the Single Responsibility Principle.
 
 ## How to fix violations
 

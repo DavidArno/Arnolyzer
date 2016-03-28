@@ -63,54 +63,54 @@ namespace Arnolyzer {
         /// <summary>
         ///   Looks up a localized string similar to Static methods should return a value (must not be null).
         /// </summary>
-        public static string AA1000StaticMethodsMustNotBeVoidDescription {
+        public static string AA1000StaticMethodsShouldNotBeVoidDescription {
             get {
-                return ResourceManager.GetString("AA1000StaticMethodsMustNotBeVoidDescription", resourceCulture);
+                return ResourceManager.GetString("AA1000StaticMethodsShouldNotBeVoidDescription", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Static method &apos;{0}&apos; is void. It should return a value.
         /// </summary>
-        public static string AA1000StaticMethodsMustNotBeVoidMessageFormat {
+        public static string AA1000StaticMethodsShouldNotBeVoidMessageFormat {
             get {
-                return ResourceManager.GetString("AA1000StaticMethodsMustNotBeVoidMessageFormat", resourceCulture);
+                return ResourceManager.GetString("AA1000StaticMethodsShouldNotBeVoidMessageFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AA1000-StaticMethodsMustNotBeVoid.
+        ///   Looks up a localized string similar to AA1000-StaticMethodsShouldNotBeVoid.
         /// </summary>
-        public static string AA1000StaticMethodsMustNotBeVoidTitle {
+        public static string AA1000StaticMethodsShouldNotBeVoidTitle {
             get {
-                return ResourceManager.GetString("AA1000StaticMethodsMustNotBeVoidTitle", resourceCulture);
+                return ResourceManager.GetString("AA1000StaticMethodsShouldNotBeVoidTitle", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Static methods should have at least one parameter.
         /// </summary>
-        public static string AA1001StaticMethodsMustHaveAtLeastOneParameterDescription {
+        public static string AA1001StaticMethodsShouldHaveAtLeastOneParameterDescription {
             get {
-                return ResourceManager.GetString("AA1001StaticMethodsMustHaveAtLeastOneParameterDescription", resourceCulture);
+                return ResourceManager.GetString("AA1001StaticMethodsShouldHaveAtLeastOneParameterDescription", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Static method &apos;{0}&apos; doesn&apos;t have any parameters. It should have at least one.
         /// </summary>
-        public static string AA1001StaticMethodsMustHaveAtLeastOneParameterMessageFormat {
+        public static string AA1001StaticMethodsShouldHaveAtLeastOneParameterMessageFormat {
             get {
-                return ResourceManager.GetString("AA1001StaticMethodsMustHaveAtLeastOneParameterMessageFormat", resourceCulture);
+                return ResourceManager.GetString("AA1001StaticMethodsShouldHaveAtLeastOneParameterMessageFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AA1001-StaticMethodsMustHaveAtLeastOneParameter.
+        ///   Looks up a localized string similar to AA1001-StaticMethodsShouldHaveAtLeastOneParameter.
         /// </summary>
-        public static string AA1001StaticMethodsMustHaveAtLeastOneParameterTitle {
+        public static string AA1001StaticMethodsShouldHaveAtLeastOneParameterTitle {
             get {
-                return ResourceManager.GetString("AA1001StaticMethodsMustHaveAtLeastOneParameterTitle", resourceCulture);
+                return ResourceManager.GetString("AA1001StaticMethodsShouldHaveAtLeastOneParameterTitle", resourceCulture);
             }
         }
         

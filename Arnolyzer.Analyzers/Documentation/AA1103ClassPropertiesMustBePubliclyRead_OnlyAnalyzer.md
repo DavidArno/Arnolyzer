@@ -39,5 +39,5 @@ There currently aren't any implemented code-fixes for this rule.
 
 This rule can be suppressed using the following attributes: 
 
-**[MutableProperty]**<br/>
+**[MutableProperty]**
 A public setter may sometimes be required. It is therefore allowed if decorated with the MutableProperty attribute as it explicitly reaffirms the need for the property to be mutable.

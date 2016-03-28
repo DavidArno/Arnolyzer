@@ -1,4 +1,4 @@
-﻿using Arnolyzer.SyntacticAnalyzers.SingleResponsibilityAnalyzers;
+﻿using Arnolyzer.Analyzers.SingleResponsibilityAnalyzers;
 using Arnolyzer.Tests.DiagnosticVerification;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SuccincT.Options;
