@@ -23,12 +23,10 @@
 
 ## Cause
 
-Static methods that take an input, and generate a deterministic output from that input, without having any side-effects are termed 
-pure functions. These methods are thread-safe and easy to test.
+Static methods that take an input, and generate a deterministic output from that input, without having any side-effects are termed pure functions. These methods are thread-safe and easy to test.
 
-Methods that do not take any parameters, do not meet the critia of a pure function: they will have side-effects as they must derive
-a result from external resources. These methods are likely to not be thread-safe or easy to test as a result. Therefore methods 
-without parameters should not be made static.
+Static methods that do not take any parameters, do not meet the critia of a pure function: they will have side-effects as they must derive a result from external resources. These methods are likely to not be thread-safe or easy to test as a result. Therefore methods without parameters should not be made static.
+
 
 ## How to fix violations
 

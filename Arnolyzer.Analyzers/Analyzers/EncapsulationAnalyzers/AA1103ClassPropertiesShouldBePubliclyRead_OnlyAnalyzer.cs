@@ -12,18 +12,18 @@ using SuccincT.Options;
 namespace Arnolyzer.Analyzers.EncapsulationAnalyzers
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
-    public class AA1103ClassPropertiesMustBePubliclyRead_OnlyAnalyzer : DiagnosticAnalyzer, IAnalyzerDetailsReporter
+    public class AA1103ClassPropertiesShouldBePubliclyRead_OnlyAnalyzer : DiagnosticAnalyzer, IAnalyzerDetailsReporter
     {
         private static readonly IList<Type> SuppressionAttributes = new List<Type> { typeof(MutablePropertyAttribute) };
 
         private static readonly AnalyzerDetails AA1103Details =
-            new AnalyzerDetails(nameof(AA1103ClassPropertiesMustBePubliclyRead_OnlyAnalyzer),
+            new AnalyzerDetails(nameof(AA1103ClassPropertiesShouldBePubliclyRead_OnlyAnalyzer),
                                 AnalyzerCategories.EncapsulationAndImmutabilityAnalyzers,
                                 DefaultState.EnabledByDefault,
                                 DiagnosticSeverity.Error, 
-                                nameof(Resources.AA1103ClassPropertiesMustBePubliclyReadOnlyTitle),
-                                nameof(Resources.AA1103ClassPropertiesMustBePubliclyReadOnlyDescription),
-                                nameof(Resources.AA1103ClassPropertiesMustBePubliclyReadOnlyMessageFormat),
+                                nameof(Resources.AA1103ClassPropertiesShouldBePubliclyReadOnlyTitle),
+                                nameof(Resources.AA1103ClassPropertiesShouldBePubliclyReadOnlyDescription),
+                                nameof(Resources.AA1103ClassPropertiesShouldBePubliclyReadOnlyMessageFormat),
                                 SuppressionAttributes);
 
         public AnalyzerDetails GetAnalyzerDetails() => AA1103Details;

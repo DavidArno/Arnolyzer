@@ -60,6 +60,10 @@ namespace ArnolyzerDocumentationGenerator
             }
             catch (FileNotFoundException)
             {
+                if (fileName.Contains("cause"))
+                {
+                    Console.WriteLine($"-----> {fileName} not found.");
+                }
                 return "";
             }
         }

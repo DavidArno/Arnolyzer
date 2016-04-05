@@ -1,5 +1,5 @@
-# Class Properties Must Be Publicly Read-Only
-**Report code: AA1103-ClassPropertiesMustBePubliclyReadOnly**
+# Class Properties Should Be Publicly Read-Only
+**Report code: AA1103-ClassPropertiesShouldBePubliclyReadOnly**
 
 ## Summary
 <table>

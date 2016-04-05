@@ -1,11 +1,11 @@
-# Class Properties Must Be Publicly Read-Only
-**Report code: AA1103-ClassPropertiesMustBePubliclyReadOnly**
+# Interface Properties Should Be Read-Only
+**Report code: AA1102-InterfacePropertiesShouldBeReadOnly**
 
 ## Summary
 <table>
 <tr>
   <td><strong>Description</strong></td>
-  <td>Public classes should not provide publicly accessible setters for properties</td>
+  <td>To provide encapsulation, properties should only make getters publicly available, so interfaces should not define setters for properties.</td>
 </tr>
 <tr>
   <td><strong>Category</strong></td>
@@ -28,6 +28,8 @@ A property that providers a setter is likely either:
 2. Breaking the principle of least astonishment by manipulating the value provided to the setter, such that requesting the value back supplies a different value to that set.
 
 In addition, mutable properties break the immutability pattern: the value can change throughout the application. This can lead to thread-unsafe code and can make both testing and maintenance harder.
+
+Therefore, interfaces should not, in most cases, define setters as that forces implementing classes down the above violation routes too.
 
 ## How to fix violations
 

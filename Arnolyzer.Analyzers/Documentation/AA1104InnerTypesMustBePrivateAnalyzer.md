@@ -30,8 +30,7 @@ Inner types that are marked `internal` or `public` are likely doing one (or, in 
 
 In the first case, the type should be moved to its own file in an appropriate directory to give it a proper namespace name.
 
-In the latter case, either the type should be made `private`, to properly encapsulate the inner workings of the outer class, 
-or the two types should be redesigned and the inner type moved to its own file and marked as `internal` or `public` as appropriate. 
+In the latter case, either the type should be made `private`, to properly encapsulate the inner workings of the outer class, or the two types should be redesigned and the inner type moved to its own file and marked as `internal` or `public` as appropriate. 
 
 
 ## How to fix violations

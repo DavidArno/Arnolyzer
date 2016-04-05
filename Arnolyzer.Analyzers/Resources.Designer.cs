@@ -117,54 +117,54 @@ namespace Arnolyzer {
         /// <summary>
         ///   Looks up a localized string similar to To provide encapsulation, properties should only make getters publicly available, so interfaces should not define setters for properties..
         /// </summary>
-        public static string AA1102InterfacePropertiesMustBeReadOnlyDescription {
+        public static string AA1102InterfacePropertiesShouldBeReadOnlyDescription {
             get {
-                return ResourceManager.GetString("AA1102InterfacePropertiesMustBeReadOnlyDescription", resourceCulture);
+                return ResourceManager.GetString("AA1102InterfacePropertiesShouldBeReadOnlyDescription", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Property `{0}` of interface `{1}` should not define a setter.
         /// </summary>
-        public static string AA1102InterfacePropertiesMustBeReadOnlyMessageFormat {
+        public static string AA1102InterfacePropertiesShouldBeReadOnlyMessageFormat {
             get {
-                return ResourceManager.GetString("AA1102InterfacePropertiesMustBeReadOnlyMessageFormat", resourceCulture);
+                return ResourceManager.GetString("AA1102InterfacePropertiesShouldBeReadOnlyMessageFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AA1102-InterfacePropertiesMustBeReadOnly.
+        ///   Looks up a localized string similar to AA1102-InterfacePropertiesShouldBeReadOnly.
         /// </summary>
-        public static string AA1102InterfacePropertiesMustBeReadOnlyTitle {
+        public static string AA1102InterfacePropertiesShouldBeReadOnlyTitle {
             get {
-                return ResourceManager.GetString("AA1102InterfacePropertiesMustBeReadOnlyTitle", resourceCulture);
+                return ResourceManager.GetString("AA1102InterfacePropertiesShouldBeReadOnlyTitle", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Public classes should not provide publicly accessible setters for properties.
         /// </summary>
-        public static string AA1103ClassPropertiesMustBePubliclyReadOnlyDescription {
+        public static string AA1103ClassPropertiesShouldBePubliclyReadOnlyDescription {
             get {
-                return ResourceManager.GetString("AA1103ClassPropertiesMustBePubliclyReadOnlyDescription", resourceCulture);
+                return ResourceManager.GetString("AA1103ClassPropertiesShouldBePubliclyReadOnlyDescription", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Public property `{0}` of class `{1}` should not define a public setter.
         /// </summary>
-        public static string AA1103ClassPropertiesMustBePubliclyReadOnlyMessageFormat {
+        public static string AA1103ClassPropertiesShouldBePubliclyReadOnlyMessageFormat {
             get {
-                return ResourceManager.GetString("AA1103ClassPropertiesMustBePubliclyReadOnlyMessageFormat", resourceCulture);
+                return ResourceManager.GetString("AA1103ClassPropertiesShouldBePubliclyReadOnlyMessageFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AA1103-ClassPropertiesMustBePubliclyReadOnly.
+        ///   Looks up a localized string similar to AA1103-ClassPropertiesShouldBePubliclyReadOnly.
         /// </summary>
-        public static string AA1103ClassPropertiesMustBePubliclyReadOnlyTitle {
+        public static string AA1103ClassPropertiesShouldBePubliclyReadOnlyTitle {
             get {
-                return ResourceManager.GetString("AA1103ClassPropertiesMustBePubliclyReadOnlyTitle", resourceCulture);
+                return ResourceManager.GetString("AA1103ClassPropertiesShouldBePubliclyReadOnlyTitle", resourceCulture);
             }
         }
         
