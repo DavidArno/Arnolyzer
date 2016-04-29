@@ -1,0 +1,3 @@
+﻿A file that contains more than one class, enum or interface definition inherently contains more than one responsibility.
+
+In addition, the discoverability of these types is made harder as the pattern of matching type and file names breaks down, as there's no clear way of naming the file to match the contents.

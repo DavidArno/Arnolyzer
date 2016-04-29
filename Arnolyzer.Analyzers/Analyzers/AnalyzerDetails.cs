@@ -11,7 +11,7 @@ namespace Arnolyzer.Analyzers
         private readonly DefaultState _defaultState;
 
         public AnalyzerDetails(string className, 
-                               string category,
+                               AnalyzerCategoryDetails category,
                                DefaultState defaultState,
                                DiagnosticSeverity severity,
                                string titleResourceName,
@@ -22,7 +22,7 @@ namespace Arnolyzer.Analyzers
             var decomposedDetails = DecomposeDetailsFromClassName(className);
             var code = decomposedDetails.Item1;
             Name = decomposedDetails.Item2;
-
+            NameAndCode = $"{decomposedDetails.Item3} - {Name}";
             Category = category;
             _defaultState = defaultState;
             Severity = severity;
@@ -39,7 +39,7 @@ namespace Arnolyzer.Analyzers
 
         public string Name { get; }
         public string DiagnosticId { get; }
-        public string Category { get; }
+        public AnalyzerCategoryDetails Category { get; }
         public IList<Type> SuppressionAttributes { get; }
         public LocalizableString Title { get; }
         public LocalizableString Description { get; }
@@ -47,21 +47,23 @@ namespace Arnolyzer.Analyzers
         public DiagnosticSeverity Severity { get; }
         public string SeverityText => Severity.SeverityType();
         public bool EnabledByDefault => _defaultState.IsEnabledByDefault();
+        public object NameAndCode { get; }
 
         public DiagnosticDescriptor GetDiagnosticDescriptor() =>
             new DiagnosticDescriptor(DiagnosticId,
                                      Title,
                                      MessageFormat,
-                                     Category,
+                                     Category.Name,
                                      Severity,
                                      EnabledByDefault,
                                      Description);
 
-        private static Tuple<string, string> DecomposeDetailsFromClassName(string className)
+        private static Tuple<string, string, string> DecomposeDetailsFromClassName(string className)
         {
             var nameWithoutAnalyzer = className.Replace("Analyzer", "");
-            return new Tuple<string, string>(DeriveCodeFromClassName(nameWithoutAnalyzer),
-                                                     DeriveNiceNameFromClassName(nameWithoutAnalyzer));
+            return new Tuple<string, string, string>(DeriveCodeFromClassName(nameWithoutAnalyzer),
+                                                     DeriveNiceNameFromClassName(nameWithoutAnalyzer),
+                                                     nameWithoutAnalyzer.Substring(0, 6));
         }
 
         private static string DeriveNiceNameFromClassName(string className)

@@ -7,6 +7,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
+using static Arnolyzer.Analyzers.CommonFunctions;
 
 namespace Arnolyzer.Analyzers.EncapsulationAnalyzers
 {
@@ -60,15 +61,6 @@ namespace Arnolyzer.Analyzers.EncapsulationAnalyzers
             var kind = node?.Kind();
             return kind != SyntaxKind.ClassDeclaration &&
                    kind != SyntaxKind.StructDeclaration;
-        }
-
-        private static bool NodeIsTypeDeclaration(SyntaxNode node)
-        {
-            var kind = node?.Kind();
-            return kind == SyntaxKind.ClassDeclaration ||
-                   kind == SyntaxKind.InterfaceDeclaration ||
-                   kind == SyntaxKind.StructDeclaration ||
-                   kind == SyntaxKind.EnumDeclaration;
         }
     }
 }

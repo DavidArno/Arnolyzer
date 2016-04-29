@@ -26,7 +26,7 @@ namespace ArnolyzerDocumentationGenerator
             var template = File.ReadAllText(@"..\..\..\Arnolyzer.Analyzers\DocumentationTemplates\AnalyzerTemplate.md");
             foreach (var details in analyzersDetails)
             {
-                var analyzerName = details.DiagnosticId;
+                var analyzerName = details.Name;
                 Console.WriteLine($"Generating {analyzerName}.md");
 
                 var extraWords = CreateExtraWordsSet(analyzerName);

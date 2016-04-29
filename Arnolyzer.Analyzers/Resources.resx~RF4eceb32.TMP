@@ -135,41 +135,14 @@
   <data name="AA1001StaticMethodsShouldHaveAtLeastOneParameterTitle" xml:space="preserve">
     <value>AA1001-StaticMethodsShouldHaveAtLeastOneParameter</value>
   </data>
-  <data name="AA1002StaticMethodsShouldNotAccessStateDescription" xml:space="preserve">
+  <data name="AA1003StaticMethodsShouldNotAccessStateDescription" xml:space="preserve">
     <value>A static method should only derive a result from the supplied parameter(s). It should not access any static field or property</value>
   </data>
-  <data name="AA1002StaticMethodsShouldNotAccessStateMessageFormat" xml:space="preserve">
+  <data name="AA1003StaticMethodsShouldNotAccessStateMessageFormat" xml:space="preserve">
     <value>xxx</value>
   </data>
-  <data name="AA1002StaticMethodsShouldNotAccessStateTitle" xml:space="preserve">
-    <value>AA1002-StaticMethodsShouldNotAccessState</value>
-  </data>
-  <data name="AA1003StaticMethodsShouldNotCreateStateDescription" xml:space="preserve">
-    <value>The only result from calling a static method should be the returned value, or an exception. Therefore it should not invoke any method that has no parameters and/or a void return type, nor write to any field or property.</value>
-  </data>
-  <data name="AA1003StaticMethodsShouldNotCreateStateMessageFormat" xml:space="preserve">
-    <value>xxx</value>
-  </data>
-  <data name="AA1003StaticMethodsShouldNotCreateStateTitle" xml:space="preserve">
-    <value>AA1003-StaticMethodsShouldNotCreateState</value>
-  </data>
-  <data name="AA1100ParametersShouldNotBeModifiedDescription" xml:space="preserve">
-    <value>Parameters should be treated as immutable and not used as a mutable variables</value>
-  </data>
-  <data name="AA1100ParametersShouldNotBeModifiedMessageFormat" xml:space="preserve">
-    <value>xxx</value>
-  </data>
-  <data name="AA1100ParametersShouldNotBeModifiedTitle" xml:space="preserve">
-    <value>AA1100-ParametersShouldNotBeModified</value>
-  </data>
-  <data name="AA1101VariablesShouldBeAssignedOnceOnlyDescription" xml:space="preserve">
-    <value>Variables should be treated as immutable and only assigned to once</value>
-  </data>
-  <data name="AA1101VariablesShouldBeAssignedOnceOnlyMessageFormat" xml:space="preserve">
-    <value>xxx</value>
-  </data>
-  <data name="AA1101VariablesShouldBeAssignedOnceOnlyTitle" xml:space="preserve">
-    <value>AA1101-VariablesShouldBeAssignedOnceOnly</value>
+  <data name="AA1003StaticMethodsShouldNotAccessStateTitle" xml:space="preserve">
+    <value>AA1003-StaticMethodsShouldNotAccessStateTitle</value>
   </data>
   <data name="AA1102InterfacePropertiesShouldBeReadOnlyDescription" xml:space="preserve">
     <value>To provide encapsulation, properties should only make getters publicly available, so interfaces should not define setters for properties.</value>
@@ -198,24 +171,6 @@
   <data name="AA1104InnerTypesMustBePrivateTitle" xml:space="preserve">
     <value>AA1104-InnerTypesMustBePrivate</value>
   </data>
-  <data name="AA1200AvoidUsingStaticFieldsDescription" xml:space="preserve">
-    <value>Static fields introduce global state and so should be avoided</value>
-  </data>
-  <data name="AA1200AvoidUsingStaticFieldsMessageFormat" xml:space="preserve">
-    <value>xxx</value>
-  </data>
-  <data name="AA1200AvoidUsingStaticFieldsTitle" xml:space="preserve">
-    <value>AA1200-AvoidUsingStaticFields</value>
-  </data>
-  <data name="AA1201AvoidUsingStaticPropertiesDescription" xml:space="preserve">
-    <value>Static properties introduce global state and so should be avoided</value>
-  </data>
-  <data name="AA1201AvoidUsingStaticPropertiesMessageFormat" xml:space="preserve">
-    <value>xxx</value>
-  </data>
-  <data name="AA1201AvoidUsingStaticPropertiesTitle" xml:space="preserve">
-    <value>AA1201-AvoidUsingStaticProperties</value>
-  </data>
   <data name="AA2000DoNotUseNotImplementedExceptionDescription" xml:space="preserve">
     <value>The NotImplementedException is a direct violation of the Liskov Substitution Principle (LSP) and so must not be used</value>
   </data>
@@ -242,24 +197,6 @@
   </data>
   <data name="AA2100MethodParametersMustNotBeRefOrOutTitle" xml:space="preserve">
     <value>AA2100-MethodParametersMustNotBeRefOrOut</value>
-  </data>
-  <data name="AA2101MethodTooLongDescription" xml:space="preserve">
-    <value>A long method is likely to break the single responsibility principle by carrying out unrelated activity</value>
-  </data>
-  <data name="AA2101MethodTooLongMessageFormat" xml:space="preserve">
-    <value>xxxx</value>
-  </data>
-  <data name="AA2101MethodTooLongTitle" xml:space="preserve">
-    <value>AA2101-MethodTooLong</value>
-  </data>
-  <data name="AA2102FileTooLongDescription" xml:space="preserve">
-    <value>An overly long file is likely to contain a type that breaks the single responsibility principle by carrying out unrelated activity</value>
-  </data>
-  <data name="AA2102FileTooLongMessageFormat" xml:space="preserve">
-    <value>xxx</value>
-  </data>
-  <data name="AA2102FileTooLongTitle" xml:space="preserve">
-    <value>AA2102-FileTooLong</value>
   </data>
   <data name="AA2103MethodShouldNotContainAndDescription" xml:space="preserve">
     <value>Method names that contain "And" often indicate a method is doing more than one thing. Consider refacting into two methods.</value>

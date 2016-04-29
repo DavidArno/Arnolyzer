@@ -38,7 +38,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnalyzerDetailsGenerator.cs" />
     <Compile Include="ArnolyzerDocumentationGenerator.cs" />
+    <Compile Include="ExtraWordsContents.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

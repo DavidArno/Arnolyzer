@@ -1,0 +1,1 @@
+﻿Interface properties should not have setters. Doing so forces implemnting classes to have public setters on those properties and so they become mutable from any other point in the code that has access to the object instance, making it much harder to track changes to the object's state.

@@ -11,7 +11,7 @@ namespace Arnolyzer.Tests.DiagnosticVerification
             Severity = details.Severity;
             Title = details.Title.ToString();
             Description = details.Description.ToString();
-            Category = details.Category;
+            Category = details.Category.Name;
             Id = details.DiagnosticId;
         }
 

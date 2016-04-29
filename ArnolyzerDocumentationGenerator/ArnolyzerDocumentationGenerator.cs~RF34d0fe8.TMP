@@ -16,9 +16,8 @@ namespace ArnolyzerDocumentationGenerator
         private static void Main()
         {
             var implementedAnalyzersDetails = GetDetailsOfImplementedAnalyzers();
-            var plannedAnalyzerDetails = GetDetailsOfPlannedAnalyzers();
             GenerateImplementedAnalyzerDocuments(implementedAnalyzersDetails);
-            GenerateReadMe(implementedAnalyzersDetails, plannedAnalyzerDetails);
+            GenerateReadMe(implementedAnalyzersDetails);
         }
 
         private static  void GenerateImplementedAnalyzerDocuments(IEnumerable<AnalyzerDetails> analyzersDetails)
@@ -26,7 +25,7 @@ namespace ArnolyzerDocumentationGenerator
             var template = File.ReadAllText(@"..\..\..\Arnolyzer.Analyzers\DocumentationTemplates\AnalyzerTemplate.md");
             foreach (var details in analyzersDetails)
             {
-                var analyzerName = details.DiagnosticId;
+                var analyzerName = details.Name;
                 Console.WriteLine($"Generating {analyzerName}.md");
 
                 var extraWords = CreateExtraWordsSet(analyzerName);
@@ -37,12 +36,10 @@ namespace ArnolyzerDocumentationGenerator
             }
         }
 
-        private static void GenerateReadMe(IEnumerable<AnalyzerDetails> implementedAnalyzersDetails,
-                                           IEnumerable<AnalyzerDetails> plannedAnalyzerDetails)
+        private static void GenerateReadMe(IList<AnalyzerDetails> implementedAnalyzersDetails)
         {
             var template = File.ReadAllText(@"..\..\..\Arnolyzer.Analyzers\DocumentationTemplates\README-template.md");
-            File.WriteAllText(@"..\..\..\README.md", 
-                              ProcessGeneralTemplateText(template, implementedAnalyzersDetails, plannedAnalyzerDetails));
+            File.WriteAllText(@"..\..\..\README.md", ProcessGeneralTemplateText(template, implementedAnalyzersDetails));
         }
 
         private static string ProcessAnalyzerTemplateText(string template, AnalyzerDetails details, ExtraWordsContents extraWords) => 
@@ -50,7 +47,7 @@ namespace ArnolyzerDocumentationGenerator
                     .Replace("%CODE%", details.Title.ToString())
                     .Replace("%ID%", details.DiagnosticId)
                     .Replace("%DESCRIPTION%", details.Description.ToString())
-                    .Replace("%CATEGORY%", details.Category.Name)
+                    .Replace("%CATEGORY%", details.Category)
                     .Replace("%SEVERITY%", details.SeverityText)
                     .Replace("%ENABLED-BY_DEFAULT%", details.EnabledByDefault ? "Yes" : "No")
                     .Replace("%CAUSE-WORDS%", extraWords.Cause)
@@ -61,14 +58,12 @@ namespace ArnolyzerDocumentationGenerator
                     .Replace("%CODEFIXES%", "There currently aren't any implemented code-fixes for this rule.")
                     .Replace("%SUPPRESSIONS%", GenerateSuppressionMessages(details.SuppressionAttributes));
 
-        private static string ProcessGeneralTemplateText(string template, 
-                                                         IEnumerable<AnalyzerDetails> implementedAnalyzersDetails,
-                                                         IEnumerable<AnalyzerDetails> plannedAnalyzerDetails) =>
+        private static string ProcessGeneralTemplateText(string template, IList<AnalyzerDetails> analyzersDetails) =>
             template.Replace("%DATE%", DateTime.Now.ToString("dd MMM yyyy"))
                     .Replace("%CURRENT-VERSION%", ArnolyzerVersion.Version)
                     .Replace("%CURRENT-RELEASE-NOTES%", GenerateReleaseDetails(ArnolyzerVersion.Version))
-                    .Replace("%IMPLEMENTED-LIST%", GenerateAnalyzerList(implementedAnalyzersDetails))
-                    .Replace("%PLANNED-LIST%", GenerateAnalyzerList(plannedAnalyzerDetails))
+                    .Replace("%IMPLEMENTED-LIST%", GenerateImplementedList(analyzersDetails))
+                    .Replace("%PLANNED-LIST%", "<<--- PLANNED-LIST --->>")
                     .Replace("%CATEGORY-LIST%", "<<--- CATEGORY-LIST --->>")
                     .Replace("%PREVIOUS-RELEASE-NOTES%", "<<--- PREVIOUS-RELEASE-NOTES --->>");
 
@@ -112,27 +107,27 @@ namespace ArnolyzerDocumentationGenerator
         }
 
         private static string GenerateReleaseDetails(string version) =>
+            $"**{version}**{NewLine}" +
             File.ReadAllText($@"..\..\..\Arnolyzer.Analyzers\ReleaseNotes\Release.{version}.md");
 
-        private static string GenerateAnalyzerList(IEnumerable<AnalyzerDetails> analyzersDetails)
+        private static string GenerateImplementedList(IEnumerable<AnalyzerDetails> analyzersDetails)
         {
             var builder = new StringBuilder();
             foreach (var analyzerGroup in from analyzer in analyzersDetails
                                           group analyzer by analyzer.Category into g
-                                          orderby g.Key.Code select g)
+                                          orderby g.Key select g)
             {
-                builder.Append($"**{analyzerGroup.Key.Name}**{NewLine}");
-                foreach (var analyzer in analyzerGroup.OrderBy(a => a.NameAndCode))
+                builder.Append($"**{analyzerGroup.Key}**{NewLine}");
+                foreach (var analyzer in analyzerGroup.OrderBy(a => a.Name))
                 {
                     builder.Append(CreateAnalyzerLink(analyzer));
                 }
-                builder.Append(NewLine);
             }
 
             return builder.ToString();
         }
 
         private static string CreateAnalyzerLink(AnalyzerDetails analyzer) =>
-            $"[{analyzer.NameAndCode}](https://github.com/DavidArno/Arnolyzer/wiki/{analyzer.DiagnosticId}.md){NewLine}";
+            $"[{analyzer.Name}](https://github.com/DavidArno/Arnolyzer/wiki{analyzer.Name}.md){NewLine}";
     }
 }

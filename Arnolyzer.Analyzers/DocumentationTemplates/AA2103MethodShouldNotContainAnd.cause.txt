@@ -1,0 +1,1 @@
+﻿Methods that contain "And" in their name often undertake two tasks and thus have two responsibilities. Thus they are likely to violate the single responsibility principle.

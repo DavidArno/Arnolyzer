@@ -1,0 +1,1 @@
+﻿Class properties should not have public setters. Properties with public setters become mutable from any other point in the code that has access to the object instance, making it much harder to track changes to the object's state.

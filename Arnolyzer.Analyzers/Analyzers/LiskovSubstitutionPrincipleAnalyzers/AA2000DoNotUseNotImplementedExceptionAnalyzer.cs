@@ -14,7 +14,7 @@ namespace Arnolyzer.Analyzers.LiskovSubstitutionPrincipleAnalyzers
 
         private static readonly AnalyzerDetails AA2000Details =
             new AnalyzerDetails(nameof(AA2000DoNotUseNotImplementedExceptionAnalyzer),
-                                AnalyzerCategories.EncapsulationAndImmutabilityAnalyzers,
+                                AnalyzerCategories.LiskovSubstitutionAnalyzers,
                                 DefaultState.EnabledByDefault,
                                 DiagnosticSeverity.Error,
                                 nameof(Resources.AA2000DoNotUseNotImplementedExceptionTitle),

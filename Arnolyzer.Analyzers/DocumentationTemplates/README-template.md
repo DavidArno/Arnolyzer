@@ -2,19 +2,17 @@
 
 #### A clean-code, Roslyn-based, analyzer for C# 6. ####
 
-Last updated: 29 Apr 2016.
+Last updated: %DATE%.
 
 ----------
 ### Introduction ###
 Arnolyzer is a Roslyn-based C# code analyzer that aims to provide a set of rules that encourage modern, functional-orientated, coding standards in C#. Pure functions; no inheritance; no global state; adherence to SOLID principles; immutable variables; and short, concise sections of code.
 
-### Current Release - 1.1.0 ###
-The current release of Succinc\<T\> is 1.1.0, which is [available as a nuget package](https://www.nuget.org/packages/Arnolyzer/). 
+### Current Release - %CURRENT-VERSION% ###
+The current release of Succinc\<T\> is %CURRENT-VERSION%, which is [available as a nuget package](https://www.nuget.org/packages/Arnolyzer/). 
 
 This release includes the following:
-Modification of the analyzer names to include a code for each. This then linked in with the documentation pages. 
-
-The aim is to improve the discoverability of the analyzers for search engines, with the hope that clicking on an error in Visual Studio will take the developer to the documentation for that analyzer.
+%CURRENT-RELEASE-NOTES%
 
 Details of previous releases can be found in the [Previous Releases](**********) section.
 
@@ -25,47 +23,13 @@ For detailed instructions on how to install and configure the Arnolyzer analyzer
 #### What's implemented ####
 Thus far, the analyzers implemented are:
 
-**Pure-Function Analyzers**
-[AA1000 - Static Methods Should Not Be Void](https://github.com/DavidArno/Arnolyzer/wiki/AA1000StaticMethodsShouldNotBeVoid.md)
-[AA1001 - Static Methods Should Have At Least One Parameter](https://github.com/DavidArno/Arnolyzer/wiki/AA1001StaticMethodsShouldHaveAtLeastOneParameter.md)
-
-**Encapsulation and Immutability Analyzers**
-[AA1102 - Interface Properties Should Be Read-Only](https://github.com/DavidArno/Arnolyzer/wiki/AA1102InterfacePropertiesShouldBeReadOnly.md)
-[AA1103 - Class Properties Should Be Publicly Read-Only](https://github.com/DavidArno/Arnolyzer/wiki/AA1103ClassPropertiesShouldBePubliclyReadOnly.md)
-[AA1104 - Inner Types Must Be Private](https://github.com/DavidArno/Arnolyzer/wiki/AA1104InnerTypesMustBePrivate.md)
-
-**Liskov Substitution Principle Analyzers**
-[AA2000 - Do Not Use Not Implemented Exception](https://github.com/DavidArno/Arnolyzer/wiki/AA2000DoNotUseNotImplementedException.md)
-[AA2001 - Do Not Use Not Supported Exception](https://github.com/DavidArno/Arnolyzer/wiki/AA2001DoNotUseNotSupportedException.md)
-
-**Single Responsibilty Analyzers**
-[AA2100 - Method Parameters Must Not Be Ref Or Out](https://github.com/DavidArno/Arnolyzer/wiki/AA2100MethodParametersMustNotBeRefOrOut.md)
-[AA2103 - Method Should Not Contain And](https://github.com/DavidArno/Arnolyzer/wiki/AA2103MethodShouldNotContainAnd.md)
-[AA2104 - File Must Only Contain One Type Definition](https://github.com/DavidArno/Arnolyzer/wiki/AA2104FileMustOnlyContainOneTypeDefinition.md)
-
-
+%IMPLEMENTED-LIST%
 For details of each of these, please follow the respective links.
 
 #### What's planned ####
 The following analyzers are planned for future releases of Arnolyzer, but haven't yet been implemented:
 
-**Pure-Function Analyzers**
-[AA1002 - Static Methods Should Not Access State](https://github.com/DavidArno/Arnolyzer/wiki/AA1002StaticMethodsShouldNotAccessState.md)
-[AA1003 - Static Methods Should Not Create State](https://github.com/DavidArno/Arnolyzer/wiki/AA1003StaticMethodsShouldNotCreateState.md)
-
-**Encapsulation and Immutability Analyzers**
-[AA1100 - Parameters Should Not Be Modified](https://github.com/DavidArno/Arnolyzer/wiki/AA1100ParametersShouldNotBeModified.md)
-[AA1101 - Variables Should Be Assigned Once Only](https://github.com/DavidArno/Arnolyzer/wiki/AA1101VariablesShouldBeAssignedOnceOnly.md)
-
-**Global State Analyzers**
-[AA1200 - Avoid Using Static Fields](https://github.com/DavidArno/Arnolyzer/wiki/AA1200AvoidUsingStaticFields.md)
-[AA1201 - Avoid Using Static Properties](https://github.com/DavidArno/Arnolyzer/wiki/AA1201AvoidUsingStaticProperties.md)
-
-**Single Responsibilty Analyzers**
-[AA2101 - Method Too Long](https://github.com/DavidArno/Arnolyzer/wiki/AA2101MethodTooLong.md)
-[AA2102 - File Too Long](https://github.com/DavidArno/Arnolyzer/wiki/AA2102FileTooLong.md)
-
-
+%PLANNED-LIST%
 In addition to this list of planned analyzers, there are two key areas of further work planned:
 
 1. There are situations where the code needs to violate some of these rules and so a means to suppress the rule is needed. This will be achieved via attributes. So far, very few rules take advantage of this.

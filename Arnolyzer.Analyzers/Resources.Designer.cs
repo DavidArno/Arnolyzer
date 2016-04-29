@@ -115,6 +115,114 @@ namespace Arnolyzer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to A static method should only derive a result from the supplied parameter(s). It should not access any static field or property.
+        /// </summary>
+        public static string AA1002StaticMethodsShouldNotAccessStateDescription {
+            get {
+                return ResourceManager.GetString("AA1002StaticMethodsShouldNotAccessStateDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to xxx.
+        /// </summary>
+        public static string AA1002StaticMethodsShouldNotAccessStateMessageFormat {
+            get {
+                return ResourceManager.GetString("AA1002StaticMethodsShouldNotAccessStateMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AA1002-StaticMethodsShouldNotAccessState.
+        /// </summary>
+        public static string AA1002StaticMethodsShouldNotAccessStateTitle {
+            get {
+                return ResourceManager.GetString("AA1002StaticMethodsShouldNotAccessStateTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The only result from calling a static method should be the returned value, or an exception. Therefore it should not invoke any method that has no parameters and/or a void return type, nor write to any field or property..
+        /// </summary>
+        public static string AA1003StaticMethodsShouldNotCreateStateDescription {
+            get {
+                return ResourceManager.GetString("AA1003StaticMethodsShouldNotCreateStateDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to xxx.
+        /// </summary>
+        public static string AA1003StaticMethodsShouldNotCreateStateMessageFormat {
+            get {
+                return ResourceManager.GetString("AA1003StaticMethodsShouldNotCreateStateMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AA1003-StaticMethodsShouldNotCreateState.
+        /// </summary>
+        public static string AA1003StaticMethodsShouldNotCreateStateTitle {
+            get {
+                return ResourceManager.GetString("AA1003StaticMethodsShouldNotCreateStateTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parameters should be treated as immutable and not used as a mutable variables.
+        /// </summary>
+        public static string AA1100ParametersShouldNotBeModifiedDescription {
+            get {
+                return ResourceManager.GetString("AA1100ParametersShouldNotBeModifiedDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to xxx.
+        /// </summary>
+        public static string AA1100ParametersShouldNotBeModifiedMessageFormat {
+            get {
+                return ResourceManager.GetString("AA1100ParametersShouldNotBeModifiedMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AA1100-ParametersShouldNotBeModified.
+        /// </summary>
+        public static string AA1100ParametersShouldNotBeModifiedTitle {
+            get {
+                return ResourceManager.GetString("AA1100ParametersShouldNotBeModifiedTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Variables should be treated as immutable and only assigned to once.
+        /// </summary>
+        public static string AA1101VariablesShouldBeAssignedOnceOnlyDescription {
+            get {
+                return ResourceManager.GetString("AA1101VariablesShouldBeAssignedOnceOnlyDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to xxx.
+        /// </summary>
+        public static string AA1101VariablesShouldBeAssignedOnceOnlyMessageFormat {
+            get {
+                return ResourceManager.GetString("AA1101VariablesShouldBeAssignedOnceOnlyMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AA1101-VariablesShouldBeAssignedOnceOnly.
+        /// </summary>
+        public static string AA1101VariablesShouldBeAssignedOnceOnlyTitle {
+            get {
+                return ResourceManager.GetString("AA1101VariablesShouldBeAssignedOnceOnlyTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to To provide encapsulation, properties should only make getters publicly available, so interfaces should not define setters for properties..
         /// </summary>
         public static string AA1102InterfacePropertiesShouldBeReadOnlyDescription {
@@ -196,6 +304,60 @@ namespace Arnolyzer {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Static fields introduce global state and so should be avoided.
+        /// </summary>
+        public static string AA1200AvoidUsingStaticFieldsDescription {
+            get {
+                return ResourceManager.GetString("AA1200AvoidUsingStaticFieldsDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to xxx.
+        /// </summary>
+        public static string AA1200AvoidUsingStaticFieldsMessageFormat {
+            get {
+                return ResourceManager.GetString("AA1200AvoidUsingStaticFieldsMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AA1200-AvoidUsingStaticFields.
+        /// </summary>
+        public static string AA1200AvoidUsingStaticFieldsTitle {
+            get {
+                return ResourceManager.GetString("AA1200AvoidUsingStaticFieldsTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Static properties introduce global state and so should be avoided.
+        /// </summary>
+        public static string AA1201AvoidUsingStaticPropertiesDescription {
+            get {
+                return ResourceManager.GetString("AA1201AvoidUsingStaticPropertiesDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to xxx.
+        /// </summary>
+        public static string AA1201AvoidUsingStaticPropertiesMessageFormat {
+            get {
+                return ResourceManager.GetString("AA1201AvoidUsingStaticPropertiesMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AA1201-AvoidUsingStaticProperties.
+        /// </summary>
+        public static string AA1201AvoidUsingStaticPropertiesTitle {
+            get {
+                return ResourceManager.GetString("AA1201AvoidUsingStaticPropertiesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The NotImplementedException is a direct violation of the Liskov Substitution Principle (LSP) and so must not be used.
         /// </summary>
         public static string AA2000DoNotUseNotImplementedExceptionDescription {
@@ -273,6 +435,60 @@ namespace Arnolyzer {
         public static string AA2100MethodParametersMustNotBeRefOrOutTitle {
             get {
                 return ResourceManager.GetString("AA2100MethodParametersMustNotBeRefOrOutTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A long method is likely to break the single responsibility principle by carrying out unrelated activity.
+        /// </summary>
+        public static string AA2101MethodTooLongDescription {
+            get {
+                return ResourceManager.GetString("AA2101MethodTooLongDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to xxxx.
+        /// </summary>
+        public static string AA2101MethodTooLongMessageFormat {
+            get {
+                return ResourceManager.GetString("AA2101MethodTooLongMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AA2101-MethodTooLong.
+        /// </summary>
+        public static string AA2101MethodTooLongTitle {
+            get {
+                return ResourceManager.GetString("AA2101MethodTooLongTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An overly long file is likely to contain a type that breaks the single responsibility principle by carrying out unrelated activity.
+        /// </summary>
+        public static string AA2102FileTooLongDescription {
+            get {
+                return ResourceManager.GetString("AA2102FileTooLongDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to xxx.
+        /// </summary>
+        public static string AA2102FileTooLongMessageFormat {
+            get {
+                return ResourceManager.GetString("AA2102FileTooLongMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AA2102-FileTooLong.
+        /// </summary>
+        public static string AA2102FileTooLongTitle {
+            get {
+                return ResourceManager.GetString("AA2102FileTooLongTitle", resourceCulture);
             }
         }
         

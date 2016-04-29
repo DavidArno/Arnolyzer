@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Arnolyzer.Analyzers.Settings;
 using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using SuccincT.Options;
 
@@ -38,6 +39,15 @@ namespace Arnolyzer.Analyzers
             var syntaxTree = symbol.DeclaringSyntaxReferences[0].SyntaxTree;
             var options = syntaxTree.ArnolyzerSettings();
             return options.IgnorePathsRegex != "" && Regex.Match(syntaxTree.FilePath, options.IgnorePathsRegex).Success;
+        }
+
+        public static bool NodeIsTypeDeclaration(SyntaxNode node)
+        {
+            var kind = node?.Kind();
+            return kind == SyntaxKind.ClassDeclaration ||
+                   kind == SyntaxKind.InterfaceDeclaration ||
+                   kind == SyntaxKind.StructDeclaration ||
+                   kind == SyntaxKind.EnumDeclaration;
         }
 
         private static bool MatchAttributeName(Type attributeType, string name) =>
