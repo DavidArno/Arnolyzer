@@ -41,7 +41,9 @@
     <Compile Include="AnalyzerDetailsGenerator.cs" />
     <Compile Include="ArnolyzerDocumentationGenerator.cs" />
     <Compile Include="ExtraWordsContents.cs" />
+    <Compile Include="ImplementationStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TemplateProcessors.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

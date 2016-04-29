@@ -153,50 +153,32 @@
   <data name="AA1003StaticMethodsShouldNotCreateStateTitle" xml:space="preserve">
     <value>AA1003-StaticMethodsShouldNotCreateState</value>
   </data>
-  <data name="AA1100ParametersShouldNotBeModifiedDescription" xml:space="preserve">
-    <value>Parameters should be treated as immutable and not used as a mutable variables</value>
-  </data>
-  <data name="AA1100ParametersShouldNotBeModifiedMessageFormat" xml:space="preserve">
-    <value>xxx</value>
-  </data>
-  <data name="AA1100ParametersShouldNotBeModifiedTitle" xml:space="preserve">
-    <value>AA1100-ParametersShouldNotBeModified</value>
-  </data>
-  <data name="AA1101VariablesShouldBeAssignedOnceOnlyDescription" xml:space="preserve">
-    <value>Variables should be treated as immutable and only assigned to once</value>
-  </data>
-  <data name="AA1101VariablesShouldBeAssignedOnceOnlyMessageFormat" xml:space="preserve">
-    <value>xxx</value>
-  </data>
-  <data name="AA1101VariablesShouldBeAssignedOnceOnlyTitle" xml:space="preserve">
-    <value>AA1101-VariablesShouldBeAssignedOnceOnly</value>
-  </data>
-  <data name="AA1102InterfacePropertiesShouldBeReadOnlyDescription" xml:space="preserve">
+  <data name="AA1100InterfacePropertiesShouldBeReadOnlyDescription" xml:space="preserve">
     <value>To provide encapsulation, properties should only make getters publicly available, so interfaces should not define setters for properties.</value>
   </data>
-  <data name="AA1102InterfacePropertiesShouldBeReadOnlyMessageFormat" xml:space="preserve">
+  <data name="AA1100InterfacePropertiesShouldBeReadOnlyMessageFormat" xml:space="preserve">
     <value>Property `{0}` of interface `{1}` should not define a setter</value>
   </data>
-  <data name="AA1102InterfacePropertiesShouldBeReadOnlyTitle" xml:space="preserve">
-    <value>AA1102-InterfacePropertiesShouldBeReadOnly</value>
+  <data name="AA1100InterfacePropertiesShouldBeReadOnlyTitle" xml:space="preserve">
+    <value>AA1100-InterfacePropertiesShouldBeReadOnly</value>
   </data>
-  <data name="AA1103ClassPropertiesShouldBePubliclyReadOnlyDescription" xml:space="preserve">
+  <data name="AA1101ClassPropertiesShouldBePubliclyReadOnlyDescription" xml:space="preserve">
     <value>Public classes should not provide publicly accessible setters for properties</value>
   </data>
-  <data name="AA1103ClassPropertiesShouldBePubliclyReadOnlyMessageFormat" xml:space="preserve">
+  <data name="AA1101ClassPropertiesShouldBePubliclyReadOnlyMessageFormat" xml:space="preserve">
     <value>Public property `{0}` of class `{1}` should not define a public setter</value>
   </data>
-  <data name="AA1103ClassPropertiesShouldBePubliclyReadOnlyTitle" xml:space="preserve">
-    <value>AA1103-ClassPropertiesShouldBePubliclyReadOnly</value>
+  <data name="AA1101ClassPropertiesShouldBePubliclyReadOnlyTitle" xml:space="preserve">
+    <value>AA1101-ClassPropertiesShouldBePubliclyReadOnly</value>
   </data>
-  <data name="AA1104InnerTypesMustBePrivateDescription" xml:space="preserve">
+  <data name="AA1102InnerTypesMustBePrivateDescription" xml:space="preserve">
     <value>Inner types should be treated as implementation details and encapsulated by marking them as private</value>
   </data>
-  <data name="AA1104InnerTypesMustBePrivateMessageFormat" xml:space="preserve">
+  <data name="AA1102InnerTypesMustBePrivateMessageFormat" xml:space="preserve">
     <value>Type `{0}` is defined inside another type, so should be made private</value>
   </data>
-  <data name="AA1104InnerTypesMustBePrivateTitle" xml:space="preserve">
-    <value>AA1104-InnerTypesMustBePrivate</value>
+  <data name="AA1102InnerTypesMustBePrivateTitle" xml:space="preserve">
+    <value>AA1102-InnerTypesMustBePrivate</value>
   </data>
   <data name="AA1200AvoidUsingStaticFieldsDescription" xml:space="preserve">
     <value>Static fields introduce global state and so should be avoided</value>
@@ -215,6 +197,24 @@
   </data>
   <data name="AA1201AvoidUsingStaticPropertiesTitle" xml:space="preserve">
     <value>AA1201-AvoidUsingStaticProperties</value>
+  </data>
+  <data name="AA1300ParametersShouldNotBeModifiedDescription" xml:space="preserve">
+    <value>Parameters should be treated as immutable and not used as a mutable variables</value>
+  </data>
+  <data name="AA1300ParametersShouldNotBeModifiedMessageFormat" xml:space="preserve">
+    <value>xxx</value>
+  </data>
+  <data name="AA1300ParametersShouldNotBeModifiedTitle" xml:space="preserve">
+    <value>AA1300-ParametersShouldNotBeModified</value>
+  </data>
+  <data name="AA1301VariablesShouldBeAssignedOnceOnlyDescription" xml:space="preserve">
+    <value>Variables should be treated as immutable and only assigned to once</value>
+  </data>
+  <data name="AA1301VariablesShouldBeAssignedOnceOnlyMessageFormat" xml:space="preserve">
+    <value>xxx</value>
+  </data>
+  <data name="AA1301VariablesShouldBeAssignedOnceOnlyTitle" xml:space="preserve">
+    <value>AA1301-VariablesShouldBeAssignedOnceOnly</value>
   </data>
   <data name="AA2000DoNotUseNotImplementedExceptionDescription" xml:space="preserve">
     <value>The NotImplementedException is a direct violation of the Liskov Substitution Principle (LSP) and so must not be used</value>

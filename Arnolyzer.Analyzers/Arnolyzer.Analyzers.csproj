@@ -67,8 +67,8 @@
   <ItemGroup>
     <Compile Include="Analyzers\AnalyzerCategoryDetails.cs" />
     <Compile Include="Analyzers\AnalyzerDetails.cs" />
-    <Compile Include="Analyzers\EncapsulationAnalyzers\AA1101VariablesShouldBeAssignedOnceOnlyAnalyzer.cs" />
-    <Compile Include="Analyzers\EncapsulationAnalyzers\AA1100ParametersShouldNotBeModifiedAnalyzer.cs" />
+    <Compile Include="Analyzers\ImmutabilityAnalyzers\AA1101VariablesShouldBeAssignedOnceOnlyAnalyzer.cs" />
+    <Compile Include="Analyzers\ImmutabilityAnalyzers\AA1300ParametersShouldNotBeModifiedAnalyzer.cs" />
     <Compile Include="Analyzers\GlobalStateAnalyzers\AA1201AvoidUsingStaticPropertiesAnalyzer.cs" />
     <Compile Include="Analyzers\GlobalStateAnalyzers\AA1200AvoidUsingStaticFieldsAnalyzer.cs" />
     <Compile Include="Analyzers\IPlannedAnalyzerDetailsReporter.cs" />
@@ -80,14 +80,14 @@
     <Compile Include="RuleExceptionAttributes\IAttributeDescriber.cs" />
     <Compile Include="RuleExceptionAttributes\MutablePropertyAttribute.cs" />
     <Compile Include="Analyzers\DefaultState.cs" />
-    <Compile Include="Analyzers\EncapsulationAnalyzers\AA1103ClassPropertiesShouldBePubliclyRead_OnlyAnalyzer.cs" />
+    <Compile Include="Analyzers\EncapsulationAnalyzers\AA1101ClassPropertiesShouldBePubliclyRead_OnlyAnalyzer.cs" />
     <Compile Include="Analyzers\Factories\LocalizableStringFactory.cs" />
     <Compile Include="RuleExceptionAttributes\HasSideEffectsAttribute.cs" />
     <Compile Include="RuleExceptionAttributes\MutatesParameterAttribute.cs" />
     <Compile Include="Analyzers\AnalyzerCategories.cs" />
     <Compile Include="Analyzers\CommonFunctions.cs" />
-    <Compile Include="Analyzers\EncapsulationAnalyzers\AA1102InterfacePropertiesShouldBeRead_OnlyAnalyzer.cs" />
-    <Compile Include="Analyzers\EncapsulationAnalyzers\AA1104InnerTypesMustBePrivateAnalyzer.cs" />
+    <Compile Include="Analyzers\EncapsulationAnalyzers\AA1100InterfacePropertiesShouldBeRead_OnlyAnalyzer.cs" />
+    <Compile Include="Analyzers\EncapsulationAnalyzers\AA1102InnerTypesMustBePrivateAnalyzer.cs" />
     <Compile Include="Analyzers\IAnalyzerDetailsReporter.cs" />
     <Compile Include="Analyzers\LiskovSubstitutionPrincipleAnalyzers\AA2001DoNotUseNotSupportedExceptionAnalyzer.cs" />
     <Compile Include="Analyzers\LiskovSubstitutionPrincipleAnalyzers\AA2000DoNotUseNotImplementedExceptionAnalyzer.cs" />
@@ -117,14 +117,16 @@
   <ItemGroup>
     <Content Include="DocumentationTemplates\AA1000StaticMethodsShouldNotBeVoid.cause.txt" />
     <Content Include="DocumentationTemplates\AA1001StaticMethodsShouldHaveAtLeastOneParameter.cause.txt" />
-    <Content Include="DocumentationTemplates\AA1102InterfacePropertiesShouldBeReadOnly.cause.txt" />
-    <Content Include="DocumentationTemplates\AA1103ClassPropertiesShouldBePubliclyReadOnly.cause.txt" />
-    <Content Include="DocumentationTemplates\AA1104InnerTypesMustBePrivate.cause.txt" />
+    <Content Include="DocumentationTemplates\AA1100InterfacePropertiesShouldBeReadOnly.cause.txt" />
+    <Content Include="DocumentationTemplates\AA1101ClassPropertiesShouldBePubliclyReadOnly.cause.txt" />
+    <Content Include="DocumentationTemplates\AA1102InnerTypesMustBePrivate.cause.txt" />
     <Content Include="DocumentationTemplates\AA2001DoNotUseNotSupportedException.cause.txt" />
     <Content Include="DocumentationTemplates\AA2000DoNotUseNotImplementedException.cause.txt" />
     <Content Include="DocumentationTemplates\AA2100MethodParametersMustNotBeRefOrOut.cause.txt" />
     <Content Include="DocumentationTemplates\AA2103MethodShouldNotContainAnd.cause.txt" />
     <Content Include="DocumentationTemplates\AA2104FileMustOnlyContainOneTypeDefinition.cause.txt" />
+    <None Include="DocumentationTemplates\PreviousReleasesTemplate.md" />
+    <None Include="ReleaseNotes\Release.1.0.0.md" />
     <None Include="ReleaseNotes\Release.1.1.0.md" />
     <None Include="Analysis.ruleset" />
     <None Include="Arnolyzer.Analyzers.ruleset" />

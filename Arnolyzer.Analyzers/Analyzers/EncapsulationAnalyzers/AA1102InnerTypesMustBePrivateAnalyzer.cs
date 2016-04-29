@@ -12,23 +12,23 @@ using static Arnolyzer.Analyzers.CommonFunctions;
 namespace Arnolyzer.Analyzers.EncapsulationAnalyzers
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
-    public class AA1104InnerTypesMustBePrivateAnalyzer : DiagnosticAnalyzer, IAnalyzerDetailsReporter
+    public class AA1102InnerTypesMustBePrivateAnalyzer : DiagnosticAnalyzer, IAnalyzerDetailsReporter
     {
         private static readonly IList<Type> SuppressionAttributes = new List<Type>();
 
-        private static readonly AnalyzerDetails AA1104Details =
-            new AnalyzerDetails(nameof(AA1104InnerTypesMustBePrivateAnalyzer),
-                                AnalyzerCategories.EncapsulationAndImmutabilityAnalyzers,
+        private static readonly AnalyzerDetails AA1102Details =
+            new AnalyzerDetails(nameof(AA1102InnerTypesMustBePrivateAnalyzer),
+                                AnalyzerCategories.EncapsulationAnalyzers,
                                 DefaultState.EnabledByDefault,
                                 DiagnosticSeverity.Error,
-                                nameof(Resources.AA1104InnerTypesMustBePrivateTitle),
-                                nameof(Resources.AA1104InnerTypesMustBePrivateDescription),
-                                nameof(Resources.AA1104InnerTypesMustBePrivateMessageFormat),
+                                nameof(Resources.AA1102InnerTypesMustBePrivateTitle),
+                                nameof(Resources.AA1102InnerTypesMustBePrivateDescription),
+                                nameof(Resources.AA1102InnerTypesMustBePrivateMessageFormat),
                                 SuppressionAttributes);
 
-        public AnalyzerDetails GetAnalyzerDetails() => AA1104Details;
+        public AnalyzerDetails GetAnalyzerDetails() => AA1102Details;
 
-        private static readonly DiagnosticDescriptor Rule = AA1104Details.GetDiagnosticDescriptor();
+        private static readonly DiagnosticDescriptor Rule = AA1102Details.GetDiagnosticDescriptor();
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
 

@@ -9,12 +9,13 @@ Last updated: %DATE%.
 Arnolyzer is a Roslyn-based C# code analyzer that aims to provide a set of rules that encourage modern, functional-orientated, coding standards in C#. Pure functions; no inheritance; no global state; adherence to SOLID principles; immutable variables; and short, concise sections of code.
 
 ### Current Release - %CURRENT-VERSION% ###
-The current release of Succinc\<T\> is %CURRENT-VERSION%, which is [available as a nuget package](https://www.nuget.org/packages/Arnolyzer/). 
+The current release of Arnolyzer is %CURRENT-VERSION%, which is [available as a nuget package](https://www.nuget.org/packages/Arnolyzer/). 
 
 This release includes the following:
 %CURRENT-RELEASE-NOTES%
 
-Details of previous releases can be found in the [Previous Releases](**********) section.
+### Previous Releases ###
+Details of previous releases can be viewed at %PREVIOUS-RELEASE-NOTES%.
 
 ### Installation ###
 For detailed instructions on how to install and configure the Arnolyzer analyzers, please refer to the [installation guide](**************).
@@ -38,12 +39,7 @@ In addition to this list of planned analyzers, there are two key areas of furthe
 #### Analyzer Categories ####
 The Arnolyzer analyzers are grouped by category. For details on each category, the thinking behind why following the rules of each category is a good idea, and the analyzers that enforce these rules, see:
 
-* [Pure Functions](******)
-* [No global/static state](******)
-* [Single Responsibilty Principle](******)
-* [Encapsulation and Immutability](******)
-* [Liskov Substitution Principle](******)
-
+%CATEGORY-LIST%
 
 
 #Remove this stuff >>>>>>>>>>>>

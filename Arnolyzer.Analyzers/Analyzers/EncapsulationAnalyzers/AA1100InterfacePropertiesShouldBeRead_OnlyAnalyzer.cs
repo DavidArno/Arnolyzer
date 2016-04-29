@@ -12,23 +12,23 @@ using SuccincT.Options;
 namespace Arnolyzer.Analyzers.EncapsulationAnalyzers
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
-    public class AA1102InterfacePropertiesShouldBeRead_OnlyAnalyzer : DiagnosticAnalyzer, IAnalyzerDetailsReporter
+    public class AA1100InterfacePropertiesShouldBeRead_OnlyAnalyzer : DiagnosticAnalyzer, IAnalyzerDetailsReporter
     {
         private static readonly IList<Type> SuppressionAttributes = new List<Type> { typeof(MutablePropertyAttribute) };
 
-        private static readonly AnalyzerDetails AA1102Details =
-            new AnalyzerDetails(nameof(AA1102InterfacePropertiesShouldBeRead_OnlyAnalyzer),
-                                AnalyzerCategories.EncapsulationAndImmutabilityAnalyzers,
+        private static readonly AnalyzerDetails AA1100Details =
+            new AnalyzerDetails(nameof(AA1100InterfacePropertiesShouldBeRead_OnlyAnalyzer),
+                                AnalyzerCategories.EncapsulationAnalyzers,
                                 DefaultState.EnabledByDefault,
                                 DiagnosticSeverity.Error,
-                                nameof(Resources.AA1102InterfacePropertiesShouldBeReadOnlyTitle),
-                                nameof(Resources.AA1102InterfacePropertiesShouldBeReadOnlyDescription),
-                                nameof(Resources.AA1102InterfacePropertiesShouldBeReadOnlyMessageFormat),
+                                nameof(Resources.AA1100InterfacePropertiesShouldBeReadOnlyTitle),
+                                nameof(Resources.AA1100InterfacePropertiesShouldBeReadOnlyDescription),
+                                nameof(Resources.AA1100InterfacePropertiesShouldBeReadOnlyMessageFormat),
                                 SuppressionAttributes);
 
-        public AnalyzerDetails GetAnalyzerDetails() => AA1102Details;
+        public AnalyzerDetails GetAnalyzerDetails() => AA1100Details;
 
-        private static readonly DiagnosticDescriptor Rule = AA1102Details.GetDiagnosticDescriptor();
+        private static readonly DiagnosticDescriptor Rule = AA1100Details.GetDiagnosticDescriptor();
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
 

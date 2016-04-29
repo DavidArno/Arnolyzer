@@ -47,7 +47,7 @@ namespace Arnolyzer.Analyzers
         public DiagnosticSeverity Severity { get; }
         public string SeverityText => Severity.SeverityType();
         public bool EnabledByDefault => _defaultState.IsEnabledByDefault();
-        public object NameAndCode { get; }
+        public string NameAndCode { get; }
 
         public DiagnosticDescriptor GetDiagnosticDescriptor() =>
             new DiagnosticDescriptor(DiagnosticId,

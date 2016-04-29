@@ -169,137 +169,83 @@ namespace Arnolyzer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parameters should be treated as immutable and not used as a mutable variables.
-        /// </summary>
-        public static string AA1100ParametersShouldNotBeModifiedDescription {
-            get {
-                return ResourceManager.GetString("AA1100ParametersShouldNotBeModifiedDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to xxx.
-        /// </summary>
-        public static string AA1100ParametersShouldNotBeModifiedMessageFormat {
-            get {
-                return ResourceManager.GetString("AA1100ParametersShouldNotBeModifiedMessageFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to AA1100-ParametersShouldNotBeModified.
-        /// </summary>
-        public static string AA1100ParametersShouldNotBeModifiedTitle {
-            get {
-                return ResourceManager.GetString("AA1100ParametersShouldNotBeModifiedTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Variables should be treated as immutable and only assigned to once.
-        /// </summary>
-        public static string AA1101VariablesShouldBeAssignedOnceOnlyDescription {
-            get {
-                return ResourceManager.GetString("AA1101VariablesShouldBeAssignedOnceOnlyDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to xxx.
-        /// </summary>
-        public static string AA1101VariablesShouldBeAssignedOnceOnlyMessageFormat {
-            get {
-                return ResourceManager.GetString("AA1101VariablesShouldBeAssignedOnceOnlyMessageFormat", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to AA1101-VariablesShouldBeAssignedOnceOnly.
-        /// </summary>
-        public static string AA1101VariablesShouldBeAssignedOnceOnlyTitle {
-            get {
-                return ResourceManager.GetString("AA1101VariablesShouldBeAssignedOnceOnlyTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to To provide encapsulation, properties should only make getters publicly available, so interfaces should not define setters for properties..
         /// </summary>
-        public static string AA1102InterfacePropertiesShouldBeReadOnlyDescription {
+        public static string AA1100InterfacePropertiesShouldBeReadOnlyDescription {
             get {
-                return ResourceManager.GetString("AA1102InterfacePropertiesShouldBeReadOnlyDescription", resourceCulture);
+                return ResourceManager.GetString("AA1100InterfacePropertiesShouldBeReadOnlyDescription", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Property `{0}` of interface `{1}` should not define a setter.
         /// </summary>
-        public static string AA1102InterfacePropertiesShouldBeReadOnlyMessageFormat {
+        public static string AA1100InterfacePropertiesShouldBeReadOnlyMessageFormat {
             get {
-                return ResourceManager.GetString("AA1102InterfacePropertiesShouldBeReadOnlyMessageFormat", resourceCulture);
+                return ResourceManager.GetString("AA1100InterfacePropertiesShouldBeReadOnlyMessageFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AA1102-InterfacePropertiesShouldBeReadOnly.
+        ///   Looks up a localized string similar to AA1100-InterfacePropertiesShouldBeReadOnly.
         /// </summary>
-        public static string AA1102InterfacePropertiesShouldBeReadOnlyTitle {
+        public static string AA1100InterfacePropertiesShouldBeReadOnlyTitle {
             get {
-                return ResourceManager.GetString("AA1102InterfacePropertiesShouldBeReadOnlyTitle", resourceCulture);
+                return ResourceManager.GetString("AA1100InterfacePropertiesShouldBeReadOnlyTitle", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Public classes should not provide publicly accessible setters for properties.
         /// </summary>
-        public static string AA1103ClassPropertiesShouldBePubliclyReadOnlyDescription {
+        public static string AA1101ClassPropertiesShouldBePubliclyReadOnlyDescription {
             get {
-                return ResourceManager.GetString("AA1103ClassPropertiesShouldBePubliclyReadOnlyDescription", resourceCulture);
+                return ResourceManager.GetString("AA1101ClassPropertiesShouldBePubliclyReadOnlyDescription", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Public property `{0}` of class `{1}` should not define a public setter.
         /// </summary>
-        public static string AA1103ClassPropertiesShouldBePubliclyReadOnlyMessageFormat {
+        public static string AA1101ClassPropertiesShouldBePubliclyReadOnlyMessageFormat {
             get {
-                return ResourceManager.GetString("AA1103ClassPropertiesShouldBePubliclyReadOnlyMessageFormat", resourceCulture);
+                return ResourceManager.GetString("AA1101ClassPropertiesShouldBePubliclyReadOnlyMessageFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AA1103-ClassPropertiesShouldBePubliclyReadOnly.
+        ///   Looks up a localized string similar to AA1101-ClassPropertiesShouldBePubliclyReadOnly.
         /// </summary>
-        public static string AA1103ClassPropertiesShouldBePubliclyReadOnlyTitle {
+        public static string AA1101ClassPropertiesShouldBePubliclyReadOnlyTitle {
             get {
-                return ResourceManager.GetString("AA1103ClassPropertiesShouldBePubliclyReadOnlyTitle", resourceCulture);
+                return ResourceManager.GetString("AA1101ClassPropertiesShouldBePubliclyReadOnlyTitle", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Inner types should be treated as implementation details and encapsulated by marking them as private.
         /// </summary>
-        public static string AA1104InnerTypesMustBePrivateDescription {
+        public static string AA1102InnerTypesMustBePrivateDescription {
             get {
-                return ResourceManager.GetString("AA1104InnerTypesMustBePrivateDescription", resourceCulture);
+                return ResourceManager.GetString("AA1102InnerTypesMustBePrivateDescription", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Type `{0}` is defined inside another type, so should be made private.
         /// </summary>
-        public static string AA1104InnerTypesMustBePrivateMessageFormat {
+        public static string AA1102InnerTypesMustBePrivateMessageFormat {
             get {
-                return ResourceManager.GetString("AA1104InnerTypesMustBePrivateMessageFormat", resourceCulture);
+                return ResourceManager.GetString("AA1102InnerTypesMustBePrivateMessageFormat", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to AA1104-InnerTypesMustBePrivate.
+        ///   Looks up a localized string similar to AA1102-InnerTypesMustBePrivate.
         /// </summary>
-        public static string AA1104InnerTypesMustBePrivateTitle {
+        public static string AA1102InnerTypesMustBePrivateTitle {
             get {
-                return ResourceManager.GetString("AA1104InnerTypesMustBePrivateTitle", resourceCulture);
+                return ResourceManager.GetString("AA1102InnerTypesMustBePrivateTitle", resourceCulture);
             }
         }
         
@@ -354,6 +300,60 @@ namespace Arnolyzer {
         public static string AA1201AvoidUsingStaticPropertiesTitle {
             get {
                 return ResourceManager.GetString("AA1201AvoidUsingStaticPropertiesTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parameters should be treated as immutable and not used as a mutable variables.
+        /// </summary>
+        public static string AA1300ParametersShouldNotBeModifiedDescription {
+            get {
+                return ResourceManager.GetString("AA1300ParametersShouldNotBeModifiedDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to xxx.
+        /// </summary>
+        public static string AA1300ParametersShouldNotBeModifiedMessageFormat {
+            get {
+                return ResourceManager.GetString("AA1300ParametersShouldNotBeModifiedMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AA1300-ParametersShouldNotBeModified.
+        /// </summary>
+        public static string AA1300ParametersShouldNotBeModifiedTitle {
+            get {
+                return ResourceManager.GetString("AA1300ParametersShouldNotBeModifiedTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Variables should be treated as immutable and only assigned to once.
+        /// </summary>
+        public static string AA1301VariablesShouldBeAssignedOnceOnlyDescription {
+            get {
+                return ResourceManager.GetString("AA1301VariablesShouldBeAssignedOnceOnlyDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to xxx.
+        /// </summary>
+        public static string AA1301VariablesShouldBeAssignedOnceOnlyMessageFormat {
+            get {
+                return ResourceManager.GetString("AA1301VariablesShouldBeAssignedOnceOnlyMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AA1301-VariablesShouldBeAssignedOnceOnly.
+        /// </summary>
+        public static string AA1301VariablesShouldBeAssignedOnceOnlyTitle {
+            get {
+                return ResourceManager.GetString("AA1301VariablesShouldBeAssignedOnceOnlyTitle", resourceCulture);
             }
         }
         

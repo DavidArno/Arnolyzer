@@ -1,8 +1,12 @@
-﻿# %NAME%
+# %NAME-AND-CODE%
 **Report code: %CODE%**
 
 ## Summary
 <table>
+<tr>
+  <td><strong>Status</strong></td>
+  <td>%STATUS%</td>
+</tr>
 <tr>
   <td><strong>Description</strong></td>
   <td>%DESCRIPTION%</td>

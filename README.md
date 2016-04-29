@@ -16,7 +16,8 @@ Modification of the analyzer names to include a code for each. This then linked 
 
 The aim is to improve the discoverability of the analyzers for search engines, with the hope that clicking on an error in Visual Studio will take the developer to the documentation for that analyzer.
 
-Details of previous releases can be found in the [Previous Releases](**********) section.
+### Previous Releases ###
+Details of previous releases can be viewed at [Previous releases](https://github.com/DavidArno/Arnolyzer/wiki/PreviousReleases.md).
 
 ### Installation ###
 For detailed instructions on how to install and configure the Arnolyzer analyzers, please refer to the [installation guide](**************).
@@ -29,10 +30,10 @@ Thus far, the analyzers implemented are:
 [AA1000 - Static Methods Should Not Be Void](https://github.com/DavidArno/Arnolyzer/wiki/AA1000StaticMethodsShouldNotBeVoid.md)
 [AA1001 - Static Methods Should Have At Least One Parameter](https://github.com/DavidArno/Arnolyzer/wiki/AA1001StaticMethodsShouldHaveAtLeastOneParameter.md)
 
-**Encapsulation and Immutability Analyzers**
-[AA1102 - Interface Properties Should Be Read-Only](https://github.com/DavidArno/Arnolyzer/wiki/AA1102InterfacePropertiesShouldBeReadOnly.md)
-[AA1103 - Class Properties Should Be Publicly Read-Only](https://github.com/DavidArno/Arnolyzer/wiki/AA1103ClassPropertiesShouldBePubliclyReadOnly.md)
-[AA1104 - Inner Types Must Be Private](https://github.com/DavidArno/Arnolyzer/wiki/AA1104InnerTypesMustBePrivate.md)
+**Encapsulation Analyzers**
+[AA1100 - Interface Properties Should Be Read-Only](https://github.com/DavidArno/Arnolyzer/wiki/AA1100InterfacePropertiesShouldBeReadOnly.md)
+[AA1101 - Class Properties Should Be Publicly Read-Only](https://github.com/DavidArno/Arnolyzer/wiki/AA1101ClassPropertiesShouldBePubliclyReadOnly.md)
+[AA1102 - Inner Types Must Be Private](https://github.com/DavidArno/Arnolyzer/wiki/AA1102InnerTypesMustBePrivate.md)
 
 **Liskov Substitution Principle Analyzers**
 [AA2000 - Do Not Use Not Implemented Exception](https://github.com/DavidArno/Arnolyzer/wiki/AA2000DoNotUseNotImplementedException.md)
@@ -53,9 +54,9 @@ The following analyzers are planned for future releases of Arnolyzer, but haven'
 [AA1002 - Static Methods Should Not Access State](https://github.com/DavidArno/Arnolyzer/wiki/AA1002StaticMethodsShouldNotAccessState.md)
 [AA1003 - Static Methods Should Not Create State](https://github.com/DavidArno/Arnolyzer/wiki/AA1003StaticMethodsShouldNotCreateState.md)
 
-**Encapsulation and Immutability Analyzers**
-[AA1100 - Parameters Should Not Be Modified](https://github.com/DavidArno/Arnolyzer/wiki/AA1100ParametersShouldNotBeModified.md)
-[AA1101 - Variables Should Be Assigned Once Only](https://github.com/DavidArno/Arnolyzer/wiki/AA1101VariablesShouldBeAssignedOnceOnly.md)
+**Immutability Analyzers**
+[AA1300 - Parameters Should Not Be Modified](https://github.com/DavidArno/Arnolyzer/wiki/AA1300ParametersShouldNotBeModified.md)
+[AA1301 - Variables Should Be Assigned Once Only](https://github.com/DavidArno/Arnolyzer/wiki/AA1301VariablesShouldBeAssignedOnceOnly.md)
 
 **Global State Analyzers**
 [AA1200 - Avoid Using Static Fields](https://github.com/DavidArno/Arnolyzer/wiki/AA1200AvoidUsingStaticFields.md)
@@ -74,12 +75,12 @@ In addition to this list of planned analyzers, there are two key areas of furthe
 #### Analyzer Categories ####
 The Arnolyzer analyzers are grouped by category. For details on each category, the thinking behind why following the rules of each category is a good idea, and the analyzers that enforce these rules, see:
 
-* [Pure Functions](******)
-* [No global/static state](******)
-* [Single Responsibilty Principle](******)
-* [Encapsulation and Immutability](******)
-* [Liskov Substitution Principle](******)
-
+* [Encapsulation Analyzers](https://github.com/DavidArno/Arnolyzer/wiki/EncapsulationAnalyzers.md)
+* [Global State Analyzers](https://github.com/DavidArno/Arnolyzer/wiki/GlobalStateAnalyzers.md)
+* [Immutability Analyzers](https://github.com/DavidArno/Arnolyzer/wiki/ImmutabilityAnalyzers.md)
+* [Liskov Substitution Principle Analyzers](https://github.com/DavidArno/Arnolyzer/wiki/LiskovSubstitutionPrincipleAnalyzers.md)
+* [Pure-Function Analyzers](https://github.com/DavidArno/Arnolyzer/wiki/Pure-FunctionAnalyzers.md)
+* [Single Responsibilty Analyzers](https://github.com/DavidArno/Arnolyzer/wiki/SingleResponsibiltyAnalyzers.md)
 
 
 #Remove this stuff >>>>>>>>>>>>

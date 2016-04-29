@@ -7,33 +7,33 @@ using static System.String;
 namespace Arnolyzer.Tests.SyntacticAnalyzers.EncapsulationAnalyzers
 {
     [TestClass]
-    public class AA1104InnerTypesMustBePrivateAnalyzerTests
+    public class AA1102InnerTypesMustBePrivateAnalyzerTests
     {
         [TestMethod]
         public void NoCode_ShouldYieldNoDiagnostics() =>
-            DiagnosticVerifier.VerifyDiagnostics<AA1104InnerTypesMustBePrivateAnalyzer>(@"..\..\CodeUnderTest\EmptyFile.cs");
+            DiagnosticVerifier.VerifyDiagnostics<AA1102InnerTypesMustBePrivateAnalyzer>(@"..\..\CodeUnderTest\EmptyFile.cs");
 
         [TestMethod]
         public void NonPrivateInnerTypes_YieldDiagnostics()
         {
             var commonExpected =
-                new DiagnosticResultCommonProperties(new AA1104InnerTypesMustBePrivateAnalyzer());
+                new DiagnosticResultCommonProperties(new AA1102InnerTypesMustBePrivateAnalyzer());
             var expected1 =
                 new DiagnosticResult(commonExpected,
-                                     Format(Resources.AA1104InnerTypesMustBePrivateMessageFormat, "Interface1"),
+                                     Format(Resources.AA1102InnerTypesMustBePrivateMessageFormat, "Interface1"),
                                      Option<DiagnosticLocation>.Some(new DiagnosticLocation(7, 28, 38)));
 
             var expected2 =
                 new DiagnosticResult(commonExpected,
-                                     Format(Resources.AA1104InnerTypesMustBePrivateMessageFormat, "Enum1"),
+                                     Format(Resources.AA1102InnerTypesMustBePrivateMessageFormat, "Enum1"),
                                      Option<DiagnosticLocation>.Some(new DiagnosticLocation(8, 21, 26)));
 
             var expected3 =
                 new DiagnosticResult(commonExpected,
-                                     Format(Resources.AA1104InnerTypesMustBePrivateMessageFormat, "Class2"),
+                                     Format(Resources.AA1102InnerTypesMustBePrivateMessageFormat, "Class2"),
                                      Option<DiagnosticLocation>.Some(new DiagnosticLocation(9, 22, 28)));
 
-            DiagnosticVerifier.VerifyDiagnostics<AA1104InnerTypesMustBePrivateAnalyzer>(
+            DiagnosticVerifier.VerifyDiagnostics<AA1102InnerTypesMustBePrivateAnalyzer>(
                 @"..\..\CodeUnderTest\CodeToTestInnerTypesMustBePrivate.cs",
                 expected1,
                 expected2,
