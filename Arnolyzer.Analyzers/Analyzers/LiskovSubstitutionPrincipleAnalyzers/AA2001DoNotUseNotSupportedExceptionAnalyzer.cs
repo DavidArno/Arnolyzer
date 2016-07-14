@@ -35,7 +35,7 @@ namespace Arnolyzer.Analyzers.LiskovSubstitutionPrincipleAnalyzers
                 {
                     var notSupportedExceptionName = compileContext.Compilation.GetTypeByMetadataName("System.NotSupportedException");
                     compileContext.RegisterSyntaxNodeAction(
-                        symbolContext => LSPViolatingExceptionReporter.DetectAndReportLSPViolatingException(symbolContext, notSupportedExceptionName, Rule), 
+                        symbolContext => LSPViolatingExceptionReporter.ReportLSPViolatingExceptionIfThrown(symbolContext, notSupportedExceptionName, Rule), 
                         SyntaxKind.ThrowStatement);
                 });
         }

@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
-// ReSharper disable AutoPropertyCanBeMadeGetOnly.Global - Class is configured via serialization
-// ReSharper disable MemberCanBePrivate.Global - Class is configured via serialization
 namespace Arnolyzer.Analyzers.Settings
 {
     public class SettingsDetails
@@ -18,8 +17,13 @@ namespace Arnolyzer.Analyzers.Settings
             IgnorePaths = ignorePaths;
         }
 
+        [UsedImplicitly] // setter used by yaml deserialization
         public bool DoNotTraverse { get; set; }
+
+        [UsedImplicitly] // setter used by yaml deserialization
         public bool IgnoreArnolyzerHome { get; set; }
+
+        [UsedImplicitly] // setter used by yaml deserialization
         public IEnumerable<string> IgnorePaths { get; set; }
 
         public string IgnorePathsRegex =>

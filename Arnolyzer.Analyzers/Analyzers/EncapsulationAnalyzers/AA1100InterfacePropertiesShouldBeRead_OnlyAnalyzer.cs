@@ -8,13 +8,14 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 using SuccincT.Options;
+using static Arnolyzer.Analyzers.CommonFunctions;
 
 namespace Arnolyzer.Analyzers.EncapsulationAnalyzers
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class AA1100InterfacePropertiesShouldBeRead_OnlyAnalyzer : DiagnosticAnalyzer, IAnalyzerDetailsReporter
     {
-        private static readonly IList<Type> SuppressionAttributes = new List<Type> { typeof(MutablePropertyAttribute) };
+        private static readonly IList<Type> SuppressionAttributes = new List<Type> {typeof(MutablePropertyAttribute)};
 
         private static readonly AnalyzerDetails AA1100Details =
             new AnalyzerDetails(nameof(AA1100InterfacePropertiesShouldBeRead_OnlyAnalyzer),
@@ -32,7 +33,7 @@ namespace Arnolyzer.Analyzers.EncapsulationAnalyzers
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
 
-        public override void Initialize(AnalysisContext context) => 
+        public override void Initialize(AnalysisContext context) =>
             context.RegisterSyntaxTreeAction(AnalyzeSyntaxTree);
 
         [HasSideEffects]
@@ -43,8 +44,11 @@ namespace Arnolyzer.Analyzers.EncapsulationAnalyzers
                 syntaxRoot.DescendantNodes(DoNotDescendIntoTypeDeclarations).Where(NodeIsInterfaceDeclaration).ToList();
 
             var propertyDeclarations = from node in interfaceDeclarations
-                                       from property in node.DescendantNodes().Where(NodeIsPropertyDeclaration).Cast<PropertyDeclarationSyntax>()
-                                       where !CommonFunctions.PropertyHasIgnoreRuleAttribute(property, SuppressionAttributes)
+                                       from property in node.DescendantNodes()
+                                                            .Where(NodeIsPropertyDeclaration)
+                                                            .Cast<PropertyDeclarationSyntax>()
+                                       where !PropertyHasIgnoreRuleAttribute(property,
+                                                                             SuppressionAttributes)
                                        let interfaceNode = node as InterfaceDeclarationSyntax
                                        select new
                                        {
@@ -56,14 +60,16 @@ namespace Arnolyzer.Analyzers.EncapsulationAnalyzers
             {
                 propertyDeclaration.property.DescendantNodesAndTokens()
                                    .Where(n => n.IsKind(SyntaxKind.SetKeyword))
-                                   .FirstOrNone()
+                                   .TryFirst()
                                    .Match()
                                    .Some()
-                                   .Do(setter => context.ReportDiagnostic(
-                                       Diagnostic.Create(Rule,
-                                                         setter.AsToken().GetLocation(),
-                                                         propertyDeclaration.property.Identifier,
-                                                         propertyDeclaration.interfaceName)))
+                                   .Do(setter => context.ReportDiagnostic(Diagnostic.Create(Rule,
+                                                                                            setter.AsToken()
+                                                                                                  .GetLocation(),
+                                                                                            propertyDeclaration.property
+                                                                                                               .Identifier,
+                                                                                            propertyDeclaration
+                                                                                                .interfaceName)))
                                    .IgnoreElse()
                                    .Exec();
             }

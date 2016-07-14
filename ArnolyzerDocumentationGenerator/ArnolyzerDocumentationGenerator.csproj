@@ -34,6 +34,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeAnalysis, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="SuccincT, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SuccincT.2.0.0.0\lib\portable-net40+win+wpa81\SuccincT.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
@@ -41,18 +45,35 @@
     <Compile Include="AnalyzerDetailsGenerator.cs" />
     <Compile Include="ArnolyzerDocumentationGenerator.cs" />
     <Compile Include="ExtraWordsContents.cs" />
+    <Compile Include="DocumentationTarget.cs" />
     <Compile Include="ImplementationStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TemplateProcessors.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="DocumentationTemplates\AnalyzerTemplate.md" />
+    <None Include="DocumentationTemplates\CategoryTemplate.md" />
+    <None Include="DocumentationTemplates\PreviousReleasesTemplate.md" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Arnolyzer.Analyzers\Arnolyzer.Analyzers.csproj">
       <Project>{0EAB24DA-09A0-4340-8DA4-540D3DDEBBF4}</Project>
       <Name>Arnolyzer.Analyzers</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DocumentationTemplates\AA1000StaticMethodsShouldNotBeVoid.cause.txt" />
+    <Content Include="DocumentationTemplates\AA1001StaticMethodsShouldHaveAtLeastOneParameter.cause.txt" />
+    <Content Include="DocumentationTemplates\AA1100InterfacePropertiesShouldBeReadOnly.cause.txt" />
+    <Content Include="DocumentationTemplates\AA1101ClassPropertiesShouldBePubliclyReadOnly.cause.txt" />
+    <Content Include="DocumentationTemplates\AA1102InnerTypesMustBePrivate.cause.txt" />
+    <Content Include="DocumentationTemplates\AA2000DoNotUseNotImplementedException.cause.txt" />
+    <Content Include="DocumentationTemplates\AA2001DoNotUseNotSupportedException.cause.txt" />
+    <Content Include="DocumentationTemplates\AA2100MethodParametersMustNotBeRefOrOut.cause.txt" />
+    <Content Include="DocumentationTemplates\AA2103MethodShouldNotContainAnd.cause.txt" />
+    <Content Include="DocumentationTemplates\AA2104FileMustOnlyContainOneTypeDefinition.cause.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

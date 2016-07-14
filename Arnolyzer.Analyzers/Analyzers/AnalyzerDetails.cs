@@ -22,7 +22,7 @@ namespace Arnolyzer.Analyzers
             var decomposedDetails = DecomposeDetailsFromClassName(className);
             var code = decomposedDetails.Item1;
             Name = decomposedDetails.Item2;
-            NameAndCode = $"{decomposedDetails.Item3} - {Name}";
+            NameWithCode = $"{decomposedDetails.Item3} - {Name}";
             Category = category;
             _defaultState = defaultState;
             Severity = severity;
@@ -47,7 +47,7 @@ namespace Arnolyzer.Analyzers
         public DiagnosticSeverity Severity { get; }
         public string SeverityText => Severity.SeverityType();
         public bool EnabledByDefault => _defaultState.IsEnabledByDefault();
-        public string NameAndCode { get; }
+        public string NameWithCode { get; }
 
         public DiagnosticDescriptor GetDiagnosticDescriptor() =>
             new DiagnosticDescriptor(DiagnosticId,

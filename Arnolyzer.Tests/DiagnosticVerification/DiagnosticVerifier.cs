@@ -9,7 +9,7 @@ namespace Arnolyzer.Tests.DiagnosticVerification
 {
     internal static class DiagnosticVerifier
     {
-        private const string SettingsFile = @"..\..\arnolyzer.yaml";
+        private const string SettingsFile = @"..\..\arnolyzer.yml";
 
         [HasSideEffects]
         public static void VerifyDiagnostics<T>(string filePath, params DiagnosticResult[] expected)

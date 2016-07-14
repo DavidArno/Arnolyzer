@@ -30,18 +30,23 @@ namespace Arnolyzer.Analyzers.SingleResponsibilityAnalyzers
 
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => ImmutableArray.Create(Rule);
 
-        public override void Initialize(AnalysisContext context) => context.RegisterSymbolAction(AnalyzeSymbol, SymbolKind.Method);
+        public override void Initialize(AnalysisContext context)
+            => context.RegisterSymbolAction(AnalyzeSymbol, SymbolKind.Method);
 
         [MutatesParameter]
         private static void AnalyzeSymbol(SymbolAnalysisContext context)
         {
-            var methodSymbol = (IMethodSymbol)context.Symbol;
+            var methodSymbol = (IMethodSymbol) context.Symbol;
 
             foreach (var parameter in methodSymbol.Parameters.Where(parameter => parameter.RefKind != RefKind.None))
             {
                 var syntax = parameter.DeclaringSyntaxReferences[0].GetSyntax() as ParameterSyntax;
 
-                context.ReportDiagnostic(Diagnostic.Create(Rule, syntax.GetLocation(), parameter.Name, methodSymbol.Name, RefOrOut(parameter.RefKind)));
+                context.ReportDiagnostic(Diagnostic.Create(Rule,
+                                                           syntax.GetLocation(),
+                                                           parameter.Name,
+                                                           methodSymbol.Name,
+                                                           RefOrOut(parameter.RefKind)));
             }
         }
 

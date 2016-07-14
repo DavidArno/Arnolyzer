@@ -68,7 +68,10 @@
     <Rule Id="CA2241" Action="Warning" />
     <Rule Id="CA2242" Action="Warning" />
   </Rules>
-  <Rules AnalyzerId="ArnolyzerAnalyzers" RuleNamespace="ArnolyzerAnalyzers" />
+  <Rules AnalyzerId="ArnolyzerAnalyzers" RuleNamespace="ArnolyzerAnalyzers">
+    <Rule Id="AA1101ClassPropertiesShouldBePubliclyReadOnly" Action="None" />
+    <Rule Id="AA2103MethodShouldNotContainAnd" Action="None" />
+  </Rules>
   <Rules AnalyzerId="Microsoft.CodeAnalysis.Analyzers" RuleNamespace="Microsoft.CodeAnalysis.Analyzers">
     <Rule Id="RS1001" Action="Error" />
   </Rules>

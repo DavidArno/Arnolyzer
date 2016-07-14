@@ -35,7 +35,7 @@ namespace Arnolyzer.Analyzers.LiskovSubstitutionPrincipleAnalyzers
                 {
                     var notImplementedExceptionName = compileContext.Compilation.GetTypeByMetadataName("System.NotImplementedException");
                     compileContext.RegisterSyntaxNodeAction(
-                        symbolContext => LSPViolatingExceptionReporter.DetectAndReportLSPViolatingException(symbolContext, notImplementedExceptionName, Rule), 
+                        symbolContext => LSPViolatingExceptionReporter.ReportLSPViolatingExceptionIfThrown(symbolContext, notImplementedExceptionName, Rule), 
                         SyntaxKind.ThrowStatement);
                 });
         }

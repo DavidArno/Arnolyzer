@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using Arnolyzer.Analyzers.Settings;
 using Arnolyzer.RuleExceptionAttributes;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
@@ -31,13 +30,6 @@ namespace Arnolyzer.Analyzers.PureFunctionAnalyzers
 
         public override void Initialize(AnalysisContext context)
         {
-            context.RegisterCompilationStartAction(CompilationStart);
-        }
-
-        [HasSideEffects]
-        private static void CompilationStart(CompilationStartAnalysisContext context)
-        {
-            context.Options.InitialiseArnolyzerSettings();
             context.RegisterSymbolAction(AnalyzeSymbol, SymbolKind.Method);
         }
 

@@ -1,11 +1,13 @@
 ﻿namespace Arnolyzer.Tests.CodeUnderTest
 {
-    public static class CodeThatShouldBeIgnored
+    public class CodeThatShouldBeIgnored
     {
         public static void DoNothing() { }
 
         public static bool ReturnTrue() => true;
 
-        public static void StillDoNothing() { }
+        public static void AndStillDoNothing() { }
+
+        public int Prop1 { get; set; }
     }
 }

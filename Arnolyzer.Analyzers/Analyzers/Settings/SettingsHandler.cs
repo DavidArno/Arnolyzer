@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Immutable;
 using System.IO;
-using Microsoft.CodeAnalysis;
 using SuccincT.Options;
 using YamlDotNet.Serialization;
 
@@ -9,45 +7,41 @@ namespace Arnolyzer.Analyzers.Settings
 {
     public class SettingsHandler
     {
+        private const string SettingsFileName = "arnolyzer.yml";
+
         private readonly string _settingsFileName;
         private readonly string _arnolyzerHome;
-        private readonly ImmutableArray<AdditionalText> _additionalFiles;
 
         private SettingsDetails _mergedSettings;
 
-        public SettingsHandler(string settingsFileName,
-                               string arnolyzerHome,
-                               ImmutableArray<AdditionalText> additionalFiles)
+        public static SettingsHandler CreateHandler() => new SettingsHandler(SettingsFileName, "ARNOLYZER_HOME");
+
+        public static SettingsHandler CreateHandlerSpecifyingHome(string arnolyzerHome) => 
+            new SettingsHandler(SettingsFileName, arnolyzerHome);
+
+        private SettingsHandler(string settingsFileName,
+                               string arnolyzerHome)
         {
             _settingsFileName = settingsFileName;
             _arnolyzerHome = arnolyzerHome;
-            _additionalFiles = additionalFiles;
         }
 
         public SettingsDetails GetArnolyzerSettingsForProject(string filePath)
         {
             if (_mergedSettings != null) { return _mergedSettings; }
 
-            var projectSettings = GetProjectSpecificSettings(_additionalFiles, _settingsFileName);
+            var projectSettings = GetProjectSpecificSettings(filePath, _settingsFileName);
             var solutionSettings = AddSolutionWideSettings(filePath, projectSettings, _settingsFileName);
             _mergedSettings = AddGlobalSettings(solutionSettings, _arnolyzerHome);
             return _mergedSettings;
         }
 
-        private static SettingsDetails GetProjectSpecificSettings(ImmutableArray<AdditionalText> additionalFiles,
+        private static SettingsDetails GetProjectSpecificSettings(string filePath,
                                                                   string settingsFileName)
         {
-            return LoadProjectSettingsIfExistsOrDefaultIfNot(additionalFiles, settingsFileName);
-        }
-
-        private static SettingsDetails LoadProjectSettingsIfExistsOrDefaultIfNot(ImmutableArray<AdditionalText> files,
-                                                                                 string settingsFileName)
-        {
-            return files.FirstOrNone(f => f.Path.EndsWith(settingsFileName))
-                        .Match<SettingsDetails>()
-                        .Some().Do(f => LoadSettingsFromFile(f.Path))
-                        .Else(new SettingsDetails())
-                        .Result();
+            return TraversePathToFindCollocatedSettings(new FileInfo(filePath).Directory,
+                                                        settingsFileName,
+                                                        ".csproj");
         }
 
         private static SettingsDetails AddSolutionWideSettings(string filePath,
@@ -56,30 +50,30 @@ namespace Arnolyzer.Analyzers.Settings
         {
             if (projectSettings.DoNotTraverse) { return projectSettings; }
 
-            var solutionSettings = LoadSolutionSettingsIfExistsOrDefaultIfNot(filePath, settingsFileName);
+            var solutionSettings = TraversePathToFindCollocatedSettings(new FileInfo(filePath).Directory,
+                                                                        settingsFileName,
+                                                                        ".sln");
+
             return SettingsDetails.Merge(projectSettings, solutionSettings);
         }
 
-        private static SettingsDetails LoadSolutionSettingsIfExistsOrDefaultIfNot(string filePath,
-                                                                                  string settingsFileName)
+        private static SettingsDetails TraversePathToFindCollocatedSettings(DirectoryInfo directory,
+                                                                            string settingsFileName,
+                                                                            string collocatedFile)
         {
-            var directory = new FileInfo(filePath).Directory;
-            do
+            if (directory == null) return new SettingsDetails();
+            var solutionFile = directory.GetFiles().TryFirst(f => f.Name.EndsWith(collocatedFile));
+            if (solutionFile.HasValue)
             {
-                var solutionFile = directory.GetFiles().FirstOrNone(f => f.Name.EndsWith(".sln"));
-                if (solutionFile.HasValue)
-                {
-                    return directory.GetFiles().FirstOrNone(f => f.Name.EndsWith(settingsFileName))
-                                    .Match<SettingsDetails>()
-                                    .Some().Do(f => LoadSettingsFromFile(f.FullName))
-                                    .Else(new SettingsDetails())
-                                    .Result();
-                }
+                return directory.GetFiles()
+                                .TryFirst(f => f.Name.EndsWith(settingsFileName))
+                                .Match<SettingsDetails>()
+                                .Some().Do(f => LoadSettingsFromFile(f.FullName))
+                                .Else(new SettingsDetails())
+                                .Result();
+            }
 
-                directory = directory.Parent;
-            } while (directory != null);
-
-            return new SettingsDetails();
+            return TraversePathToFindCollocatedSettings(directory.Parent, settingsFileName, collocatedFile);
         }
 
         private static SettingsDetails AddGlobalSettings(SettingsDetails solutionSettings, string arnolyzerHome)

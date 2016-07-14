@@ -48,8 +48,8 @@
       <HintPath>..\packages\Microsoft.CodeAnalysis.Workspaces.Common.1.1.1\lib\net45\Microsoft.CodeAnalysis.Workspaces.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SuccincT, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SuccincT.1.5.1.0\lib\portable-net40+win+wpa81\SuccincT.dll</HintPath>
+    <Reference Include="SuccincT, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SuccincT.2.0.0.0\lib\portable-net40+win+wpa81\SuccincT.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -92,37 +92,40 @@
     <Compile Include="DiagnosticVerification\DiagnosticsGenerator.cs" />
     <Compile Include="DiagnosticVerification\DiagnosticVerifier.cs" />
     <Compile Include="DiagnosticVerification\DocumentSetCreator.cs" />
-    <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\AA1101ClassPropertiesShouldBePubliclyRead_OnlyAnalyzer_Tests.cs" />
-    <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\AA1100InterfacePropertiesShouldBeRead_OnlyAnalyzerTests.cs" />
-    <Compile Include="SyntacticAnalyzers\EncapsulationAnalyzers\AA1102InnerTypesMustBePrivateAnalyzerTests.cs" />
-    <Compile Include="SyntacticAnalyzers\LiskovSubstitutionPrincipleAnalyzers\AA2001DoNotUseNotSupportedExceptionAnalyzerTests.cs" />
-    <Compile Include="SyntacticAnalyzers\LiskovSubstitutionPrincipleAnalyzers\AA2000DoNotUseNotImplementedExceptionAnalyzerTests.cs" />
-    <Compile Include="SyntacticAnalyzers\Settings\SettingsHandlerTests.cs" />
-    <Compile Include="SyntacticAnalyzers\PureFunctionAnalyzersTests\AA1001StaticMethodsShouldHaveAtLeastOneParameterAnalyzerTests.cs" />
-    <Compile Include="SyntacticAnalyzers\PureFunctionAnalyzersTests\AA1000StaticMethodsShouldNotBeVoidAnalyzerTests.cs" />
+    <Compile Include="Analyzers\EncapsulationAnalyzers\AA1101ClassPropertiesShouldBePubliclyRead_OnlyAnalyzer_Tests.cs" />
+    <Compile Include="Analyzers\EncapsulationAnalyzers\AA1100InterfacePropertiesShouldBeRead_OnlyAnalyzerTests.cs" />
+    <Compile Include="Analyzers\EncapsulationAnalyzers\AA1102InnerTypesMustBePrivateAnalyzerTests.cs" />
+    <Compile Include="Analyzers\LiskovSubstitutionPrincipleAnalyzers\AA2001DoNotUseNotSupportedExceptionAnalyzerTests.cs" />
+    <Compile Include="Analyzers\LiskovSubstitutionPrincipleAnalyzers\AA2000DoNotUseNotImplementedExceptionAnalyzerTests.cs" />
+    <Compile Include="Analyzers\Settings\SettingsHandlerTests.cs" />
+    <Compile Include="Analyzers\PureFunctionAnalyzersTests\AA1001StaticMethodsShouldHaveAtLeastOneParameterAnalyzerTests.cs" />
+    <Compile Include="Analyzers\PureFunctionAnalyzersTests\AA1000StaticMethodsShouldNotBeVoidAnalyzerTests.cs" />
     <Compile Include="DiagnosticVerification\DiagnosticResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SyntacticAnalyzers\SingleResponsibilityAnalyzersTests\AA2103MethodShouldNotContainAndAnalyzerTests.cs" />
-    <Compile Include="SyntacticAnalyzers\SingleResponsibilityAnalyzersTests\AA2104FileMustOnlyContainOneTypeDefinitionAnalyzerTests.cs" />
-    <Compile Include="SyntacticAnalyzers\SingleResponsibilityAnalyzersTests\AA2100MethodParametersMustNotBeRefOrOutAnalyzerTests.cs" />
-    <Compile Include="SyntacticAnalyzers\TestFiles.cs" />
+    <Compile Include="Analyzers\SingleResponsibilityAnalyzersTests\AA2103MethodShouldNotContainAndAnalyzerTests.cs" />
+    <Compile Include="Analyzers\SingleResponsibilityAnalyzersTests\AA2104FileMustOnlyContainOneTypeDefinitionAnalyzerTests.cs" />
+    <Compile Include="Analyzers\SingleResponsibilityAnalyzersTests\AA2100MethodParametersMustNotBeRefOrOutAnalyzerTests.cs" />
+    <Compile Include="Analyzers\TestFiles.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="arnolyzer.yaml" />
+    <None Include="arnolyzer.yml" />
     <None Include="packages.config" />
-    <None Include="YamlTestFiles\UseEnvironment\Project1\settings.yaml" />
-    <None Include="YamlTestFiles\UseEnvironment\settings.yaml" />
-    <None Include="YamlTestFiles\IgnoreEnvironment\Project1\settings.yaml" />
-    <None Include="YamlTestFiles\IgnoreEnvironment\Project2\settings.yaml" />
-    <None Include="YamlTestFiles\IgnoreEnvironment\settings.yaml" />
-    <None Include="YamlTestFiles\settings.yaml" />
+    <None Include="YamlTestFiles\arnolyzer.yml" />
+    <None Include="YamlTestFiles\UseEnvironment\Project1\arnolyzer.yml" />
+    <None Include="YamlTestFiles\UseEnvironment\arnolyzer.yml" />
+    <None Include="YamlTestFiles\IgnoreEnvironment\Project1\arnolyzer.yml" />
+    <None Include="YamlTestFiles\IgnoreEnvironment\Project2\arnolyzer.yml" />
+    <None Include="YamlTestFiles\IgnoreEnvironment\arnolyzer.yml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="YamlTestFiles\IgnoreEnvironment\Project1\Project1.csproj" />
+    <Content Include="YamlTestFiles\IgnoreEnvironment\Project2\Project2.csproj" />
     <Content Include="YamlTestFiles\UseEnvironment\Project1\pretendSourceFile.txt" />
+    <Content Include="YamlTestFiles\UseEnvironment\Project1\Project1.csproj" />
     <Content Include="YamlTestFiles\UseEnvironment\some.sln" />
     <Content Include="YamlTestFiles\IgnoreEnvironment\Project1\pretendSourceFile.txt" />
     <Content Include="YamlTestFiles\IgnoreEnvironment\Project1\randomfile.txt" />
