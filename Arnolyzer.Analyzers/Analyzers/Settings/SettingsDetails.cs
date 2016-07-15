@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Arnolyzer.RuleExceptionAttributes;
 using JetBrains.Annotations;
 
 namespace Arnolyzer.Analyzers.Settings
@@ -17,13 +18,13 @@ namespace Arnolyzer.Analyzers.Settings
             IgnorePaths = ignorePaths;
         }
 
-        [UsedImplicitly] // setter used by yaml deserialization
+        [UsedImplicitly, MutableProperty] // setter used by yaml deserialization
         public bool DoNotTraverse { get; set; }
 
-        [UsedImplicitly] // setter used by yaml deserialization
+        [UsedImplicitly, MutableProperty] // setter used by yaml deserialization
         public bool IgnoreArnolyzerHome { get; set; }
 
-        [UsedImplicitly] // setter used by yaml deserialization
+        [UsedImplicitly, MutableProperty] // setter used by yaml deserialization
         public IEnumerable<string> IgnorePaths { get; set; }
 
         public string IgnorePathsRegex =>

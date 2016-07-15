@@ -14,7 +14,7 @@ For more details of that release, previous releases, how to install Arnolyzer an
 ## Current state of development ##
 Currently, version 1.1.0 is in development. This is subject to change without warning though, should eg an urgent bug fix release be needed in the meantime.
 
-Last code commit: 14 Jul 2016.
+Last code commit: 15 Jul 2016.
 
 The following documentation is a summary of the Arnolyzer project (analyzers so far implemented, and what's planned), as of the last code commit. Note, this may be different to what's in the 1.0.0 release, as the code base will likely contain unreleased changes. Please refer to the [Arnolyzer website](http://davidarno.github.io/Arnolyzer/) for details of what's in the current release.
 

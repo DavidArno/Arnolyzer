@@ -12,7 +12,7 @@ namespace Arnolyzer.Analyzers.SingleResponsibilityAnalyzers
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public sealed class AA2103MethodShouldNotContainAndAnalyzer : DiagnosticAnalyzer, IAnalyzerDetailsReporter
     {
-        private static readonly IList<Type> SuppressionAttributes = new List<Type>();
+        private static readonly IList<Type> SuppressionAttributes = new List<Type> {typeof(HasSingleResponsibility)};
 
         private static readonly AnalyzerDetails AA2103Details =
             new AnalyzerDetails(nameof(AA2103MethodShouldNotContainAndAnalyzer),

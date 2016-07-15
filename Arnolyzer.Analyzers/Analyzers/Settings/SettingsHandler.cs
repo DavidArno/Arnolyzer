@@ -1,7 +1,9 @@
 ﻿using System;
 using System.IO;
+using Arnolyzer.RuleExceptionAttributes;
 using SuccincT.Options;
 using YamlDotNet.Serialization;
+using static System.Environment;
 
 namespace Arnolyzer.Analyzers.Settings
 {
@@ -14,6 +16,7 @@ namespace Arnolyzer.Analyzers.Settings
 
         private SettingsDetails _mergedSettings;
 
+        [ConstantValueProvider]
         public static SettingsHandler CreateHandler() => new SettingsHandler(SettingsFileName, "ARNOLYZER_HOME");
 
         public static SettingsHandler CreateHandlerSpecifyingHome(string arnolyzerHome) => 
@@ -62,6 +65,7 @@ namespace Arnolyzer.Analyzers.Settings
                                                                             string collocatedFile)
         {
             if (directory == null) return new SettingsDetails();
+
             var solutionFile = directory.GetFiles().TryFirst(f => f.Name.EndsWith(collocatedFile));
             if (solutionFile.HasValue)
             {
@@ -86,7 +90,7 @@ namespace Arnolyzer.Analyzers.Settings
 
         private static SettingsDetails LoadGloablSettingsIfExistsOrDefaultIfNot(string arnolyzerHome)
         {
-            var path = Environment.GetEnvironmentVariable(arnolyzerHome);
+            var path = GetEnvironmentVariable(arnolyzerHome);
             return LoadSettingsFromFile(path);
         }
 
