@@ -38,7 +38,6 @@ namespace Arnolyzer.Analyzers.SingleResponsibilityAnalyzers
             context.RegisterSymbolAction(AnalyzeSymbol, SymbolKind.Method);
         }
 
-        [MutatesParameter]
         private void AnalyzeSymbol(SymbolAnalysisContext context)
         {
             var methodSymbol = (IMethodSymbol)context.Symbol;

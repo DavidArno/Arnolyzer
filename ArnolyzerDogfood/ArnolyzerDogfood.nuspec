@@ -16,6 +16,7 @@
     <file src="..\Arnolyzer.Analyzers\bin\$configuration$\ArnolyzerAnalyzers.dll" target="analyzers\dotnet\cs" />
     <file src="..\Arnolyzer.Analyzers\bin\$configuration$\SuccincT.dll" target="analyzers\dotnet\cs" />
     <file src="..\Arnolyzer.Analyzers\bin\$configuration$\YamlDotNet.dll" target="analyzers\dotnet\cs" />
+    <file src="..\Arnolyzer.Analyzers\bin\$configuration$\JetBrains.Annotations.dll" target="analyzers\dotnet\cs" />
     <file src="tools\*.ps1" target="tools\" />
   </files>
 </package>
