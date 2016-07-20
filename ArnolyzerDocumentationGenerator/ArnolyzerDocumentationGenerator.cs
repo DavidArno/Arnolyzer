@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Arnolyzer;
 using Arnolyzer.Analyzers;
 using SuccincT.PatternMatchers.GeneralMatcher;
 using static ArnolyzerDocumentationGenerator.AnalyzerDetailsGenerator;
@@ -40,7 +41,14 @@ namespace ArnolyzerDocumentationGenerator
                                               IList<AnalyzerDetails> plannedAnalyzerDetails)
         {
             var headerTemplate = File.ReadAllText(@"..\..\DocumentationTemplates\WikiHeaderTemplate.md");
-            var releaseTemplate = File.ReadAllText(@"..\..\DocumentationTemplates\ReadmeAndWikiReleasesTemplate.md");
+
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalse - "always" true or false changes as version numbers
+            // change. It's easier (and less erro-prone) to leave the compiler unhappy with this code than remember to   
+            // change this code as version numbers change.
+            var releaseTemplate = ArnolyzerVersion.Version == ArnolyzerVersion.LastRelease 
+                ? File.ReadAllText(@"..\..\DocumentationTemplates\ReadmeAndWikiPostReleaseTemplate.md")
+                : File.ReadAllText(@"..\..\DocumentationTemplates\ReadmeAndWikiReleasesTemplate.md");
+
             Func<string, string> linkCreator = page => $"{page}.md";
 
             GenerateAnalyzerDocuments(implementedAnalyzersDetails, Implemented, Wiki, headerTemplate, linkCreator);

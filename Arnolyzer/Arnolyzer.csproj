@@ -36,18 +36,6 @@
     <CodeAnalysisRuleSet>Arnolyzer.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\Arnolyzer.Analyzers\RuleExceptionAttributes\HasSideEffectsAttribute.cs">
-      <Link>RuleExceptionAttributes\HasSideEffectsAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Arnolyzer.Analyzers\RuleExceptionAttributes\IAttributeDescriber.cs">
-      <Link>RuleExceptionAttributes\IAttributeDescriber.cs</Link>
-    </Compile>
-    <Compile Include="..\Arnolyzer.Analyzers\RuleExceptionAttributes\MutablePropertyAttribute.cs">
-      <Link>RuleExceptionAttributes\MutablePropertyAttribute.cs</Link>
-    </Compile>
-    <Compile Include="..\Arnolyzer.Analyzers\RuleExceptionAttributes\MutatesParameterAttribute.cs">
-      <Link>RuleExceptionAttributes\MutatesParameterAttribute.cs</Link>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -65,6 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Arnolyzer.Analyzers\Arnolyzer.Analyzers.csproj">
+      <Project>{0EAB24DA-09A0-4340-8DA4-540D3DDEBBF4}</Project>
+      <Name>Arnolyzer.Analyzers</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

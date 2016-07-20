@@ -54,7 +54,16 @@
     <None Include="App.config" />
     <None Include="DocumentationTemplates\AnalyzerTemplate.md" />
     <None Include="DocumentationTemplates\CategoryTemplate.md" />
+    <None Include="DocumentationTemplates\Contributing.md" />
+    <None Include="DocumentationTemplates\HomeTemplate.md" />
+    <None Include="DocumentationTemplates\IndexReleasesTemplate.md" />
+    <None Include="DocumentationTemplates\Installation.md" />
     <None Include="DocumentationTemplates\PreviousReleasesTemplate.md" />
+    <None Include="DocumentationTemplates\README-template.md" />
+    <None Include="DocumentationTemplates\ReadmeAndWikiPostReleaseTemplate.md" />
+    <None Include="DocumentationTemplates\ReadmeAndWikiReleasesTemplate.md" />
+    <None Include="DocumentationTemplates\WebPageHeaderTemplate.md" />
+    <None Include="DocumentationTemplates\WikiHeaderTemplate.md" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -69,11 +78,15 @@
     <Content Include="DocumentationTemplates\AA1100InterfacePropertiesShouldBeReadOnly.cause.txt" />
     <Content Include="DocumentationTemplates\AA1101ClassPropertiesShouldBePubliclyReadOnly.cause.txt" />
     <Content Include="DocumentationTemplates\AA1102InnerTypesMustBePrivate.cause.txt" />
+    <Content Include="DocumentationTemplates\AA1102InterfacePropertiesShouldBeRead_OnlyAnalyzer.cause.txt" />
+    <Content Include="DocumentationTemplates\AA1103ClassPropertiesShouldBePubliclyRead_OnlyAnalyzer.cause.txt" />
     <Content Include="DocumentationTemplates\AA2000DoNotUseNotImplementedException.cause.txt" />
     <Content Include="DocumentationTemplates\AA2001DoNotUseNotSupportedException.cause.txt" />
     <Content Include="DocumentationTemplates\AA2100MethodParametersMustNotBeRefOrOut.cause.txt" />
     <Content Include="DocumentationTemplates\AA2103MethodShouldNotContainAnd.cause.txt" />
+    <Content Include="DocumentationTemplates\AA2103MethodShouldNotContainAndAnalyzer.cause.txt" />
     <Content Include="DocumentationTemplates\AA2104FileMustOnlyContainOneTypeDefinition.cause.txt" />
+    <Content Include="DocumentationTemplates\AA2104FileMustOnlyContainOneTypeDefinitionAnalyzer.cause.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

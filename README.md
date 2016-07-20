@@ -3,20 +3,22 @@
 ## Introduction ##
 Arnolyzer is a Roslyn-based C# code analyzer that aims to provide a set of rules that encourage modern, functional-orientated, coding standards in C#. Pure functions; no inheritance; no global state; adherence to SOLID principles; immutable variables; and short, concise sections of code.
 
-## Current Release - 1.0.0 ##
-The current release of Arnolyzer is 1.0.0, which is [available as a nuget package](https://www.nuget.org/packages/Arnolyzer/). 
+## Current Release - 1.1.0 ##
+The current release of Arnolyzer is 1.1.0, which is [available as a nuget package](https://www.nuget.org/packages/Arnolyzer/). 
 
 That release included the following:
-Initial release.
+Modification of the analyzer names to include a code for each. This then linked in with the documentation pages. 
+
+The aim is to improve the discoverability of the analyzers for search engines, with the hope that clicking on an error in Visual Studio will take the developer to the documentation for that analyzer.
 
 For more details of that release, previous releases, how to install Arnolyzer and documentation for the analyzers in the current release, please refer to the [Arnolyzer website](http://davidarno.github.io/Arnolyzer/).
 
 ## Current state of development ##
 Currently, version 1.1.0 is in development. This is subject to change without warning though, should eg an urgent bug fix release be needed in the meantime.
 
-Last code commit: 18 Jul 2016.
+Last code commit: 20 Jul 2016.
 
-The following documentation is a summary of the Arnolyzer project (analyzers so far implemented, and what's planned), as of the last code commit. Note, this may be different to what's in the 1.0.0 release, as the code base will likely contain unreleased changes. Please refer to the [Arnolyzer website](http://davidarno.github.io/Arnolyzer/) for details of what's in the current release.
+The following documentation is a summary of the Arnolyzer project (analyzers so far implemented, and what's planned), as of the last code commit. Note, this may be different to what's in the 1.1.0 release, as the code base will likely contain unreleased changes. Please refer to the [Arnolyzer website](http://davidarno.github.io/Arnolyzer/) for details of what's in the current release.
 
 
 ## Installation ##

@@ -1,5 +1,6 @@
 ﻿using System.Resources;
 using System.Reflection;
+using Arnolyzer;
 
 [assembly: AssemblyTitle("Arnolyzer")]
 [assembly: AssemblyDescription("Code quality analyzers for C#")]
@@ -10,5 +11,5 @@ using System.Reflection;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
-[assembly: AssemblyVersion("1.0.2.0")]
-[assembly: AssemblyInformationalVersion("1.0.2-alpha")]
+[assembly: AssemblyVersion(ArnolyzerVersion.AssemblyVersion)]
+[assembly: AssemblyInformationalVersion(ArnolyzerVersion.AssemblyVersion)]
