@@ -1,0 +1,23 @@
+﻿namespace Arnolyzer.Tests.CodeUnderTest
+{
+    public class CodeToTestAvoidUsingStaticFieldsAndProperties
+    {
+        public int A1;
+        public static int A2;
+        public static readonly int A3;
+        private int B1;
+        private static int B2;
+        private static readonly int B3;
+        internal int C1;
+        internal static int C2;
+        internal static readonly int C3;
+        protected int D1;
+        protected static int D2;
+        protected static internal int D3;
+
+        public int BP1 { get { return B1; } set { B1 = value; } }
+        public int BP2 { get { return B2; } set { B2 = value; } }
+        public int CP1 { get { return C1; } set { C1 = value; } }
+        public int CP2 { get { return C2; } set { C2 = value; } }
+    }
+}

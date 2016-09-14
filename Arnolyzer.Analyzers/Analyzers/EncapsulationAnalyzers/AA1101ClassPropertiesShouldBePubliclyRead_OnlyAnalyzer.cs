@@ -28,7 +28,7 @@ namespace Arnolyzer.Analyzers.EncapsulationAnalyzers
                                 nameof(Resources.AA1101ClassPropertiesShouldBePubliclyReadOnlyMessageFormat),
                                 SuppressionAttributes);
 
-        private SettingsHandler _settingsHandler = null;
+        private SettingsHandler _settingsHandler;
 
         public AnalyzerDetails GetAnalyzerDetails() => AA1101Details;
 

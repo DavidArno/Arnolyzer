@@ -184,7 +184,7 @@
     <value>Static fields introduce global state and so should be avoided</value>
   </data>
   <data name="AA1200AvoidUsingStaticFieldsMessageFormat" xml:space="preserve">
-    <value>xxx</value>
+    <value>Field `{0}` in type `{1}` should not be static</value>
   </data>
   <data name="AA1200AvoidUsingStaticFieldsTitle" xml:space="preserve">
     <value>AA1200-AvoidUsingStaticFields</value>
@@ -193,7 +193,7 @@
     <value>Static properties introduce global state and so should be avoided</value>
   </data>
   <data name="AA1201AvoidUsingStaticPropertiesMessageFormat" xml:space="preserve">
-    <value>xxx</value>
+    <value>Property `{0}` in type `{1}` should not be static</value>
   </data>
   <data name="AA1201AvoidUsingStaticPropertiesTitle" xml:space="preserve">
     <value>AA1201-AvoidUsingStaticProperties</value>

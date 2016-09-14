@@ -259,7 +259,7 @@ namespace Arnolyzer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to xxx.
+        ///   Looks up a localized string similar to Field `{0}` in type `{1}` should not be static.
         /// </summary>
         public static string AA1200AvoidUsingStaticFieldsMessageFormat {
             get {
@@ -286,7 +286,7 @@ namespace Arnolyzer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to xxx.
+        ///   Looks up a localized string similar to Property `{0}` in type `{1}` should not be static.
         /// </summary>
         public static string AA1201AvoidUsingStaticPropertiesMessageFormat {
             get {

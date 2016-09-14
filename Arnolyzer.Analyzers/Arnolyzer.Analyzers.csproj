@@ -78,6 +78,7 @@
     <Compile Include="Analyzers\SingleResponsibilityAnalyzers\AA2101MethodTooLongAnalyzer.cs" />
     <Compile Include="ArnolyzerVersion.cs" />
     <Compile Include="RuleExceptionAttributes\ConstantValueProviderAttribute.cs" />
+    <Compile Include="RuleExceptionAttributes\GlobalStateAttribute.cs" />
     <Compile Include="RuleExceptionAttributes\HasSingleResponsibility.cs" />
     <Compile Include="RuleExceptionAttributes\IAttributeDescriber.cs" />
     <Compile Include="RuleExceptionAttributes\MutablePropertyAttribute.cs" />

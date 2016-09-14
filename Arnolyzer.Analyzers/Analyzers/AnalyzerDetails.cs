@@ -33,8 +33,11 @@ namespace Arnolyzer.Analyzers
             MessageFormat = LocalizableStringFactory.LocalizableResourceString(messageFormatResourceName);
             DiagnosticId = Title.ToString().Replace("-", "");
 
-            if (Title.ToString() != code) throw new ArgumentException($"Title resource value isn't of the correct format: should be {code}", 
-                                                                      nameof(titleResourceName));
+            if (Title.ToString() != code)
+            {
+                throw new ArgumentException($@"Title resource value isn't of the correct format: should be {code}",
+                                            nameof(titleResourceName));
+            }
         }
 
         public string Name { get; }

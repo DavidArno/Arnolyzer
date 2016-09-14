@@ -42,10 +42,7 @@ namespace ArnolyzerDocumentationGenerator
         {
             var headerTemplate = File.ReadAllText(@"..\..\DocumentationTemplates\WikiHeaderTemplate.md");
 
-            // ReSharper disable once ConditionIsAlwaysTrueOrFalse - "always" true or false changes as version numbers
-            // change. It's easier (and less erro-prone) to leave the compiler unhappy with this code than remember to   
-            // change this code as version numbers change.
-            var releaseTemplate = ArnolyzerVersion.Version == ArnolyzerVersion.LastRelease 
+            var releaseTemplate = VersionIsLastReleasedVersion(ArnolyzerVersion.Version, ArnolyzerVersion.LastRelease) 
                 ? File.ReadAllText(@"..\..\DocumentationTemplates\ReadmeAndWikiPostReleaseTemplate.md")
                 : File.ReadAllText(@"..\..\DocumentationTemplates\ReadmeAndWikiReleasesTemplate.md");
 
@@ -64,6 +61,8 @@ namespace ArnolyzerDocumentationGenerator
             GenerateCategoryPages(implementedAnalyzersDetails, plannedAnalyzerDetails, Wiki, headerTemplate, linkCreator);
             GeneratePreviousReleasesPage(Wiki, headerTemplate);
         }
+
+        private static bool VersionIsLastReleasedVersion(string version, string lastRelease) => version == lastRelease;
 
         private static void GenerateWebsitePages(IList<AnalyzerDetails> implementedAnalyzersDetails,
                                                  IList<AnalyzerDetails> plannedAnalyzerDetails)
@@ -111,7 +110,7 @@ namespace ArnolyzerDocumentationGenerator
             foreach (var details in analyzersDetails)
             {
                 var analyzerName = details.DiagnosticId;
-                Console.WriteLine($"Generating {analyzerName}.md");
+                Console.WriteLine($@"Generating {analyzerName}.md");
 
                 var extraWords = CreateExtraWordsSet(analyzerName);
                 var processedContents =
@@ -189,7 +188,7 @@ namespace ArnolyzerDocumentationGenerator
             {
                 if (fileName.Contains("cause"))
                 {
-                    Console.WriteLine($"-----> {fileName} not found.");
+                    Console.WriteLine($@"-----> {fileName} not found.");
                 }
                 return "";
             }
