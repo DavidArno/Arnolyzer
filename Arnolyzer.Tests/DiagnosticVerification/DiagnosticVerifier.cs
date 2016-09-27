@@ -38,8 +38,8 @@ namespace Arnolyzer.Tests.DiagnosticVerification
                 VerifyCategoryOfDiagnostic(analyzerName, expected, actual);
                 VerifyIdOfDiagnostic(analyzerName, expected, actual);
                 VerifyTitleOfDiagnostic(analyzerName, expected, actual);
-                VerifyDescriptionOfDiagnostic(analyzerName, expected, actual);
-                VerifyMessageOfDiagnostic(analyzerName, expected, actual);
+                VerifyDescriptionOfDiagnostic(analyzerName, i, expected, actual);
+                VerifyMessageOfDiagnostic(analyzerName, i, expected, actual);
                 VerifySeverityOfDiagnostic(analyzerName, expected, actual);
             }
         }
@@ -109,23 +109,27 @@ namespace Arnolyzer.Tests.DiagnosticVerification
         }
 
         private static void VerifyDescriptionOfDiagnostic(string analyzerName,
+                                                          int diagnosticNumber,
                                                           DiagnosticResult expected,
                                                           Diagnostic actual)
         {
             Assert.IsTrue(Equals(expected.CommonProperties.Description, actual.Descriptor.Description.ToString()),
                           GenerateAssertMessage(analyzerName,
                                                 expected.CommonProperties.Id,
-                                                "The diagnostic's description is different to that expected",
+                                                $"The diagnostic ({diagnosticNumber})'s description is different to that expected",
                                                 () => expected.CommonProperties.Description,
                                                 () => actual.Descriptor.Description.ToString()));
         }
 
-        private static void VerifyMessageOfDiagnostic(string analyzerName, DiagnosticResult expected, Diagnostic actual)
+        private static void VerifyMessageOfDiagnostic(string analyzerName,
+                                                      int diagnosticNumber,
+                                                      DiagnosticResult expected,
+                                                      Diagnostic actual)
         {
             Assert.IsTrue(Equals(expected.Message, actual.GetMessage()),
                           GenerateAssertMessage(analyzerName,
                                                 expected.CommonProperties.Id,
-                                                "The diagnostic's message is different to that expected",
+                                                $"The diagnostic ({diagnosticNumber})'s message is different to that expected",
                                                 () => expected.Message,
                                                 () => actual.GetMessage()));
         }

@@ -16,7 +16,7 @@ For more details of that release, previous releases, how to install Arnolyzer an
 ## Current state of development ##
 Currently, version 1.1.0 is in development. This is subject to change without warning though, should eg an urgent bug fix release be needed in the meantime.
 
-Last code commit: 14 Sep 2016.
+Last code commit: 23 Sep 2016.
 
 The following documentation is a summary of the Arnolyzer project (analyzers so far implemented, and what's planned), as of the last code commit. Note, this may be different to what's in the 1.1.0 release, as the code base will likely contain unreleased changes. Please refer to the [Arnolyzer website](http://davidarno.github.io/Arnolyzer/) for details of what's in the current release.
 
@@ -45,6 +45,9 @@ Thus far, the analyzers implemented are:
 **Pure-Function Analyzers**
 * [AA1000 - Static Methods Should Not Be Void](https://github.com/DavidArno/Arnolyzer/wiki/AA1000StaticMethodsShouldNotBeVoid.md)
 * [AA1001 - Static Methods Should Have At Least One Parameter](https://github.com/DavidArno/Arnolyzer/wiki/AA1001StaticMethodsShouldHaveAtLeastOneParameter.md)
+
+**Immutability Analyzers**
+* [AA1301 - Variables Should Be Assigned Once Only](https://github.com/DavidArno/Arnolyzer/wiki/AA1301VariablesShouldBeAssignedOnceOnly.md)
 
 **Global State Analyzers**
 * [AA1200 - Avoid Using Static Fields](https://github.com/DavidArno/Arnolyzer/wiki/AA1200AvoidUsingStaticFields.md)
@@ -76,7 +79,6 @@ The following analyzers are planned for future releases of Arnolyzer, but haven'
 
 **Immutability Analyzers**
 * [AA1300 - Parameters Should Not Be Modified](https://github.com/DavidArno/Arnolyzer/wiki/AA1300ParametersShouldNotBeModified.md)
-* [AA1301 - Variables Should Be Assigned Once Only](https://github.com/DavidArno/Arnolyzer/wiki/AA1301VariablesShouldBeAssignedOnceOnly.md)
 
 **Single Responsibilty Analyzers**
 * [AA2101 - Method Too Long](https://github.com/DavidArno/Arnolyzer/wiki/AA2101MethodTooLong.md)

@@ -15,6 +15,15 @@ namespace Arnolyzer.Tests.DiagnosticVerification
             Id = details.DiagnosticId;
         }
 
+        public DiagnosticResultCommonProperties(NamedItemSuppresionAttributeDetails details)
+        {
+            Severity = details.Severity;
+            Title = details.Title.ToString();
+            Description = details.Description.ToString();
+            Category = details.CategoryName;
+            Id = details.DiagnosticId;
+        }
+
         public string Title { get; }
 
         public string Description { get; }

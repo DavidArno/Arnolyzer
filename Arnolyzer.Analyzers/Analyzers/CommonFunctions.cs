@@ -37,6 +37,14 @@ namespace Arnolyzer.Analyzers
             symbol.GetAttributes()
                   .Any(s => attributes.TryFirst(t => MatchAttributeName(t, s.AttributeClass.Name)).HasValue);
 
+        public static IEnumerable<AttributeArgumentSyntax> ItemsToIgnoreFromAttributes(ISymbol symbol, IEnumerable<Type> attributes) =>
+            symbol.GetAttributes()
+                  .Where(a => attributes.TryFirst(t => MatchAttributeName(t, a.AttributeClass.Name)).HasValue)
+                  .SelectMany(attribute =>
+                                  (attribute.ApplicationSyntaxReference.GetSyntax() as AttributeSyntax).ArgumentList
+                                                                                                       .Arguments)
+                  .Select(argument => argument);
+
         public static bool PropertyHasIgnoreRuleAttribute(PropertyDeclarationSyntax property,
                                                           IEnumerable<Type> attributes) =>
                 property.AttributeLists

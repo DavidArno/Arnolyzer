@@ -208,10 +208,19 @@
     <value>AA1300-ParametersShouldNotBeModified</value>
   </data>
   <data name="AA1301VariablesShouldBeAssignedOnceOnlyDescription" xml:space="preserve">
-    <value>Variables should be treated as immutable and only assigned to once</value>
+    <value>Variables should be treated as immutable and should not be overwritten</value>
   </data>
   <data name="AA1301VariablesShouldBeAssignedOnceOnlyMessageFormat" xml:space="preserve">
-    <value>xxx</value>
+    <value>Variable {0} should be treated as immutable and should not be overwritten</value>
+  </data>
+  <data name="AA1301VariablesShouldBeAssignedOnceOnlySuppresionMisuseDescription" xml:space="preserve">
+    <value>Variables listed in the MutableVariable attribute should exist in the method body</value>
+  </data>
+  <data name="AA1301VariablesShouldBeAssignedOnceOnlySuppresionMisuseMessageFormat" xml:space="preserve">
+    <value>Variable {0} doesn't exist in the method body, so shouldn't be in the attribute</value>
+  </data>
+  <data name="AA1301VariablesShouldBeAssignedOnceOnlySuppresionMisuseTitle" xml:space="preserve">
+    <value>AA1301-VariablesShouldBeAssignedOnceOnly</value>
   </data>
   <data name="AA1301VariablesShouldBeAssignedOnceOnlyTitle" xml:space="preserve">
     <value>AA1301-VariablesShouldBeAssignedOnceOnly</value>

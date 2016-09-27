@@ -331,7 +331,7 @@ namespace Arnolyzer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Variables should be treated as immutable and only assigned to once.
+        ///   Looks up a localized string similar to Variables should be treated as immutable and should not be overwritten.
         /// </summary>
         public static string AA1301VariablesShouldBeAssignedOnceOnlyDescription {
             get {
@@ -340,11 +340,38 @@ namespace Arnolyzer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to xxx.
+        ///   Looks up a localized string similar to Variable {0} should be treated as immutable and should not be overwritten.
         /// </summary>
         public static string AA1301VariablesShouldBeAssignedOnceOnlyMessageFormat {
             get {
                 return ResourceManager.GetString("AA1301VariablesShouldBeAssignedOnceOnlyMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Variables listed in the MutableVariable attribute should exist in the method body.
+        /// </summary>
+        public static string AA1301VariablesShouldBeAssignedOnceOnlySuppresionMisuseDescription {
+            get {
+                return ResourceManager.GetString("AA1301VariablesShouldBeAssignedOnceOnlySuppresionMisuseDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Variable {0} doesn&apos;t exist in the method body, so shouldn&apos;t be in the attribute.
+        /// </summary>
+        public static string AA1301VariablesShouldBeAssignedOnceOnlySuppresionMisuseMessageFormat {
+            get {
+                return ResourceManager.GetString("AA1301VariablesShouldBeAssignedOnceOnlySuppresionMisuseMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AA1301-VariablesShouldBeAssignedOnceOnly.
+        /// </summary>
+        public static string AA1301VariablesShouldBeAssignedOnceOnlySuppresionMisuseTitle {
+            get {
+                return ResourceManager.GetString("AA1301VariablesShouldBeAssignedOnceOnlySuppresionMisuseTitle", resourceCulture);
             }
         }
         
