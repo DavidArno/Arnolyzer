@@ -48,8 +48,8 @@
       <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.1.1.1\lib\net45\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SuccincT.Core, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SuccincT.2.1.0\lib\dotnet\SuccincT.Core.dll</HintPath>
+    <Reference Include="SuccincT, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SuccincT.2.1.0\lib\portable40-net40+win8+wpa81\SuccincT.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Analyzers\AnalyzerCategoryDetails.cs" />
+    <Compile Include="Analyzers\NameAndLocation.cs" />
     <Compile Include="Analyzers\INamedItemSuppresionAttributeDetailsReporter.cs" />
     <Compile Include="Analyzers\NamedItemSuppresionAttributeDetails.cs" />
     <Compile Include="Analyzers\AnalyzerDetails.cs" />

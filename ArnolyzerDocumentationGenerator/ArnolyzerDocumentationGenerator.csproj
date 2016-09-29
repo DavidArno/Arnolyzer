@@ -34,8 +34,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeAnalysis, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
-    <Reference Include="SuccincT, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SuccincT.2.0.0.0\lib\portable-net40+win+wpa81\SuccincT.dll</HintPath>
+    <Reference Include="SuccincT, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SuccincT.2.1.0\lib\portable40-net40+win8+wpa81\SuccincT.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

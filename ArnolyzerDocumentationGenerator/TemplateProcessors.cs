@@ -7,6 +7,7 @@ using Arnolyzer;
 using Arnolyzer.Analyzers;
 using Arnolyzer.RuleExceptionAttributes;
 using static System.Environment;
+using static System.Reflection.BindingFlags;
 using static ArnolyzerDocumentationGenerator.ImplementationStatus;
 
 namespace ArnolyzerDocumentationGenerator
@@ -136,10 +137,24 @@ namespace ArnolyzerDocumentationGenerator
 
         private static string FormatAttribute(Type attribute)
         {
-            var instance = (IAttributeDescriber)Activator.CreateInstance(attribute);
-            var name = attribute.Name.Replace("Attribute", "");
-            var description = instance.AttributeDescription.Replace("Attribute", " attribute");
-            return $"**[{name}]**<br/>{description}";
+            
+                var instance = CreateAttributeInstanceUsingPrivateConstructorIfRequired(attribute);
+                var name = attribute.Name.Replace("Attribute", "");
+                var description = instance.AttributeDescription.Replace("Attribute", " attribute");
+                return $"**[{name}]**<br/>{description}";
+        }
+
+        private static IAttributeDescriber CreateAttributeInstanceUsingPrivateConstructorIfRequired(Type attribute)
+        {
+            try
+            {
+                return (IAttributeDescriber)Activator.CreateInstance(attribute);
+            }
+            catch (MissingMethodException)
+            {
+                var constructor = attribute.GetConstructor(NonPublic|Instance, null, new Type[0], null);
+                return (IAttributeDescriber)constructor.Invoke(null);
+            }
         }
 
         private static string GenerateVersionHistory(string currentVersion) =>
