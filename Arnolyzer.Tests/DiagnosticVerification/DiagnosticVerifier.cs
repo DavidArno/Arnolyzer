@@ -3,7 +3,7 @@ using System.Linq;
 using Arnolyzer.RuleExceptionAttributes;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using static Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace Arnolyzer.Tests.DiagnosticVerification
 {
@@ -33,14 +33,15 @@ namespace Arnolyzer.Tests.DiagnosticVerification
             {
                 var actual = actualResultsArray[i];
                 var expected = expectedResults[i];
+                var diagnosticNum = i + 1;
 
-                VerifyLocationOfDiagnostic(analyzerName, expected, actual);
-                VerifyCategoryOfDiagnostic(analyzerName, expected, actual);
-                VerifyIdOfDiagnostic(analyzerName, expected, actual);
-                VerifyTitleOfDiagnostic(analyzerName, expected, actual);
-                VerifyDescriptionOfDiagnostic(analyzerName, i, expected, actual);
-                VerifyMessageOfDiagnostic(analyzerName, i, expected, actual);
-                VerifySeverityOfDiagnostic(analyzerName, expected, actual);
+                VerifyLocationOfDiagnostic(analyzerName, diagnosticNum, expected, actual);
+                VerifyCategoryOfDiagnostic(analyzerName, diagnosticNum, expected, actual);
+                VerifyIdOfDiagnostic(analyzerName, diagnosticNum, expected, actual);
+                VerifyTitleOfDiagnostic(analyzerName, diagnosticNum, expected, actual);
+                VerifyDescriptionOfDiagnostic(analyzerName, diagnosticNum, expected, actual);
+                VerifyMessageOfDiagnostic(analyzerName, diagnosticNum, expected, actual);
+                VerifySeverityOfDiagnostic(analyzerName, diagnosticNum, expected, actual);
             }
         }
 
@@ -51,7 +52,7 @@ namespace Arnolyzer.Tests.DiagnosticVerification
             var expectedCount = expectedResults.Length;
             var actualCount = actualResults.Length;
 
-            Assert.IsTrue(expectedCount == actualCount,
+            IsTrue(expectedCount == actualCount,
                           GenerateAssertMessage(analyzerName,
                                                 "",
                                                 "Mismatch between number of diagnostics returned",
@@ -59,89 +60,101 @@ namespace Arnolyzer.Tests.DiagnosticVerification
                                                 () => actualCount.ToString()));
         }
 
-        private static void VerifyLocationOfDiagnostic(string analyzerName, DiagnosticResult expected, Diagnostic actual)
+        private static void VerifyLocationOfDiagnostic(string analyzerName,
+                                                       int diagnosticNum,
+                                                       DiagnosticResult expected,
+                                                       Diagnostic actual)
         {
-            Assert.IsTrue(expected.Location.HasValue && actual.Location != Location.None,
-                          GenerateAssertMessage(analyzerName,
-                                                expected.CommonProperties.Id,
-                                                "Expected a diagnostic with no location",
-                                                () => "No location",
-                                                () => FormatLocation(CreateCoordsFromActual(actual.Location))));
+            IsTrue(expected.Location.HasValue && actual.Location != Location.None,
+                   GenerateAssertMessage(analyzerName,
+                                         expected.CommonProperties.Id,
+                                         $"Expected diagnostic {diagnosticNum} with no location",
+                                         () => "No location",
+                                         () => FormatLocation(CreateCoordsFromActual(actual.Location))));
 
             var expectedCoords = CreateCoordsFromExpected(expected.Location.Value);
             var actualCoords = CreateCoordsFromActual(actual.Location);
-            Assert.IsTrue(Equals(expectedCoords, actualCoords),
-                          GenerateAssertMessage(analyzerName,
-                                                expected.CommonProperties.Id,
-                                                "Expected and actual diagnostic locations differ",
-                                                () => FormatLocation(CreateCoordsFromExpected(expected.Location.Value)),
-                                                () => FormatLocation(CreateCoordsFromActual(actual.Location))));
+            IsTrue(Equals(expectedCoords, actualCoords),
+                   GenerateAssertMessage(analyzerName,
+                                         expected.CommonProperties.Id,
+                                         $"Expected and actual diagnostic {diagnosticNum} locations differ",
+                                         () => FormatLocation(CreateCoordsFromExpected(expected.Location.Value)),
+                                         () => FormatLocation(CreateCoordsFromActual(actual.Location))));
         }
 
-        private static void VerifyIdOfDiagnostic(string analyzerName, DiagnosticResult expected, Diagnostic actual)
+        private static void VerifyIdOfDiagnostic(string analyzerName, int diagnosticNum, DiagnosticResult expected, Diagnostic actual)
         {
-            Assert.IsTrue(Equals(expected.CommonProperties.Id, actual.Id),
+            IsTrue(Equals(expected.CommonProperties.Id, actual.Id),
                           GenerateAssertMessage(analyzerName,
                                                 expected.CommonProperties.Id,
-                                                "The diagnostic is different to that expected",
+                                                $"The diagnostic {diagnosticNum}'s ID is different to that expected",
                                                 () => expected.CommonProperties.Id,
                                                 () => actual.Id));
         }
 
-        private static void VerifyCategoryOfDiagnostic(string analyzerName, DiagnosticResult expected, Diagnostic actual)
+        private static void VerifyCategoryOfDiagnostic(string analyzerName,
+                                                       int diagnosticNum,
+                                                       DiagnosticResult expected,
+                                                       Diagnostic actual)
         {
-            Assert.IsTrue(Equals(expected.CommonProperties.Category, actual.Descriptor.Category),
-                          GenerateAssertMessage(analyzerName,
-                                                expected.CommonProperties.Id,
-                                                "The diagnostic's category is different to that expected",
-                                                () => expected.CommonProperties.Category,
-                                                () => actual.Descriptor.Category));
+            IsTrue(Equals(expected.CommonProperties.Category, actual.Descriptor.Category),
+                   GenerateAssertMessage(analyzerName,
+                                         expected.CommonProperties.Id,
+                                         $"The diagnostic {diagnosticNum}'s category is different to that expected",
+                                         () => expected.CommonProperties.Category,
+                                         () => actual.Descriptor.Category));
         }
 
-        private static void VerifyTitleOfDiagnostic(string analyzerName, DiagnosticResult expected, Diagnostic actual)
+        private static void VerifyTitleOfDiagnostic(string analyzerName,
+                                                    int diagnosticNum,
+                                                    DiagnosticResult expected,
+                                                    Diagnostic actual)
         {
-            Assert.IsTrue(Equals(expected.CommonProperties.Title, actual.Descriptor.Title.ToString()),
-                          GenerateAssertMessage(analyzerName,
-                                                expected.CommonProperties.Id,
-                                                "The diagnostic's title is different to that expected",
-                                                () => expected.CommonProperties.Title,
-                                                () => actual.Descriptor.Title.ToString()));
+            IsTrue(Equals(expected.CommonProperties.Title, actual.Descriptor.Title.ToString()),
+                   GenerateAssertMessage(analyzerName,
+                                         expected.CommonProperties.Id,
+                                         $"The diagnostic {diagnosticNum}'s title is different to that expected",
+                                         () => expected.CommonProperties.Title,
+                                         () => actual.Descriptor.Title.ToString()));
         }
 
         private static void VerifyDescriptionOfDiagnostic(string analyzerName,
-                                                          int diagnosticNumber,
+                                                          int diagnosticNum,
                                                           DiagnosticResult expected,
                                                           Diagnostic actual)
         {
-            Assert.IsTrue(Equals(expected.CommonProperties.Description, actual.Descriptor.Description.ToString()),
-                          GenerateAssertMessage(analyzerName,
-                                                expected.CommonProperties.Id,
-                                                $"The diagnostic ({diagnosticNumber})'s description is different to that expected",
-                                                () => expected.CommonProperties.Description,
-                                                () => actual.Descriptor.Description.ToString()));
+            IsTrue(Equals(expected.CommonProperties.Description, actual.Descriptor.Description.ToString()),
+                   GenerateAssertMessage(analyzerName,
+                                         expected.CommonProperties.Id,
+                                         $"The diagnostic ({diagnosticNum})'s description is different to that expected",
+                                         () => expected.CommonProperties.Description,
+                                         () => actual.Descriptor.Description.ToString()));
         }
 
         private static void VerifyMessageOfDiagnostic(string analyzerName,
-                                                      int diagnosticNumber,
+                                                      int diagnosticNum,
                                                       DiagnosticResult expected,
                                                       Diagnostic actual)
         {
-            Assert.IsTrue(Equals(expected.Message, actual.GetMessage()),
-                          GenerateAssertMessage(analyzerName,
-                                                expected.CommonProperties.Id,
-                                                $"The diagnostic ({diagnosticNumber})'s message is different to that expected",
-                                                () => expected.Message,
-                                                () => actual.GetMessage()));
+            IsTrue(Equals(expected.Message, actual.GetMessage()),
+                   GenerateAssertMessage(analyzerName,
+                                         expected.CommonProperties.Id,
+                                         $"The diagnostic ({diagnosticNum})'s message is different to that expected",
+                                         () => expected.Message,
+                                         () => actual.GetMessage()));
         }
 
-        private static void VerifySeverityOfDiagnostic(string analyzerName, DiagnosticResult expected, Diagnostic actual)
+        private static void VerifySeverityOfDiagnostic(string analyzerName,
+                                                       int diagnosticNum,
+                                                       DiagnosticResult expected,
+                                                       Diagnostic actual)
         {
-            Assert.IsTrue(Equals(expected.CommonProperties.Id, actual.Id),
-                          GenerateAssertMessage(analyzerName,
-                                                expected.CommonProperties.Id,
-                                                "The severity of the diagnostic is different to that expected",
-                                                () => expected.CommonProperties.Severity.ToString(),
-                                                () => actual.Severity.ToString()));
+            IsTrue(Equals(expected.CommonProperties.Id, actual.Id),
+                   GenerateAssertMessage(analyzerName,
+                                         expected.CommonProperties.Id,
+                                         $"The severity of diagnostic {diagnosticNum} is different to that expected",
+                                         () => expected.CommonProperties.Severity.ToString(),
+                                         () => actual.Severity.ToString()));
         }
 
         private static string GenerateAssertMessage(string analyzerName,

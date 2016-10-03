@@ -66,11 +66,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Analyzers\AnalyzerCategoryDetails.cs" />
+    <Compile Include="Analyzers\ImmutabilityAnalyzers\VariableMutations.cs" />
     <Compile Include="Analyzers\NameAndLocation.cs" />
     <Compile Include="Analyzers\INamedItemSuppresionAttributeDetailsReporter.cs" />
     <Compile Include="Analyzers\NamedItemSuppresionAttributeDetails.cs" />
     <Compile Include="Analyzers\AnalyzerDetails.cs" />
-    <Compile Include="Analyzers\ImmutabilityAnalyzers\AA1101VariablesShouldBeAssignedOnceOnlyAnalyzer.cs" />
+    <Compile Include="Analyzers\ImmutabilityAnalyzers\AA1301VariablesShouldBeAssignedOnceOnlyAnalyzer.cs" />
     <Compile Include="Analyzers\ImmutabilityAnalyzers\AA1300ParametersShouldNotBeModifiedAnalyzer.cs" />
     <Compile Include="Analyzers\GlobalStateAnalyzers\AA1201AvoidUsingStaticPropertiesAnalyzer.cs" />
     <Compile Include="Analyzers\GlobalStateAnalyzers\AA1200AvoidUsingStaticFieldsAnalyzer.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="Analyzers\SingleResponsibilityAnalyzers\AA2101MethodTooLongAnalyzer.cs" />
     <Compile Include="ArnolyzerVersion.cs" />
     <Compile Include="RuleExceptionAttributes\ConstantValueProviderAttribute.cs" />
+    <Compile Include="RuleExceptionAttributes\MutableParameterAttribute.cs" />
     <Compile Include="RuleExceptionAttributes\MutableVariableAttribute.cs" />
     <Compile Include="RuleExceptionAttributes\GlobalStateAttribute.cs" />
     <Compile Include="RuleExceptionAttributes\HasSingleResponsibility.cs" />

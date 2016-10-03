@@ -8,7 +8,7 @@ using Microsoft.CodeAnalysis.Diagnostics;
 using System.Linq;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
-using SuccincT.Functional;
+using static Arnolyzer.Analyzers.ImmutabilityAnalyzers.VariableMutations;
 
 namespace Arnolyzer.Analyzers.ImmutabilityAnalyzers
 {
@@ -66,87 +66,28 @@ namespace Arnolyzer.Analyzers.ImmutabilityAnalyzers
             var symbol = (IMethodSymbol)context.Symbol;
             if (CommonFunctions.SkipSymbolAnalysisIgnoringAttributes(symbol, _settingsHandler)) return;
 
-            var ignoredVariables = CommonFunctions.ItemsToIgnoreFromAttributes(symbol, SuppressionAttributes);
+            var ignoredVariables = CommonFunctions.ItemsToIgnoreFromAttributes(symbol, SuppressionAttributes).ToList();
             var syntax = symbol.DeclaringSyntaxReferences[0].GetSyntaxAsync().Result;
 
             var identifiers = syntax.DescendantNodes()
                                     .Where(node => node.IsKind(SyntaxKind.VariableDeclarator))
                                     .Cast<VariableDeclaratorSyntax>()
-                                    .Select(variable => variable.Identifier.Value.ToString());
+                                    .Select(variable => variable.Identifier.Value.ToString()).ToList();
 
-            var assignments = syntax.DescendantNodes()
-                                    .Where(NodeIsAssignmentExpression)
-                                    .Cast<AssignmentExpressionSyntax>()
-                                    .Select(expression => new NameAndLocation(
-                                                GetIdentifierFromAssignmentExpression(expression),
-                                                expression.GetLocation()));
 
-            var prefixExpressions = syntax.DescendantNodes()
-                                          .Where(NodeIsPrefixExpression)
-                                          .Cast<PrefixUnaryExpressionSyntax>()
-                                          .Select(expression => new NameAndLocation(
-                                                      GetIdentifierFromPrefixOperand(expression),
-                                                      expression.GetLocation()));
-
-            var postfixExpressions = syntax.DescendantNodes()
-                                           .Where(NodeIsPostfixExpression)
-                                           .Cast<PostfixUnaryExpressionSyntax>()
-                                           .Select(expression => new NameAndLocation(
-                                                       GetIdentifierFromPostfixOperand(expression),
-                                                       expression.GetLocation()));
-
-            foreach (var reassignment in from assignment in assignments.Cons(prefixExpressions).Cons(postfixExpressions)
-                                         where ignoredVariables.All(ignored => ignored.Name != assignment.Name) &&
-                                               identifiers.Any(i => i == assignment.Name)
-                                         select assignment)
+            foreach (var reassignment in GetAllNonIgnoredMutations(syntax, ignoredVariables, identifiers))
             {
                 context.ReportDiagnostic(Diagnostic.Create(AnalyzerRule,
                                                            reassignment.Location,
                                                            reassignment.Name));
             }
 
-            foreach (var ignoredSyntaxInfo in from ignoredVariable in ignoredVariables
-                                              where identifiers.All(identifier => identifier != ignoredVariable.Name)
-                                              select ignoredVariable)
+            foreach (var ignoredSyntaxInfo in NonExistantIgnoredVariables(ignoredVariables, identifiers))
             {
                 context.ReportDiagnostic(Diagnostic.Create(SuppressionMisuseRule,
                                                            ignoredSyntaxInfo.Location,
                                                            ignoredSyntaxInfo.Name));
-
             }
         }
-
-        private static string GetIdentifierFromAssignmentExpression(AssignmentExpressionSyntax expression) =>
-            GetIdentifierFromIdentifierNameSyntax((IdentifierNameSyntax) expression.Left);
-
-        private static string GetIdentifierFromPrefixOperand(PrefixUnaryExpressionSyntax expression) =>
-            GetIdentifierFromIdentifierNameSyntax((IdentifierNameSyntax)expression.Operand);
-
-        private static string GetIdentifierFromPostfixOperand(PostfixUnaryExpressionSyntax expression) =>
-            GetIdentifierFromIdentifierNameSyntax((IdentifierNameSyntax)expression.Operand);
-
-        private static string GetIdentifierFromIdentifierNameSyntax(IdentifierNameSyntax syntax) =>
-            syntax.Identifier.Value.ToString();
-
-        private static bool NodeIsAssignmentExpression(SyntaxNode node) =>
-            node.IsKind(SyntaxKind.SimpleAssignmentExpression) ||
-            node.IsKind(SyntaxKind.AddAssignmentExpression) ||
-            node.IsKind(SyntaxKind.SubtractAssignmentExpression) ||
-            node.IsKind(SyntaxKind.MultiplyAssignmentExpression) ||
-            node.IsKind(SyntaxKind.DivideAssignmentExpression) ||
-            node.IsKind(SyntaxKind.ModuloAssignmentExpression) ||
-            node.IsKind(SyntaxKind.AndAssignmentExpression) ||
-            node.IsKind(SyntaxKind.ExclusiveOrAssignmentExpression) ||
-            node.IsKind(SyntaxKind.OrAssignmentExpression) ||
-            node.IsKind(SyntaxKind.LeftShiftAssignmentExpression) ||
-            node.IsKind(SyntaxKind.RightShiftAssignmentExpression);
-
-        private static bool NodeIsPrefixExpression(SyntaxNode node) =>
-            node.IsKind(SyntaxKind.PreIncrementExpression) ||
-            node.IsKind(SyntaxKind.PreDecrementExpression);
-
-        private static bool NodeIsPostfixExpression(SyntaxNode node) =>
-            node.IsKind(SyntaxKind.PostIncrementExpression) ||
-            node.IsKind(SyntaxKind.PostDecrementExpression);
     }
 }

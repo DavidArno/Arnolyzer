@@ -313,11 +313,38 @@ namespace Arnolyzer {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to xxx.
+        ///   Looks up a localized string similar to Parameter {0} should be treated as immutable and should not be overwritten.
         /// </summary>
         public static string AA1300ParametersShouldNotBeModifiedMessageFormat {
             get {
                 return ResourceManager.GetString("AA1300ParametersShouldNotBeModifiedMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Items listed in the MutableParameter attribute should exist in the parameter list.
+        /// </summary>
+        public static string AA1300ParametersShouldNotBeModifiedSuppresionMisuseDescription {
+            get {
+                return ResourceManager.GetString("AA1300ParametersShouldNotBeModifiedSuppresionMisuseDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} doesn&apos;t exist as a parameter, so shouldn&apos;t be in the attribute.
+        /// </summary>
+        public static string AA1300ParametersShouldNotBeModifiedSuppresionMisuseMessageFormat {
+            get {
+                return ResourceManager.GetString("AA1300ParametersShouldNotBeModifiedSuppresionMisuseMessageFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to AA1300-ParametersShouldNotBeModified.
+        /// </summary>
+        public static string AA1300ParametersShouldNotBeModifiedSuppresionMisuseTitle {
+            get {
+                return ResourceManager.GetString("AA1300ParametersShouldNotBeModifiedSuppresionMisuseTitle", resourceCulture);
             }
         }
         

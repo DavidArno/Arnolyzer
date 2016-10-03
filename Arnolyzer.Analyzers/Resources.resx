@@ -202,7 +202,16 @@
     <value>Parameters should be treated as immutable and not used as a mutable variables</value>
   </data>
   <data name="AA1300ParametersShouldNotBeModifiedMessageFormat" xml:space="preserve">
-    <value>xxx</value>
+    <value>Parameter {0} should be treated as immutable and should not be overwritten</value>
+  </data>
+  <data name="AA1300ParametersShouldNotBeModifiedSuppresionMisuseDescription" xml:space="preserve">
+    <value>Items listed in the MutableParameter attribute should exist in the parameter list</value>
+  </data>
+  <data name="AA1300ParametersShouldNotBeModifiedSuppresionMisuseMessageFormat" xml:space="preserve">
+    <value>{0} doesn't exist as a parameter, so shouldn't be in the attribute</value>
+  </data>
+  <data name="AA1300ParametersShouldNotBeModifiedSuppresionMisuseTitle" xml:space="preserve">
+    <value>AA1300-ParametersShouldNotBeModified</value>
   </data>
   <data name="AA1300ParametersShouldNotBeModifiedTitle" xml:space="preserve">
     <value>AA1300-ParametersShouldNotBeModified</value>
