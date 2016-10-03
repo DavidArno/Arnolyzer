@@ -14,7 +14,7 @@ The aim is to improve the discoverability of the analyzers for search engines, w
 For more details of that release, previous releases, how to install Arnolyzer and documentation for the analyzers in the current release, please refer to the [Arnolyzer website](http://davidarno.github.io/Arnolyzer/).
 
 ## Current state of development ##
-Currently, version 1.1.0 is in development. This is subject to change without warning though, should eg an urgent bug fix release be needed in the meantime.
+Currently, version 1.2.0 is in development. This is subject to change without warning though, should eg an urgent bug fix release be needed in the meantime.
 
 Last code commit: 03 Oct 2016.
 

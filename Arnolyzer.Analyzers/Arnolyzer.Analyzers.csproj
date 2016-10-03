@@ -124,6 +124,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ReleaseNotes\Release.1.0.0.md" />
+    <None Include="ReleaseNotes\Release.1.2.0.md" />
     <None Include="ReleaseNotes\Release.1.1.0.md" />
     <None Include="Analysis.ruleset" />
     <None Include="Arnolyzer.Analyzers.ruleset" />
